@@ -2,6 +2,25 @@
 
 use App\Exceptions\WxPay\WxComPay;
 
+if (!function_exists('rJson')) {
+    function rJson($data = [], $message = null, $code = 0, $cookie = null)
+    {
+        if (($data instanceof LengthAwarePaginator) || ($data instanceof Paginator)) {
+            $data = $data->toArray();
+        }
+        $jsonData = [
+            'msg'  => $message ? $message : '成功！',
+            'data' => $data,
+            'code' => $code
+        ];
+
+        $header = ['Access-Control-Allow-Origin' => '*'];
+        $options = JSON_UNESCAPED_UNICODE;
+        if ($cookie)
+            return response()->json($jsonData, 200, $header, $options)->withCookie($cookie);
+        return response()->json($jsonData, 200, $header, $options);
+    }
+}
 /**
  * 获取当前登录的用户
  */

@@ -5,10 +5,9 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Request;
-
 /**
- * @package App\Models\Mongo
- * App\Models\Mongo\BaseModel
+ * @package App\Models
+ * App\Models\BaseModel
  * @mixin \Eloquent
  */
 class BaseModel extends Model
