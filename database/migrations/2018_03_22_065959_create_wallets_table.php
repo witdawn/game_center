@@ -15,11 +15,10 @@ class CreateWalletsTable extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('account_id')->nullable()->index()->comment('隶属账户');
+            $table->integer('active_id')->nullable()->index()->comment('隶属活动');
             $table->integer('user_id')->index()->comment('用户id');
             $table->decimal('balance')->default(0)->comment('余额');
             $table->tinyInteger('left_times')->default(3)->comment('剩余提现次数');
-            $table->timestamps();
         });
     }
 

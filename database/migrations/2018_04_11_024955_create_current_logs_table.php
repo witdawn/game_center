@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserExtsTable extends Migration
+class CreateCurrentLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUserExtsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_exts', function (Blueprint $table) {
+        Schema::create('current_logs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('active_id')->nullable()->index()->comment('隶属活动');
             $table->integer('user_id')->index()->comment('用户id');
-            $table->integer('account_id')->nullable()->index()->comment('隶属账户');
-            $table->tinyInteger('revive_card_count')->nullable()->comment('复活卡数量');
+            $table->decimal('money')->default(0)->comment('提现金额');
+            $table->tinyInteger('status')->comment('提现状态');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUserExtsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_exts');
+        Schema::dropIfExists('current_logs');
     }
 }
