@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class WxAuth
+class AccountLogin
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,10 @@ class WxAuth
      */
     public function handle($request, Closure $next)
     {
-        $gamer=session('an_game');
-        if(!$gamer['openid']){
-            return redirect('game/auth');
-        }
-        unset($gamer);
+        $account=session('an_account');
+        if(!$account['id'])
+            return redirect('login');
+        unset($account);
         return $next($request);
     }
 }

@@ -22,12 +22,21 @@ if (!function_exists('rJson')) {
     }
 }
 /**
- * 获取当前登录的用户
+ * 获取用户信息
  */
 if (!function_exists('currentUser')) {
     function currentUser()
     {
-        return request()->has('game_user') ? request('game_user') : null;
+        return session('an_game');
+    }
+}
+/**
+ * 获取账户信息
+ */
+if (!function_exists('account_info')) {
+    function account_info()
+    {
+        return session('an_account');
     }
 }
 

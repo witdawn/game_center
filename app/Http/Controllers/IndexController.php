@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\Account;
-
 class IndexController extends Controller
 {
     public function index()
     {
-        Account::find(123);
-        return view('welcome');
+        $account = account_info();
+        return view('index.index',['account'=>$account]);
     }
 
 
-    public function logout()
+    public function activies()
     {
+
+        return view('screen.questions');
+    }
+
+    public function login()
+    {
+        return view('index.login');
     }
 }

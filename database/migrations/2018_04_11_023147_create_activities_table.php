@@ -15,6 +15,7 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('account_id')->nullable()->comment('账号id');
             $table->string('title', 64)->nullable()->comment('活动主题');
             $table->date('start_at')->nullable()->comment('开始时间');
             $table->date('end_at')->nullable()->comment('开始时间');

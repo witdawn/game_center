@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Qa extends BaseModel
+class QuestionUser extends BaseModel
 {
     //
 }
