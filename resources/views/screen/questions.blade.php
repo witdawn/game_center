@@ -55,6 +55,7 @@
         websocket.onmessage = function (evt) {
             if (evt.data) {
                 var res=$.parseJSON(evt.data);
+                console.log(res);
                 if(res.type===1){
                     $("#online").text('在线人数' + res.count);
                 }else if(res.type===2){
@@ -63,8 +64,8 @@
                     question_num=res.display_order;
                     console.log('title='+title);
                     console.log('num='+question_num);
-                    options.each(index,function(){
-                       console.log('options:'+options[index]);
+                    $.each(options,function(i){
+                        console.log('options:'+options[i]);
                     });
                 }
 
