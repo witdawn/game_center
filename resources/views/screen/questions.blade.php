@@ -37,8 +37,8 @@
     var wsServer = 'ws://my.witdawn.com:9501/';
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
-
         websocket.onopen = function (evt) {
+            console.log('连接成功');
             var round_num = $("#round").val();
             websocket.send(JSON.stringify({
                 action: 'admin_login',
@@ -47,7 +47,7 @@
                     'round_num': round_num,
                 }
             }));
-            console.log('连接成功');
+
         };
 
         websocket.onclose = function (evt) {

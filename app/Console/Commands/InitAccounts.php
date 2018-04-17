@@ -76,7 +76,7 @@ class InitAccounts extends Command
                     $question->active_id = $active->id;
                     $question->round_number = $j;
                     $question->status = 1;
-                    $question->title = '1*9+1=?';
+                    $question->title = '第'.$i.'题：1*9+1=?';
                     $question->options = serialize([7, 3, 9, 10]);
                     $question->answer = 4;
                     $question->score = 0;
