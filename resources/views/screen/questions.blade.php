@@ -85,7 +85,7 @@
             content: {
                 'active_id': active_id,
                 'round_num': round_num,
-                'num': question_num,
+                'num': question_num+1,
             }
         }));
         console.log("发题成功");
