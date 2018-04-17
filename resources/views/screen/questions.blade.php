@@ -63,7 +63,7 @@
                 }else if(res.type===2){
                     var options=res.options;
                     var title=res.title;
-                    question_num=res.display_order;
+                    question_num=parseInt(res.display_order)+1;
                     console.log('title='+title);
                     console.log('num='+question_num);
                     $.each(options,function(i){
@@ -85,7 +85,7 @@
             content: {
                 'active_id': active_id,
                 'round_num': round_num,
-                'num': question_num+1,
+                'num': question_num,
             }
         }));
         console.log("发题成功");
