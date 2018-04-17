@@ -39,10 +39,12 @@
     window.onload = function () {
 
         websocket.onopen = function (evt) {
+            var round_num = $("#round").val();
             websocket.send(JSON.stringify({
                 action: 'admin_login',
                 content: {
                     'active_id': active_id,
+                    'round_num': round_num,
                 }
             }));
             console.log('连接成功');
