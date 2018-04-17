@@ -22,7 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->text('options')->nullable()->comment('备选答案问题');
             $table->string('answer', 64)->nullable()->comment('正确答案');
             $table->integer('score')->nullable()->comment('分值');
-            $table->tinyInteger('display_order')->nullable()->comment('排序,升序');
+            $table->tinyInteger('display_order')->nullable()->comment('题号');
             $table->timestamps();
         });
     }

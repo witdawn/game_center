@@ -21,6 +21,14 @@ if (!function_exists('rJson')) {
         return response()->json($jsonData, 200, $header, $options);
     }
 }
+
+if(!function_exists('error_page')){
+    function error_page($msg){
+        $url=route('error_page',['msg'=>urlencode($msg)]);
+        return redirect($url);
+    }
+}
+
 /**
  * 获取用户信息
  */

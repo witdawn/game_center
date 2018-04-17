@@ -19,6 +19,7 @@ class WxAuth
         if(!$gamer['openid']){
             return redirect('game/auth');
         }
+        $request->offsetSet('gamer', $gamer);
         unset($gamer);
         return $next($request);
     }

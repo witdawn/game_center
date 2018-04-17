@@ -12,14 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return error_page('coding');
 });
+
+Route::get('error/', 'CommonController@error_page')->name('error_page');
+
 Route::get('/index', 'IndexController@index');
 Route::get('/socket', 'IndexController@socket');
 
-Route::get('game/auth', 'GameController@GameAuth')->name('game_auth');
-Route::group(['middleware' => 'game.auth', 'prefix' => '/game'], function () {
+//需要活动认证
+Route::group(['middleware' => 'game.active', 'prefix' => '/game'], function () {
+    //微信授权
+    Route::get('/auth', 'GameController@GameAuth')->name('game_auth');
 
-    Route::get('index', 'GameController@index');
-
+    //需要授权认证
+    Route::group(['middleware' => 'game.wx'], function () {
+        //测试
+        Route::get('index', 'GameController@index');
+    });
 });
+

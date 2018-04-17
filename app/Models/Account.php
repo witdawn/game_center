@@ -13,4 +13,14 @@ class Account extends BaseModel
     {
         return $this->hasMany(Activity::class,'account_id');
     }
+
+    /**
+     * 密码修改器
+     *
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = sha1($value);
+    }
 }

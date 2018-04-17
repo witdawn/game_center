@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use App\Models\Traits\RelationShip\ActivityRealtionShip;
-use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model
+class Activity extends BaseModel
 {
     use ActivityRealtionShip;
 

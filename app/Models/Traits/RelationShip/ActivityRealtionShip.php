@@ -18,21 +18,22 @@ trait ActivityRealtionShip
 {
     public function account()
     {
-        $this->belongsTo(Account::class, 'account_id');
+        return $this->belongsTo(Account::class, 'account_id');
     }
 
     public function users()
     {
-        $this->hasMany(User::class, 'active_id');
+        return $this->hasMany(User::class, 'active_id');
     }
 
     public function questions()
     {
-        $this->hasMany(Question::class,'active_id');
+        return $this->hasMany(Question::class,'active_id');
     }
 
     public function managers()
     {
-        $this->hasMany(ActiveManager::class,'active_id');
+        return $this->hasMany(ActiveManager::class,'active_id');
     }
+
 }
