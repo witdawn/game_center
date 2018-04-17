@@ -17,6 +17,7 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->integer('account_id')->nullable()->comment('账号id');
             $table->tinyInteger('question_round')->nullable()->default(1)->comment('答题游戏所在的轮数');
+            $table->tinyInteger('question_index')->nullable()->default(1)->comment('答到第n题');
             $table->string('title', 64)->nullable()->comment('活动主题');
             $table->date('start_at')->nullable()->comment('开始时间');
             $table->date('end_at')->nullable()->comment('开始时间');

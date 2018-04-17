@@ -8,28 +8,24 @@ use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
-    private $active;
-    private $gamer;
-    private $module;
 
     public function index(Request $request)
     {
-        dd(session('an_game'));
-        $request->session()->forget('an_game');
+        dd($request->gamer);
     }
 
-    public function question()
+    public function question(Request $request)
     {
-        return view('mobile.questione', ['user' => $this->gamer, 'active' => $this->active]);
+        return view('mobile.question', ['user' => $request->gamer, 'active' => $request->active]);
     }
 
     #获取身份信息
     public function GameAuth(Request $request)
     {
-        $gamer['openid']=333777344433;
+        $gamer['openid']=88888;
         session(['an_game'=>$gamer]);
         return redirect('game/' . $request->module);
-        $account = Account::find($request->active['account_id'])->toArray();
+        $account = Account::find($request->active->account_id)->toArray();
         dd($account);
         if (!$request->has('code')) {
             $url = route('game_auth');
@@ -42,7 +38,6 @@ class GameController extends Controller
                 $gamer = User::add($userinfo);
             }
             session('an_game', $gamer);
-            $this->gamer = $gamer;
             return redirect('game/' . $this->module);
         }
     }

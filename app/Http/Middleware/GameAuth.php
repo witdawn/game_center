@@ -23,6 +23,7 @@ class GameAuth
             $selects = [
                 'account_id',
                 'question_round',
+                'question_index',
                 'title',
                 'mobile_back',
                 'modules',
@@ -31,10 +32,11 @@ class GameAuth
             $active = Activity::select($selects)->find($request->a);
             if (!$active)
                 return error_page('未找到指定的活动');
-            session(['game_active' => $active->toArray()]);
+            session(['game_active' => $active]);
         }
+        $active=session('game_active');
         if ($request->has('m')) {
-            $allow_modules = unserialize(session('game_active')['modules']);
+            $allow_modules = unserialize($active->modules);
             if (!in_array($request->m, $allow_modules))
                 return error_page('该模块未开通');
             session(['an_module' => $request->m]);
@@ -42,7 +44,6 @@ class GameAuth
         $module = session('an_module') ? session('an_module') : 'index';
         $request->offsetSet('active', session('game_active'));
         $request->offsetSet('module', $module);
-        $request->offsetSet('gamer', session('an_game'));
         unset($module);
         return $next($request);
     }

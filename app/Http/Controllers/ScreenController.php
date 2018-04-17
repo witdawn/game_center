@@ -8,8 +8,9 @@ class ScreenController extends Controller
 {
     protected $active;
 
-    public function questions()
+    public function questions(Request $request)
     {
-        return view('screen.questions');
+        $active=$request->active;
+        return view('screen.questions',['active'=>$active]);
     }
 }

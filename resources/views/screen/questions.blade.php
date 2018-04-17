@@ -8,15 +8,32 @@
     <div>
         <p>后台页面</p>
         <sapn id="online"></sapn>
-        <span id="ft">发题</span>
-        <ul id="line">
+        <span>第</span>
+        <select id="round">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select><span>轮</span>
+        <span id="game_start">开始</span>
+        <div id="game_content">
+            <div>
+                <span id="title"></span>
+                <ul id="line">
 
-        </ul>
+                </ul>
+            </div>
+            <span id="ft">下一题</span>
+        </div>
     </div>
 </div>
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
+    var active_id = "{{$active->id}}";
+    var question_num = "{{$active->question_index}}";
+    var question_round = "{{$active->question_round}}";
+    $("#round").val(question_round);
+
     var wsServer = 'ws://my.witdawn.com:9501/';
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
@@ -25,43 +42,50 @@
             websocket.send(JSON.stringify({
                 action: 'admin_login',
                 content: {
-                    'active_id': 1,
+                    'active_id': active_id,
                 }
             }));
-            console.log(3333);
-            addLine("连接成功");
+            console.log('连接成功');
         };
 
         websocket.onclose = function (evt) {
-            addLine("Disconnected");
+            console.log('失去连接');
         };
 
         websocket.onmessage = function (evt) {
-            console.log(evt);
-            if(evt.data){
-                $("#online").text('在线人数' + evt.data);
+            if (evt.data) {
+                var res=$.parseJSON(evt.data);
+                if(res.type===1){
+                    $("#online").text('在线人数' + res.count);
+                }else if(res.type===2){
+                    var options=res.options;
+                    var title=res.title;
+                    question_num=res.display_order;
+                    console.log('title='+title);
+                    console.log('num='+question_num);
+                    options.each(index,function(){
+                       console.log('options:'+options[index]);
+                    });
+                }
+
             }
         };
-
         websocket.onerror = function (evt, e) {
-            addLine('Error occured: ' + evt.data);
+            console.log('Error occured: ' + evt.data);
         };
     };
 
-    $("#ft").click(function(){
+    $("#ft").click(function () {
+        var round_num = $("#round").val();
         websocket.send(JSON.stringify({
             action: 'send_question',
             content: {
-                'active_id': 1,
-                'q_id': 1,
+                'active_id': active_id,
+                'round_num': round_num,
+                'num': question_num,
             }
         }));
-        console.log(111);
-        addLine("发题成功");
+        console.log("发题成功");
     });
-
-    function addLine(data) {
-        $("#line").append("<li>" + data + "</li>");
-    }
 </script>
 </html>
