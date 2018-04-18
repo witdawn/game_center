@@ -1,0 +1,259 @@
+body{
+	margin:0;
+}
+p,h1,h2,,h3,h4,h5,h6{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration: none;
+}
+ul,li{
+	list-style:none;
+}
+.clearfix:after{
+　　content:"";
+　  height:0;
+　　line-height:0;
+　　display:block;
+　　visibility:hidden;
+　　clear:both;
+}
+
+.actIndex{
+	width:100%;
+	padding:20px;
+	box-sizing:border-box;
+	background: url(../imgs/back.png) 50% 50% no-repeat;
+	background-size:cover;
+	position: relative;
+}
+.indexPC2{
+	margin-top:30px;
+	margin-left:100px;
+	display: flex;
+}
+.indexPC2 .acMain{
+	flex-grow:1;
+	justify-content:center;
+}
+.acl img{
+	width:100%;
+}
+.acm{
+	text-align: center;
+}
+.acm img{
+	width:80%;
+	padding:20px;
+	background: #fff;
+	border-radius: 30px;
+}
+.acr{
+	text-align: right;
+}
+.acr img{
+	width:100%;
+}
+.acmd{
+	margin-left:100px;
+}
+.beginAnswer{
+	color:#fff100;
+	font-size:30px;
+	background: #e21954;
+	border:2px solid #fff100;
+	padding:10px 0px;
+	width:220px;
+	border-radius: 50px;
+	margin-top:50px;
+	display: inline-block;
+}
+
+/*光荣榜*/
+.acHead{
+	text-align: center;
+	position: relative;
+}
+.acHead .finalPeople{
+	position: absolute;
+	right:15%;
+	top:50%;
+	margin:auto;
+}
+.acHead .finalPeople a{
+	font-size: 26px;
+	color:#fff;
+}
+.acHead img{
+	width:30%;
+}
+.acPeople {
+    display: grid;
+    grid-gap: 10px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    /*grid-template-rows: repeat(2, 150px);*/
+}
+.acPeople .acp a{
+	width:100%;
+	display: block;
+}
+.acPeople .acp a img{
+	width:100%;
+}
+.acPeople .acp p{
+	text-align: center;
+	color:#fff;
+	margin:5px 0;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+/*答题详情页*/
+.preMain{
+	font-size: 36px;
+	color:#fff;
+	margin:0px 0 30px 0;
+}
+.preMain span{
+	font-size: 45px;
+}
+.quesMain{
+	width:75%;
+	margin:0 auto 30px auto;
+	/*height:500px;*/
+	background:#fff;
+	padding:30px 50px;
+	box-sizing:border-box;
+	text-align: center;
+}
+.quesMain .qmturn{
+	float: right;
+	margin:-26px 0 0 0;
+	font-size:18px;
+	font-weight: bold;
+}
+.quesMain h1{
+	margin:0;
+}
+.quesCont{
+	text-align: left;
+	font-size: 18px;
+	font-weight: bold;
+	margin:15px 0;
+	/*letter-spacing: 0.3em;*/
+}
+.quesItems {
+    display: grid;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:30px;
+    height:36px;
+    line-height: 36px;
+    grid-gap: 10px 30px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    /*grid-template-rows: repeat(2, 150px);*/
+}
+.quesRight{
+	background: #e21954;
+	color:#fff;
+	border-radius: 30px;
+}
+.nextQues{
+	text-align: right;
+	margin-top:100px;
+	display: flex;
+	justify-content:space-between;
+}
+.nextQues a{
+	display: inline-block;
+	text-align: center;
+	line-height: 36px;
+	width:160px;
+	height:36px;
+	background: #F8BD14;
+	color:#fff;
+	font-size:16px;
+}
+/*弹框*/
+.boxShadow{
+	width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+}
+.boxBomb{
+	width:500px;
+	height:400px;
+	background:#fff;
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	margin:auto;
+	padding:30px 0;
+	box-sizing:border-box;
+	text-align: center;
+}
+.boxBoom{
+	position: relative;
+}
+.boxBomb img{
+	width:30%;
+}
+.boxBomb .nextAnswer{
+	color:#000;
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+	width: 160px;
+	height: 36px;
+	line-height: 36px;
+	border-radius: 30px;
+	background: #e21954;
+	color:#fff;
+	border:1px solid #e21954;
+	margin-top:60px;
+}
+.invb-cha {
+    position: absolute;
+    right: -3%;
+    top: -150%;
+    width: 40px;
+    height: 40px;
+    background: #e21954;
+    border: 1px solid #e21954;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.invCha {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.invCha em {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    width: 26px;
+    height: 3px;
+    background: #fff;
+}
+.invCha .invc1 {
+    transform: rotate(45deg);
+}
+.invCha .invc2 {
+    transform: rotate(135deg);
+}
+.boxShadow3{
+	display: none;
+}

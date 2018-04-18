@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 class IndexController extends Controller
 {
+
+    public function test()
+    {
+        return view('screen.index');
+    }
+
     public function index()
     {
         $account = account_info();
@@ -13,7 +19,6 @@ class IndexController extends Controller
 
     public function activies()
     {
-
         return view('screen.questions');
     }
 
