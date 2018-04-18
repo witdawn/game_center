@@ -23,4 +23,5 @@ class IndexController extends Controller
     {
         session_destroy();
     }
+
 }

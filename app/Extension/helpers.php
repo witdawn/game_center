@@ -1,9 +1,11 @@
 <?php
 
 use App\Exceptions\WxPay\WxComPay;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 if (!function_exists('rJson')) {
-    function rJson($data = [], $message = null, $code = 0, $cookie = null)
+    function rJson($data = [], $message = null, $code = 200, $cookie = null)
     {
         if (($data instanceof LengthAwarePaginator) || ($data instanceof Paginator)) {
             $data = $data->toArray();

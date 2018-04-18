@@ -83,6 +83,9 @@
                             $("#options").append("<div class='options'>" + options[i] + "</div>");
                         });
                         question_num=parseInt(res.display_order)+1;
+                        if(question_num>12){
+                            $("#next_question").html('查看光荣榜');
+						}
                     }
 
                 }
@@ -93,7 +96,11 @@
         };
 
         $("#next_question").click(function () {
-            get_question();
+            if(question_num>12){
+                window.location.href="{{route('winners')}}";
+			}else{
+                get_question();
+            }
         });
         $("#show_answer").click(function(){
             if(answer>0){
