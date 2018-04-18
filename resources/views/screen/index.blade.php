@@ -3,26 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>一起来答题</title>
-	<link rel="stylesheet" href="screen/css/indexPC.css">
+	<link rel="stylesheet" href="css/indexPC.css">
 </head>
 <body>
 	<div class="actIndex">
 		<div class="indexPC1">
-			<img src="screen/imgs/indexPC1.png" alt="">
+			<img src="imgs/indexPC1.png" alt="">
 		</div>
 		<div class="indexPC2">
 			<div class="acMain acl">
-				<img src="screen/imgs/indexPC2.png" alt="">
+				<img src="imgs/indexPC2.png" alt="">
 			</div>
 			<dvi class="actMain acm">
 				<div class="acmd">
-					<img src="screen/imgs/codePC.png" alt="">
+					<img src="imgs/codePC.png" alt="">
 					<a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
-					<a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
+					<a href="{{route('screen_question')}}" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
 				</div>
 			</dvi>
 			<div class="acMain acr">
-				<img src="screen/imgs/indexPC3.png" alt="">
+				<img src="imgs/indexPC3.png" alt="">
 			</div>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="screen/js/jquery.js"></script>
+	<script src="js/jquery.js"></script>
 	<script>
 	    $(function(){
 	    	$('.boxShadow3').hide();

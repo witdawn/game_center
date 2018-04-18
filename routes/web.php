@@ -38,7 +38,8 @@ Route::group(['middleware' => 'game.active'], function () {
 
     //大屏幕
     Route::group(['prefix' => '/screen'],function (){
-        Route::get('/question','ScreenController@questions');
+        Route::get('/q_index','ScreenController@questionIndex');
+        Route::get('/question','ScreenController@questions')->name('screen_question');
     });
 
 });

@@ -3,79 +3,104 @@
 <head>
 	<meta charset="UTF-8">
 	<title>答题详情</title>
-	<link rel="stylesheet" href="screen/css/indexPC.css">
+	<link rel="stylesheet" href="css/indexPC.css">
 </head>
 <body>
 	<div class="actIndex">
 		<div class="acHead">
 			<p class="preMain">
-				目前剩余人数：<span>999</span>人
+				目前剩余人数：<span id="left_number"></span>人
 			</p>
 			<div class="finalPeople">
-				<a href="">第一轮</a>
+				<a id="round_number">第{{$active->question_round}}轮</a>
 			</div>
 		</div>
 		<div class="quesMain clearfix">
-			<h1 class="qmt">声音题</h1>
-			<p class='qmturn'>1/12</p>
-			<div class="quesCont">
-				1.三个人，竖着站成一排。有五个帽子，三个蓝色，两个红色，每人带一个，各自不准看自己的颜色。然后问第一个人带的什么颜色的帽子，他说不知道，然后又问第二个人带的什么颜色的帽子，同样说不知道，又问第三个人带的是什么颜色的帽子，他说我知道。问第三个人带的是什么色帽子? （第一个人站在排的最后,他可以看见前二个人的帽子的颜色)
+			<h1 class="qmt">选择题</h1>
+			<p class='qmturn' id="process">1/12</p>
+			<div class="quesCont" id="question">
 			</div>
-			<div class="quesItems">
-				<div>A.蓝色</div>
-				<div class="quesRight">B.红色</div>
-				<div>C.黄色</div>
-				<div>D.紫色</div>
+			<div class="quesItems" id="options">
 			</div>
 			<div class="nextQues">
-				<a href="">公布答案</a>
-				<a href="">进入下一题</a>
+				<a id="show_answer">公布答案</a>
+				<a id="next_question">进入下一题</a>
 			</div>
 		</div>
 	</div>
-	<script src="screen/js/jquery.js"></script>
-	<!-- 答题正确弹框 -->
-	<!-- <div class="boxShadow boxShadow1">
-		<div class="boxBomb">
-			<div class="boxBoom">
-				<img src="screen/imgs/right.png" alt="">
-				<h1>恭喜您，答对了！</h1>
-				<a href="" class="nextAnswer">点击进入下一题</a>
-				<div class="invb-cha cha1" onclick="$('.accountBomb').hide();">
-	                <div class="invCha">
-	                    <em class="invc1"></em><em class="invc2"></em>
-	                </div>
-	            </div>
-			</div>
-		</div>
-	</div> -->
-	<!-- 答题错误弹框 -->
-	<div class="boxShadow boxShadow2">
-		<div class="boxBomb">
-			<div class="boxBoom">
-				<img src="screen/imgs/error.png" alt="">
-				<h1>很遗憾，答错了~_~</h1>
-				<a href="" class="nextAnswer">点击结束游戏</a>
-				<div class="invb-cha cha2" onclick="$('.accountBomb').hide();">
-	                <div class="invCha">
-	                    <em class="invc1"></em><em class="invc2"></em>
-	                </div>
-	            </div>
-			</div>
-		</div>
-	</div>
+	<script src="js/jquery.js"></script>
 	<script>
-	    $(function(){
-	    	$('.boxShadow1').hide();
-	    	$('.boxShadow2').hide();
-	    	$('.cha1').click(function(){
-	    		$('.boxShadow1').hide();
-	    	})
-	    	$('.cha2').click(function(){
-	    		$('.boxShadow2').hide();
-	    	})
+        var active_id = "{{$active->id}}";
+        var question_num = "{{$active->question_index}}";
+        var question_round = "{{$active->question_round}}";
+        var answer=0;
+        $("#round_number").html("第"+question_round+"轮");
+        $("#process").text(question_num+"/12");
 
-	    })
+        var wsServer = 'ws://my.witdawn.com:9501/';
+        var websocket = new WebSocket(wsServer);
+        function get_question() {
+            websocket.send(JSON.stringify({
+                action: 'send_question',
+                content: {
+                    'active_id': active_id,
+                    'round_num': question_round,
+                    'num': question_num,
+                }
+            }));
+        }
+        window.onload = function () {
+            websocket.onopen = function (evt) {
+                websocket.send(JSON.stringify({
+                    action: 'admin_login',
+                    content: {
+                        'active_id': active_id,
+                        'round_num': question_round,
+                    }
+                }));
+                get_question();
+
+            };
+
+            websocket.onclose = function (evt) {
+                console.log('失去连接');
+            };
+
+            websocket.onmessage = function (evt) {
+                if (evt.data) {
+                    var res=$.parseJSON(evt.data);
+                    console.log(res);
+                    if(res.type===1){
+                        $("#left_number").text(res.count);
+                    }else if(res.type===2){
+                        var options=res.options;
+                        var title=res.title;
+                        answer=res.answer;
+						$("#question").text(title);
+						$("#options").html('');
+                        $("#process").text(question_num+"/12");
+                        $.each(options,function(i){
+                            $("#options").append("<div class='options'>" + options[i] + "</div>");
+                        });
+                        question_num=parseInt(res.display_order)+1;
+                    }
+
+                }
+            };
+            websocket.onerror = function (evt, e) {
+                console.log('Error occured: ' + evt.data);
+            };
+        };
+
+        $("#next_question").click(function () {
+            get_question();
+        });
+        $("#show_answer").click(function(){
+            if(answer>0){
+                $(".options").eq(answer-1).addClass('quesRight');
+            }
+		})
+
 	</script>
 </body>
 </html>
