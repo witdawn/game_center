@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return error_page('coding');
 });
-Route::get('tt','IndexController@test');
+Route::get('/tt','IndexController@test');
 
 Route::get('error/', 'CommonController@error_page')->name('error_page');
 
