@@ -7,7 +7,7 @@ class IndexController extends Controller
 
     public function test()
     {
-        return view('screen.index');
+        return view('mobile.index');
     }
 
     public function index()
