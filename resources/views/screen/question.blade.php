@@ -68,22 +68,21 @@
 
             websocket.onmessage = function (evt) {
                 if (evt.data) {
-                    var returnData=$.parseJSON(evt.data);
-                    var res=returnData.data;
-                    console.log(res);
-                    if(res.type===1){
-                        $("#left_number").text(res.count);
-                    }else if(res.type===2){
-                        var options=res.options;
-                        var title=res.title;
-                        answer=res.answer;
+                    var returnData=$.parseJSON(evt.data).data;
+                    console.log(returnData);
+                    if(returnData.type===1){
+                        $("#left_number").text(returnData.count);
+                    }else if(returnData.type===2){
+                        var options=returnData.options;
+                        var title=returnData.title;
+                        answer=returnData.answer;
 						$("#question").text(title);
 						$("#options").html('');
                         $("#process").text(question_num+"/12");
                         $.each(options,function(i){
                             $("#options").append("<div class='options'>" + options[i] + "</div>");
                         });
-                        question_num=parseInt(res.display_order)+1;
+                        question_num=parseInt(returnData.display_order)+1;
                         if(question_num>12){
                             $("#next_question").html('查看光荣榜');
 						}
