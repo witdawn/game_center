@@ -19,7 +19,7 @@
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
     var user_id = "{{$user->id}}";
-    var active_id="{{$active->id}}";
+    var active_id = "{{$active->id}}";
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         websocket.onopen = function (evt) {
@@ -27,7 +27,7 @@
                 action: 'user_login',
                 content: {
                     'active_id': active_id,
-                    'user_id':user_id,
+                    'user_id': user_id,
                 }
             }));
             addLine("连接成功");
@@ -35,9 +35,10 @@
 
         websocket.onclose = function (evt) {
             websocket.send(JSON.stringify({
-                action: 'Logout',
+                action: 'user_logout',
                 content: {
-                    'active_id': 1,
+                    'active_id': active_id,
+                    'user_id': user_id,
                 },
             }));
             addLine("Disconnected");
