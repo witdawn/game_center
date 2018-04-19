@@ -17,14 +17,14 @@
     </div>
     <div class="quesMain clearfix">
         <h1 class="qmt">选择题</h1>
-        <p class='qmturn' id="process">1/12</p>
+        <p class='qmturn' id="process" style="display: none"></p>
         <div class="quesCont" id="question">
         </div>
         <div class="quesItems" id="options">
         </div>
         <div class="nextQues">
-            <a id="show_answer">公布答案</a>
-            <a id="next_question">进入下一题</a>
+            <a id="show_answer" style="display: none;">公布答案</a>
+            <a id="next_question">开始答题</a>
         </div>
     </div>
 </div>
@@ -35,7 +35,6 @@
     var question_round = "{{$active->question_round}}";
     var answer = 0;
     $("#round_number").html("第" + question_round + "轮");
-    $("#process").text(question_num + "/12");
 
     var wsServer = 'ws://my.witdawn.com:9501/';
     var websocket = new WebSocket(wsServer);
@@ -48,7 +47,6 @@
                     'round_num': question_round,
                 }
             }));
-            get_question();
         };
 
         websocket.onclose = function (evt) {
@@ -95,6 +93,11 @@
         }
 
         $("#next_question").click(function () {
+            if($(this).text()=='开始答题'){
+                get_question();
+                $("#show_answer").show();
+                $(this).text('下一题');
+            }
             if (question_num > 12) {
                 window.location.href = "{{route('winners')}}";
             } else {

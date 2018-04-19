@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>答题详情</title>
+    <title>答题赢大奖</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="../mobile/css/indexMobile.css">
@@ -13,7 +13,10 @@
         <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
         <div class="quesMain">
             <div class="quesCir">
-                <div class="quesCir1">1</div>
+                <div id="loading">
+                    <span>正在接入,请稍候…</span>
+                </div>
+                <div class="quesCir1">10</div>
             </div>
             <div class="quesCont">
                 <p id="question"></p>
@@ -71,7 +74,7 @@
                     'user_id': user_id,
                 }
             }));
-            console.log('connected')
+            $("#loading").hide();
         };
 
         websocket.onclose = function (evt) {
@@ -103,6 +106,8 @@
                     $.each(options, function (i) {
                         $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
                     });
+                }else if(returnData.type === 88){
+                    alert('本轮游戏已经开始，下一轮请抓好机会');
                 }
 
             }

@@ -23,7 +23,7 @@
                     <option value="2">第二轮</option>
                     <option value="3">第三轮</option>
                 </select>
-                <a id="start_game" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
+                <a id="start_game" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">进入游戏</a>
             </div>
         </dvi>
         <div class="acMain acr">

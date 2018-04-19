@@ -15,7 +15,7 @@ class GameController extends Controller
 
     public function question(Request $request)
     {
-        return view('mobile.question1', ['user' => $request->gamer, 'active' => $request->active]);
+        return view('mobile.question', ['user' => $request->gamer, 'active' => $request->active]);
     }
 
     #获取身份信息
