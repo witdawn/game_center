@@ -69,16 +69,34 @@ class InitAccounts extends Command
         }
         $account = Account::first();
         $active = $account->activies()->first();
+        $active->questions()->delete();
         if ($active->questions()->count('id') == 0) {
             for ($j = 1; $j < 4; $j++) {
                 for ($i = 1; $i < 13; $i++) {
+                    $first = rand(1, 9);
+                    $seccond = rand(1, 9);
+                    $answer = rand(1, 4);
+                    $options = [];
+                    $orders = [
+                        1 => 'A',
+                        2 => 'B',
+                        3 => 'C',
+                        4 => 'D',
+                    ];
+                    for ($m = 1; $m < 5; $m++) {
+                        if ($m == $answer) {
+                            $options[] = $orders[$m] . ':' . ($seccond * $first + $first);
+                        } else {
+                            $options[] = $orders[$m] . ':' . rand(80, 260);
+                        }
+                    }
                     $question = new Question();
                     $question->active_id = $active->id;
                     $question->round_number = $j;
                     $question->status = 1;
-                    $question->title = '第'.$i.'题：1*9+1=?';
-                    $question->options = serialize([7, 3, 9, 10]);
-                    $question->answer = 4;
+                    $question->title = '第' . $i . "题：$seccond*$first+$first=?";
+                    $question->options = serialize($options);
+                    $question->answer = $answer;
                     $question->score = 0;
                     $question->display_order = $i;
                     $question->save();
