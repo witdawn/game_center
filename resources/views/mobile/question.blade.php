@@ -46,7 +46,7 @@
 
         websocket.onmessage = function (evt) {
             data = evt.data;
-            console.log(evt);
+            console.log('getmessage:' + evt);
             if (data) {
                 data = $.parseJSON(data);
                 console.log(data);
@@ -59,6 +59,15 @@
             addLine('Error occured: ' + evt.data);
         };
     };
+    $(window).unload(function () {
+        websocket.send(JSON.stringify({
+            action: 'user_logout',
+            content: {
+                'active_id': active_id,
+                'user_id': user_id,
+            },
+        }));
+    });
 
     function addLine(data) {
         $("#line").append("<li>" + data + "</li>");
