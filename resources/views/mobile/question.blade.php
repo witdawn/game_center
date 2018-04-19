@@ -90,7 +90,6 @@
         websocket.onmessage = function (evt) {
             if (evt.data) {
                 var returnData = $.parseJSON(evt.data).data;
-                console.log(returnData);
                 if (returnData.type === 3) {
                     //回答正确
                     alert('回答正确');
@@ -108,6 +107,8 @@
                     });
                 }else if(returnData.type === 88){
                     alert('本轮游戏已经开始，下一轮请抓好机会');
+                }else if(returnData.type===666){
+                    //闯关成功
                 }
 
             }

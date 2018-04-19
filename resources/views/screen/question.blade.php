@@ -56,7 +56,6 @@
         websocket.onmessage = function (evt) {
             if (evt.data) {
                 var returnData = $.parseJSON(evt.data).data;
-                console.log(returnData);
                 if (returnData.type === 1) {
                     $("#left_number").text(returnData.count);
                 } else if (returnData.type === 2) {
