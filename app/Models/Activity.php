@@ -14,5 +14,6 @@ class Activity extends BaseModel
         $active->question_round = $round_number;
         $active->question_index = 1;
         $active->save();
+        QuestionUser::where('round_number',0)->update(['round_number'=>$round_number]);
     }
 }

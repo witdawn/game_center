@@ -18,14 +18,16 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
-    var openid = '';
+    var user_id = 1;
+    var active_id=1;
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         websocket.onopen = function (evt) {
             websocket.send(JSON.stringify({
                 action: 'user_login',
                 content: {
-                    'active_id': 1,
+                    'active_id': active_id,
+                    'user_id':user_id,
                 }
             }));
             console.log(12313);

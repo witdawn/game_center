@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+////需要活动认证
+//Route::group(['middleware' => 'game.active'], function () {
+//    //大屏幕
+//    Route::group(['prefix' => '/screen'], function () {
+//        Route::post('/question_change_round', 'Api\QuestionController@change_round')->name('change_round');
+//    });
+//
+//});

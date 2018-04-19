@@ -12,6 +12,7 @@ namespace App\Models\Traits\RelationShip;
 use App\Models\Account;
 use App\Models\ActiveManager;
 use App\Models\Question;
+use App\Models\QuestionUser;
 use App\Models\User;
 
 trait ActivityRealtionShip
@@ -34,6 +35,11 @@ trait ActivityRealtionShip
     public function managers()
     {
         return $this->hasMany(ActiveManager::class,'active_id');
+    }
+
+    public function questionRounds()
+    {
+        return $this->hasMany(QuestionUser::class,'active_id');
     }
 
 }

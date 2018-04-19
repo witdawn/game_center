@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return error_page('coding');
 });
-Route::get('/tt','IndexController@test');
+Route::get('/tt', 'IndexController@test');
 
 Route::get('error/', 'CommonController@error_page')->name('error_page');
 
@@ -37,11 +37,11 @@ Route::group(['middleware' => 'game.active'], function () {
     });
 
     //大屏幕
-    Route::group(['prefix' => '/screen'],function (){
-        Route::get('/q_index','ScreenController@questionIndex')->name('q_index');
-        Route::get('/question','ScreenController@questions')->name('screen_question');
-        Route::get('/winner_rank','ScreenController@winnerRank')->name('winners');
-        Route::post('/question_change_round','ScreenController@change_round')->name('change_round');
+    Route::group(['prefix' => '/screen'], function () {
+        Route::get('/q_index', 'ScreenController@questionIndex')->name('q_index');
+        Route::get('/question', 'ScreenController@questions')->name('screen_question');
+        Route::get('/winner_rank', 'ScreenController@winnerRank')->name('winners');
+        Route::post('/question_change_round', 'Api\QuestionController@change_round')->name('change_round');
     });
 
 });
