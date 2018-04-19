@@ -33,6 +33,7 @@ Route::group(['middleware' => 'game.active'], function () {
         Route::group(['middleware' => 'game.wx'], function () {
             //测试
             Route::get('index', 'GameController@index');
+            Route::get('question', 'GameController@question');
         });
     });
 

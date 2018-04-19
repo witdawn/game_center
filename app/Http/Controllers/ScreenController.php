@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activity;
-use App\Models\QuestionUser;
+use App\Models\QuestionWinner;
 use Illuminate\Http\Request;
 
 class ScreenController extends Controller
@@ -30,7 +30,7 @@ class ScreenController extends Controller
         $active = Activity::find($request->active->id);
         $round_number = $active->question_round;
         $active_id = $active->id;
-        $winners = QuestionUser::getWinners($active_id, $round_number);
+        $winners = QuestionWinner::getWinners($active_id, $round_number);
         return view('screen.rank', ['active' => $request->active, 'winners' => $winners]);
     }
 }

@@ -2,9 +2,41 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class QuestionWinner extends Model
+class QuestionWinner extends BaseModel
 {
-    //
+    protected $appends = [
+        'headimg',
+        'nickname',
+        'openid',
+    ];
+
+    public static function getWinners($active_id, $round_number)
+    {
+        return self::where('active_id', $active_id)->where('round_number', $round_number)->get();
+    }
+
+    public function getHeadimgAttribute()
+    {
+        return $this->user->headimg;
+    }
+
+    public function getNicknameAttribute()
+    {
+        return $this->user->nickname;
+    }
+
+    public function getOpenidAttribute()
+    {
+        return $this->user->openid;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function active()
+    {
+        return $this->belongsTo(Activity::class, 'active_id');
+    }
 }

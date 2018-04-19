@@ -18,8 +18,8 @@
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
-    var user_id = 1;
-    var active_id=1;
+    var user_id = "{{$user->id}}";
+    var active_id="{{$active->id}}";
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         websocket.onopen = function (evt) {
@@ -30,7 +30,6 @@
                     'user_id':user_id,
                 }
             }));
-            console.log(12313);
             addLine("连接成功");
         };
 
@@ -46,6 +45,7 @@
 
         websocket.onmessage = function (evt) {
             data = evt.data;
+            console.log(evt);
             if (data) {
                 data = $.parseJSON(data);
                 console.log(data);
