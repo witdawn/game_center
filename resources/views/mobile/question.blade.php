@@ -116,6 +116,7 @@
                     alert('本轮游戏已经开始，下一轮请抓好机会');
                 } else if (returnData.type === 666) {
                     //闯关成功
+                    alert("恭喜你，闯关成功");
                     window.location.href = "{{route('mobile_question_win')}}";
                 }
 
@@ -128,7 +129,7 @@
 
         $(document).on('click', '.options', function () {
             var answer = parseInt($(this).data('title')) + 1;
-//            alert(answer);
+            //关闭倒计时
             sendAnswer(answer);
         });
 
