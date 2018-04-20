@@ -43,7 +43,7 @@
     </div>
 </div>
 <!-- 答题错误弹框 -->
-<div class="boxShadow boxShadow2"  style="display: none">
+<div class="boxShadow boxShadow2" style="display: none">
     <div class="boxBomb">
         <div class="boxBoom">
             <img src="../mobile/imgs/error.png" alt="">
@@ -74,7 +74,9 @@
                     'user_id': user_id,
                 }
             }));
+            //socket连接成功，“正在接入,请稍候…”的连接提示 关闭
             $("#loading").hide();
+            //显示等待发题通知
         };
 
         websocket.onclose = function (evt) {
@@ -93,6 +95,7 @@
                 if (returnData.type === 3) {
                     //回答正确
                     alert('回答正确');
+                    //显示等待下一题通知 告知勿刷新
                 } else if (returnData.type === 4) {
                     //回答错误
                     alert('错误');
@@ -105,10 +108,15 @@
                     $.each(options, function (i) {
                         $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
                     });
-                }else if(returnData.type === 88){
+                    //开启倒计时
+
+                    //倒计时结束之后如果未答题，则调用如下函数
+                    //sendAnswer(0);
+                } else if (returnData.type === 88) {
                     alert('本轮游戏已经开始，下一轮请抓好机会');
-                }else if(returnData.type===666){
+                } else if (returnData.type === 666) {
                     //闯关成功
+                    window.location.href = "{{route('mobile_question_win')}}";
                 }
 
             }
@@ -136,7 +144,7 @@
             }));
         }
     };
-
+    //关闭页面时 退出登录
     $(window).unload(function () {
         websocket.send(JSON.stringify({
             action: 'user_logout',

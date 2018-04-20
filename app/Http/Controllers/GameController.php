@@ -8,14 +8,20 @@ use Illuminate\Http\Request;
 class GameController extends Controller
 {
 
-    public function index(Request $request)
+    public function index()
     {
-
+        return view('mobile.open');
     }
 
     public function question(Request $request)
     {
         return view('mobile.question', ['user' => $request->gamer, 'active' => $request->active]);
+    }
+
+    //闯关成功
+    public function question_win()
+    {
+        return view('mobile.open');
     }
 
     #获取身份信息
