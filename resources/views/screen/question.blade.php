@@ -35,6 +35,10 @@
     var question_round = "{{$active->question_round}}";
     var answer = 0;
     $("#round_number").html("第" + question_round + "轮");
+    if(question_num!=1){
+        $("#show_answer").show();
+        $(this).text('下一题');
+    }
 
     var wsServer = 'ws://my.witdawn.com:9501/';
     var websocket = new WebSocket(wsServer);
