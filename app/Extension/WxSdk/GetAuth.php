@@ -8,6 +8,8 @@
 
 namespace App\Extension\WxSdk;
 
+use App\Exceptions\GeneralException;
+
 class GetAuth
 {
     private $appId;
@@ -36,7 +38,10 @@ class GetAuth
         $get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" . $this->appId . "&secret=" . $this->appSecret . "&code=" . $code . "&grant_type=authorization_code";
         $json_result = $this->getCach($get_access_token_url);
         $arr_result = json_decode($json_result, true);
-        dd($arr_result);
+        if(!isset($arr_result['access_token']))
+        {
+            throw new GeneralException('授权异常');
+        }
         $access_token = $arr_result['access_token'];
         $open_id = $arr_result['openid'];
 
