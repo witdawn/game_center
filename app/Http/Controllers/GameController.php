@@ -37,6 +37,7 @@ class GameController extends Controller
             if (!$gamer) {
                 $gamer = User::add($user_info);
             }
+            dd(date('Y-m-d H:i:s', time()));
             session('an_game', $gamer);
             return redirect('game/' . $request->module);
         } else {
