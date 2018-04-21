@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Extension\WxSdk\GetAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,20 +38,20 @@ class GameController extends Controller
 //        session(['an_game' => $gamer]);
 //        return redirect('game/' . $request->module);
 //        $account = Account::find($request->active->account_id)->toArray();
-        $account['appid'] ='wxf50ad054693ef907' ;
-        $account['appsecret'] ='10932473244fcc0c4e10afbdcd391d39' ;
+        $account['appid'] = 'wxf50ad054693ef907';
+        $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
+        $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
         if (!$request->has('code')) {
             $url = route('game_auth');
-            wxAuth($url, $account);
+            $wxAuth->getCode($url);
         } else {
-            $token = wxAccessToken($request->code, $account);
-            $userinfo = tokenToinfo($token);
-            $gamer = User::where('openid', $userinfo['openid'])->where('active_id', $this->active['id'])->first();
+            $user_info = $wxAuth->getUserInfo($request->code);
+            $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();
             if (!$gamer) {
-                $gamer = User::add($userinfo);
+                $gamer = User::add($user_info);
             }
             session('an_game', $gamer);
-            return redirect('game/' . $this->module);
+            return redirect('game/' . $request->module);
         }
     }
 
