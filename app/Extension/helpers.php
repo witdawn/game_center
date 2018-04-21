@@ -1,5 +1,6 @@
 <?php
 
+use App\Exceptions\GeneralException;
 use App\Exceptions\WxPay\WxComPay;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -24,9 +25,10 @@ if (!function_exists('rJson')) {
     }
 }
 
-if(!function_exists('error_page')){
-    function error_page($msg){
-        $url=route('error_page',['msg'=>urlencode($msg)]);
+if (!function_exists('error_page')) {
+    function error_page($msg)
+    {
+        $url = route('error_page', ['msg' => urlencode($msg)]);
         return redirect($url);
     }
 }
@@ -197,12 +199,12 @@ function ihttp_request($url = '', $post = '', $extra = array(), $timeout = 60)
     }
     if (strexists($url, 'https://') && !extension_loaded('openssl')) {
         if (!extension_loaded("openssl")) {
-            message('请开启您PHP环境的openssl');
+            throw new GeneralException('请开启您PHP环境的openssl');
         }
     }
     if (function_exists('curl_init') && function_exists('curl_exec')) {
         $ch = curl_init();
-        if (ver_compare(phpversion(), '5.6') >= 0) {
+        if (ver_compare(phpversion(), '5.6') >= 0 && ver_compare(phpversion(), '7.0') < 0) {
             curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false);
         }
         if (!empty($extra['ip'])) {
@@ -219,6 +221,9 @@ function ihttp_request($url = '', $post = '', $extra = array(), $timeout = 60)
             if (is_array($post)) {
                 $filepost = false;
                 foreach ($post as $name => $value) {
+                    if (ver_compare(phpversion(), '7.0') >= 0 && substr($value, 0, 1) == '@') {
+                        $value = new CURLFile(ltrim($value, '@'));
+                    }
                     if ((is_string($value) && substr($value, 0, 1) == '@') || (class_exists('CURLFile') && $value instanceof CURLFile)) {
                         $filepost = true;
                         break;
