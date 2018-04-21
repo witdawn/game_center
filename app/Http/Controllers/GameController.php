@@ -38,7 +38,6 @@ class GameController extends Controller
                 $gamer = User::add($user_info);
             }
             session('an_game', $gamer);
-            dd($request->module);
             return redirect('game/' . $request->module);
         } else {
             return error_page('您访问的页面不存在');
