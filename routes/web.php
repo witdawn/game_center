@@ -21,13 +21,15 @@ Route::get('error/', 'CommonController@error_page')->name('error_page');
 Route::get('/index', 'IndexController@index');
 Route::get('/socket', 'IndexController@socket');
 
+//微信授权
+Route::get('/game/auth', 'GameController@GameAuth')->name('game_auth');
+
 //需要活动认证
 Route::group(['middleware' => 'game.active'], function () {
 
     //手机端
     Route::group(['prefix' => '/game'], function () {
-        //微信授权
-        Route::get('/auth', 'GameController@GameAuth')->name('game_auth');
+
 
         //需要授权认证
         Route::group(['middleware' => 'game.wx'], function () {
