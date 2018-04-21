@@ -22,8 +22,12 @@ class GetAuth
     public function getCode($redirecturl)
     {
         $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->appId . "&redirect_uri=" . urlencode($redirecturl) . "&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect";
-        header("location:$oauth2_code");
-        exit();
+        return redirect($oauth2_code);
+    }
+
+    public static function test()
+    {
+        return redirect('http://www.baidu.com');
     }
 
     public function getUserInfo($code)

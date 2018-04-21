@@ -42,8 +42,8 @@ class GameController extends Controller
         $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
         $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
         if (!$request->has('code')) {
-            $url = route('game_auth');
-            $wxAuth->getCode($url);
+            $url = route('game_auth', ['a' => $request->active->id, 'm' => $request->module]);
+            return $wxAuth->getCode($url);
         } else {
             $user_info = $wxAuth->getUserInfo($request->code);
             $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();
