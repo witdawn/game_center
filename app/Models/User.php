@@ -14,10 +14,6 @@ class User extends BaseModel
             'default' => '',
         ],
         [
-            'key'     => 'headimg',
-            'default' => '',
-        ],
-        [
             'key'     => 'name',
             'default' => '',
         ],
@@ -44,12 +40,13 @@ class User extends BaseModel
             $key = $param['key'];
             $user->$key = isset($userinfo[$key]) ? $userinfo[$key] : $param['default'];
         }
+        $user->headimg = $userinfo['headimgurl'];
         $user->save();
         return $user;
     }
 
     public function questionRound()
     {
-        return $this->hasMany(QuestionUser::class,'user_id');
+        return $this->hasMany(QuestionUser::class, 'user_id');
     }
 }
