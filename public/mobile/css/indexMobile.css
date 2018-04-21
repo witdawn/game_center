@@ -30,18 +30,8 @@ ul,li{
 	padding:20px;
 	box-sizing:border-box;
 	background: url(../imgs/back.png) 50% 50% no-repeat;
-	background-size:cover;
+	background-size:100% 100%;
 	position: relative;
-}
-.actIndex1{
-	width:100%;
-	/*padding:20px;*/
-	box-sizing:border-box;
-	background: url(../imgs/back1.png) 50% 50% no-repeat;
-	background-size:cover;
-	position: fixed;
-	width:100%;
-	height:100%;
 }
 .actIndex2{
 	width:100%;

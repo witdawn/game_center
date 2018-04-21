@@ -15,8 +15,11 @@
             <a id="round_number">第{{$active->question_round}}轮</a>
         </div>
     </div>
+    <div class="quesMain1 clearfix">
+        <img src="./imgs/codePC.png" alt="">
+        <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
+    </div>
     <div class="quesMain clearfix">
-        <h1 class="qmt">选择题</h1>
         <p class='qmturn' id="process" style="display: none"></p>
         <div class="quesCont" id="question">
         </div>
@@ -29,6 +32,7 @@
     </div>
 </div>
 <script src="js/jquery.js"></script>
+<script src="js/screen.js"></script>
 <script>
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
@@ -96,18 +100,25 @@
             }));
         }
 
-        $("#next_question").click(function () {
-            if($(this).text()=='开始答题'){
-                get_question();
-                $("#show_answer").show();
-                $(this).text('下一题');
-            }
-            if (question_num > 12) {
-                window.location.href = "{{route('winners')}}";
-            } else {
-                get_question();
-            }
-        });
+        $('.quesMain1').show();
+        $('.quesMain').hide();
+        $('.beginAnswer').click(function(){
+            $('.quesMain1').hide();
+            $('.quesMain').show();
+            $("#next_question").click(function () {
+                if($(this).text()=='开始答题'){
+                    get_question();
+                    $("#show_answer").show();
+                    $(this).text('下一题');
+                }
+                if (question_num > 12) {
+                    window.location.href = "{{route('winners')}}";
+                } else {
+                    get_question();
+                }
+            });
+        })
+
         $("#show_answer").click(function () {
             if (answer > 0) {
                 $(".options").eq(answer - 1).addClass('quesRight');

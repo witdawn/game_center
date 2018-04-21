@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../mobile/css/indexMobile.css">
 </head>
 <body>
-<div class="actIndex1">
+<div class="actIndex">
     <div class="indexMobile1">
         <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
         <div class="quesMain">
@@ -94,11 +94,11 @@
                 var returnData = $.parseJSON(evt.data).data;
                 if (returnData.type === 3) {
                     //回答正确
-                    alert('回答正确');
+                    $('.boxShadow1').show();
                     //显示等待下一题通知 告知勿刷新
                 } else if (returnData.type === 4) {
                     //回答错误
-                    alert('错误');
+                    $('.boxShadow2').show();
                 } else if (returnData.type === 2) {
                     var options = returnData.options;
                     var title = returnData.title;
@@ -109,6 +109,40 @@
                         $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
                     });
                     //开启倒计时
+                    function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
+                      if(i<10) 
+                      { 
+                        i = "0" + i; 
+                      } 
+                      return i; 
+                    }
+                    function countDown(times){
+                      var timer=null;
+                      timer=setInterval(function(){
+                        var day=0,
+                          hour=0,
+                          minute=0,
+                          second=0;//时间默认值
+                        if(times > 0){
+                          day = Math.floor(times / (60 * 60 * 24));
+                          hour = Math.floor(times / (60 * 60)) - (day * 24);
+                          minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
+                          second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+                        }
+                        var day = checkTime(day); 
+                        var hour = checkTime(hour); 
+                        var minute = checkTime(minute); 
+                        var second = checkTime(second); 
+                        document.getElementById("timer").innerHTML = day+'：'+hour+'：'+minute+'：'+second; 
+
+                        // $('#timer').innerHtml = "";
+                        times--;
+                      },1000);
+                      if(times<=0){
+                        clearInterval(timer);
+                      }
+                    }
+                    countDown(10)
 
                     //倒计时结束之后如果未答题，则调用如下函数
                     //sendAnswer(0);

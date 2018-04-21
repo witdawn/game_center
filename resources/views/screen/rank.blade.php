@@ -55,6 +55,11 @@
 				<p>就这个调调</p>
 			</div>
 		</div>
+		<div class="backIndex">
+			<a style="margin:30px auto;cursor:pointer;text-align:center;" class="beginAnswer">返回首页</a>
+		</div>
 	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/screen.js"></script>
 </body>
 </html>
