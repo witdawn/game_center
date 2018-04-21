@@ -27,29 +27,31 @@ class GameController extends Controller
     #获取身份信息
     public function GameAuth(Request $request)
     {
-        $userinfo['openid'] = str_random(16);
-        $userinfo['active_id'] = $request->active->id;
-        $gamer = User::where('openid', $userinfo['openid'])->where('active_id', $request->active->id)->first();
-        if (!$gamer) {
-            $gamer = User::add($userinfo);
-        }
-
-        session(['an_game' => $gamer]);
-        return redirect('game/' . $request->module);
-//        $account = Account::find($request->active->account_id)->toArray();
-//        if (!$request->has('code')) {
-//            $url = route('game_auth');
-//            wxAuth($url, $account);
-//        } else {
-//            $token = wxAccessToken($request->code, $account);
-//            $userinfo = tokenToinfo($token);
-//            $gamer = User::where('openid', $userinfo['openid'])->where('active_id', $this->active['id'])->first();
-//            if (!$gamer) {
-//                $gamer = User::add($userinfo);
-//            }
-//            session('an_game', $gamer);
-//            return redirect('game/' . $this->module);
+//        $userinfo['openid'] = str_random(16);
+//        $userinfo['active_id'] = $request->active->id;
+//        $gamer = User::where('openid', $userinfo['openid'])->where('active_id', $request->active->id)->first();
+//        if (!$gamer) {
+//            $gamer = User::add($userinfo);
 //        }
+//
+//        session(['an_game' => $gamer]);
+//        return redirect('game/' . $request->module);
+//        $account = Account::find($request->active->account_id)->toArray();
+        $account['appid'] ='wxf50ad054693ef907' ;
+        $account['appsecret'] ='10932473244fcc0c4e10afbdcd391d39' ;
+        if (!$request->has('code')) {
+            $url = route('game_auth');
+            wxAuth($url, $account);
+        } else {
+            $token = wxAccessToken($request->code, $account);
+            $userinfo = tokenToinfo($token);
+            $gamer = User::where('openid', $userinfo['openid'])->where('active_id', $this->active['id'])->first();
+            if (!$gamer) {
+                $gamer = User::add($userinfo);
+            }
+            session('an_game', $gamer);
+            return redirect('game/' . $this->module);
+        }
     }
 
 }
