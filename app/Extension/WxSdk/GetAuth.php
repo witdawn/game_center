@@ -36,6 +36,7 @@ class GetAuth
         $get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" . $this->appId . "&secret=" . $this->appSecret . "&code=" . $code . "&grant_type=authorization_code";
         $json_result = $this->getCach($get_access_token_url);
         $arr_result = json_decode($json_result, true);
+        dd($arr_result);
         $access_token = $arr_result['access_token'];
         $open_id = $arr_result['openid'];
 
