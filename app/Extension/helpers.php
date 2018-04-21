@@ -268,7 +268,8 @@ function ihttp_request($url = '', $post = '', $extra = array(), $timeout = 60)
         if ($errno || empty($data)) {
             return error(1, $error);
         } else {
-            return ihttp_response_parse($data);
+            return $data;
+//            return ihttp_response_parse($data);
         }
     }
     $method = empty($post) ? 'GET' : 'POST';
