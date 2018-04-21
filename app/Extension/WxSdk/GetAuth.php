@@ -50,14 +50,6 @@ class GetAuth
         $userinfo_json = $this->getCach($get_user_info_url);
         $userinfo_arr = json_decode($userinfo_json, true);
         return $userinfo_arr;
-//        //获得用户的openid
-//        $openid = $userinfo_arr['openid'];
-//        //获得用户的昵称
-//        $nickname = $userinfo_arr['nickname'];
-//        //获得用户的性别
-//        $sex = $userinfo_arr['sex'];
-//        //获得用户的头像url
-//        $imgicon = $userinfo_arr['headimgurl'];
     }
 
 

@@ -42,19 +42,6 @@ class GameController extends Controller
         } else {
             return error_page('您访问的页面不存在');
         }
-
-//        if (!$request->has('code')) {
-//            $url = route('game_auth', ['a' => $request->active->id, 'm' => $request->module]);
-//            return $wxAuth->getCode($url);
-//        } else {
-//            $user_info = $wxAuth->getUserInfo($request->code);
-//            $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();
-//            if (!$gamer) {
-//                $gamer = User::add($user_info);
-//            }
-//            session('an_game', $gamer);
-//            return redirect('game/' . $request->module);
-//        }
     }
 
 }

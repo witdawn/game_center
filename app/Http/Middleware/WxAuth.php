@@ -23,7 +23,6 @@ class WxAuth
             $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
             $url = route('game_auth', ['a' => $request->active->id, 'm' => $request->module]);
             return $wxAuth->getCode($url);
-//            return redirect('game/auth');
         }
         $request->offsetSet('gamer', $gamer);
         unset($gamer);
