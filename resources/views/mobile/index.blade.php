@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../mobile/css/indexmobile.css">
 </head>
 <body>
-	<div class="actIndex">
+	<div class="actIndex1">
 		<div class="index../mobile1">
 			<a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
 			<a style="margin-top:40px;" href=""><img style="width:100%;" src="../mobile/imgs/letou1.png" alt=""></a>

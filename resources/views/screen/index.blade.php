@@ -16,8 +16,9 @@
         </div>
         <dvi class="actMain acm">
             <div class="acmd">
+                <img src="imgs/codePC.png" alt="">
                 <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
-                <select id="round_num" class="selectNum">
+                <select id="round_num">
                     <option value="1">第一轮</option>
                     <option value="2">第二轮</option>
                     <option value="3">第三轮</option>
@@ -44,20 +45,8 @@
     </div>
 </div>
 <script src="js/jquery.js"></script>
-<script src="js/screen.js"></script>
 <script>
     $(function () {
-        var h = document.documentElement.clientHeight || document.body.clientHeight;
-        var h1 = $('.indexPC1').height();
-        $('.indexPC2').height(h - h1);
-        $('.boxShadow3').hide();
-        $('.rules').click(function(){
-            $('.boxShadow3').show();
-        })
-        $('.invb-cha').click(function(){
-            $('.boxShadow3').hide();
-        })
-            
         $("#round_num").val({{$active->question_round}})
         $("#start_game").click(function () {
             var round_num = $("#round_num").val();
