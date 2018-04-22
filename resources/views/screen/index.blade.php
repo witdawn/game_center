@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>一起来答题</title>
-    <link rel="stylesheet" href="../screen/css/indexPC.css">
+    <link rel="stylesheet" href="../screen/css/indexPC.css?201804222309">
 </head>
 <body>
 <div class="actIndex">
-    <div class="indexPC1">
-        <img src="imgs/indexPC1.png" alt="">
-    </div>
-    <div class="indexPC2">
-        <div class="acMain acl">
-            <img src="imgs/indexPC2.png" alt="">
+        <div class="indexPC1">
+            <img src="./imgs/indexPC1.png" alt="">
         </div>
-        <dvi class="actMain acm">
-            <div class="acmd">
-                <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
-                <select id="round_num" class="selectNum">
-                    <option value="1">第一轮</option>
-                    <option value="2">第二轮</option>
-                    <option value="3">第三轮</option>
-                </select>
-                <a id="start_game" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">进入游戏</a>
+        <div class="indexPC2">
+            <div class="ip">
+                <div class="acMain acl">
+                    <img src="./imgs/indexPC2.png" alt="">
+                </div>
+                <dvi class="actMain acm">
+                    <div class="acmd">
+                        <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
+                        <select id="round_num" class="selectNum">
+                            <option value="1">第一轮</option>
+                            <option value="2">第二轮</option>
+                            <option value="3">第三轮</option>
+                        </select>
+                        <a id="start_game" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
+                    </div>
+                </dvi>
+                <div class="acMain acr">
+                    <img src="./imgs/indexPC3.png" alt="">
+                </div>
             </div>
-        </dvi>
-        <div class="acMain acr">
-            <img src="imgs/indexPC3.png" alt="">
         </div>
     </div>
-</div>
 <!-- 游戏规则弹框 -->
 <div class="boxShadow boxShadow3">
     <div class="boxBomb">
