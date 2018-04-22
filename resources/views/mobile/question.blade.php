@@ -12,15 +12,13 @@
     <div class="indexMobile1">
         <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
         <!-- 加载动画 -->
-        <div id="loading" class="loading1" style="display:none;">
+        <div id="loading" class="loading1">
             <span>正在接入,请稍候…</span>
         </div>
-        <!-- 答题倒计时 -->
-        <div id="timer" style="display:none;"></div>
         <!-- 答题详情 -->
-        <div class="quesMain" style="display:none;">
+        <div class="quesMain" style="display:none;" id="questions">
             <div class="quesCir">
-                <div class="quesCir1">1</div>
+                <div class="quesCir1" id="left_seccond"></div>
             </div>
             <div class="quesCont">
                 <p id="question"></p>
@@ -28,28 +26,18 @@
             <div class="quesItems" id="options">
             </div>
         </div>
-        <!-- 等待下一题开放 -->
-        <div class="waitLoad1" style="display:none;">
-            <div class="loading">
-                <div class="load">
-                    <a href=""><img src="../mobile/imgs/bao.png" alt=""></a>
-                    <p>请耐心等待下一题开放，勿刷新此页面哦~</p>
-                </div>
-            </div>
-        </div>
         <!-- 耐心等待题目开放 -->
-        <div class="waitLoad2" style="display:none;">
+        <div class="waitLoad2" id="wait_question">
             <div class="loading">
                 <div class="load">
-                    <a href=""><img src="../mobile/imgs/bao1.png" alt=""></a>
-                    <p>请耐心等待题目开放……</p>
+                    <a><img src="../mobile/imgs/bao1.png" alt=""></a>
+                    <p id="wait_title">请耐心等待题目开放……</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="../mobile/js/jquery.js"></script>
 <script src="../mobile/js/mobile.js"></script>
 
 <!-- 答题正确弹框 -->
@@ -58,7 +46,7 @@
         <div class="boxBoom">
             <img src="../mobile/imgs/right.png" alt="">
             <h1>恭喜您，答对了！</h1>
-            <div class="invb-cha cha2" onclick="$('.accountBomb').hide();">
+            <div class="invb-cha cha2" onclick="$('.boxShadow1').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
@@ -73,7 +61,7 @@
             <img src="../mobile/imgs/error.png" alt="">
             <h1>很遗憾，答错了~_~</h1>
             <a href="" class="nextAnswer">点击结束游戏</a>
-            <div class="invb-cha cha3" onclick="$('.accountBomb').hide();">
+            <div class="invb-cha cha3" onclick="$('.boxShadow2').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
@@ -84,13 +72,15 @@
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
 
-    var user_id = "{{$user->id}}";
-    var active_id = "{{$active->id}}";
+            {{--var user_id = "{{$user->id}}";--}}
+            {{--var active_id = "{{$active->id}}";--}}
+    var user_id = 45;
+    var active_id = 1;
     var question_id = 0;
 
     var websocket = new WebSocket(wsServer);
-    $("#loading").show();
     window.onload = function () {
+        var left_timer;
         websocket.onopen = function (evt) {
             websocket.send(JSON.stringify({
                 action: 'user_login',
@@ -99,11 +89,7 @@
                     'user_id': user_id,
                 }
             }));
-            //socket连接成功，“正在接入,请稍候…”的连接提示 关闭
             $("#loading").hide();
-            $('.waitLoad2').show();
-
-            //显示等待发题通知
         };
 
         websocket.onclose = function (evt) {
@@ -121,66 +107,47 @@
                 var returnData = $.parseJSON(evt.data).data;
                 if (returnData.type === 3) {
                     //回答正确
+                    clearInterval(left_timer);
                     $('.boxShadow1').show();
+                    $("#wait_question").show();
+                    $("#questions").hide();
+                    $("#wait_title").html("请耐心等待下一题，请勿刷新或离开页面，否则自动弃权");
                     //显示等待下一题通知 告知勿刷新
                 } else if (returnData.type === 4) {
                     //回答错误
+                    clearInterval(left_timer);
                     $('.boxShadow2').show();
+
                 } else if (returnData.type === 2) {
                     var options = returnData.options;
                     var title = returnData.title;
                     question_id = returnData.id;
+
+                    $("#wait_question").hide();
                     $("#question").text(title);
                     $("#options").html('');
                     $.each(options, function (i) {
                         $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
                     });
-                    //开启倒计时
-                    $('#timer').show();
-                    function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
-                      if(i<10) 
-                      { 
-                        i = "0" + i; 
-                      } 
-                      return i; 
-                    }
-                    function countDown(times){
-                      var timer=null;
-                      timer=setInterval(function(){
-                        var day=0,
-                          hour=0,
-                          minute=0,
-                          second=0;//时间默认值
-                        if(times > 0){
-                          day = Math.floor(times / (60 * 60 * 24));
-                          hour = Math.floor(times / (60 * 60)) - (day * 24);
-                          minute = Math.floor(times / 60) - (day * 24 * 60) - (hour * 60);
-                          second = Math.floor(times) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+
+                    $("#questions").show();
+                    var left_time = 10;
+                    left_timer = setInterval(function () {
+                        console.log(left_time);
+                        if (left_time > 0) {
+                            $("#left_seccond").html(left_time);
+                            left_time--;
+                        } else {
+                            sendAnswer(0);
+                            clearInterval(left_timer);
+                            $("#questions").hide();
                         }
-                        var day = checkTime(day); 
-                        var hour = checkTime(hour); 
-                        var minute = checkTime(minute); 
-                        var second = checkTime(second); 
-                        document.getElementById("timer").innerHTML = day+'：'+hour+'：'+minute+'：'+second; 
-
-                        // $('#timer').innerHtml = "";
-                        times--;
-                      },1000);
-                      if(times<=0){
-                        clearInterval(timer);
-                        $('#timer').hide();
-                      }
-                    }
-                    countDown(10)
-
-                    //倒计时结束之后如果未答题，则调用如下函数
-                    //sendAnswer(0);
+                    }, 1000);
                 } else if (returnData.type === 88) {
-                    $('#timer').hide();
                     alert('本轮游戏已经开始，下一轮请抓好机会');
                 } else if (returnData.type === 666) {
-                    $('#timer').hide();
                     //闯关成功
+                    clearInterval(left_timer);
                     alert("恭喜你，闯关成功");
                 }
 

@@ -106,14 +106,13 @@
             $('.quesMain1').hide();
             $('.quesMain').show();
             $("#next_question").click(function () {
-                if($(this).text()=='开始答题'){
-                    get_question();
-                    $("#show_answer").show();
-                    $(this).text('下一题');
-                }
                 if (question_num > 12) {
                     window.location.href = "{{route('winners')}}";
                 } else {
+                    if($(this).text()=='开始答题'){
+                        $("#show_answer").show();
+                        $(this).text('下一题');
+                    }
                     get_question();
                 }
             });
