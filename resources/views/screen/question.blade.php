@@ -17,17 +17,17 @@
     </div>
     <div class="quesMain1 clearfix">
         <img src="./imgs/codePC.png" alt="">
-        <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
+        <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer" id="begin_game">开始答题</a>
     </div>
-    <div class="quesMain clearfix">
+    <div class="quesMain clearfix" style="display: none">
         <p class='qmturn' id="process" style="display: none"></p>
         <div class="quesCont" id="question">
         </div>
         <div class="quesItems" id="options">
         </div>
         <div class="nextQues">
-            <a id="show_answer" style="display: none;">公布答案</a>
-            <a id="next_question">开始答题</a>
+            <a id="show_answer">公布答案</a>
+            <a id="next_question">下一题</a>
         </div>
     </div>
 </div>
@@ -51,9 +51,8 @@
                     'round_num': question_round,
                 }
             }));
-            if(question_num!=1){
+            if (question_num != 1) {
                 $("#show_answer").show();
-                $("#next_question").text('下一题');
                 get_question();
             }
         };
@@ -100,23 +99,19 @@
             }));
         }
 
-        $('.quesMain1').show();
-        $('.quesMain').hide();
-        $('.beginAnswer').click(function(){
+        $('.beginAnswer').click(function () {
             $('.quesMain1').hide();
             $('.quesMain').show();
-            $("#next_question").click(function () {
-                if (question_num > 12) {
-                    window.location.href = "{{route('winners')}}";
-                } else {
-                    if($(this).text()=='开始答题'){
-                        $("#show_answer").show();
-                        $(this).text('下一题');
-                    }
-                    get_question();
-                }
-            });
+            get_question();
         })
+
+        $("#next_question").click(function () {
+            if (question_num > 12) {
+                window.location.href = "{{route('winners')}}";
+            } else {
+                get_question();
+            }
+        });
 
         $("#show_answer").click(function () {
             if (answer > 0) {
