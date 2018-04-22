@@ -72,10 +72,8 @@
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
 
-            {{--var user_id = "{{$user->id}}";--}}
-            {{--var active_id = "{{$active->id}}";--}}
-    var user_id = 45;
-    var active_id = 1;
+    var user_id = "{{$user->id}}";
+    var active_id = "{{$active->id}}";
     var question_id = 0;
 
     var websocket = new WebSocket(wsServer);
