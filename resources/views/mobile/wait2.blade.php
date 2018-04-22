@@ -9,7 +9,7 @@
 <body>
 	<div class="actIndex">
 		<div class="indexMobile1">
-			<a href=""><img style="width:60%;" src="../mobile/imgs/logo.png" alt=""></a>
+			<a href=""><img style="width:60%;margin:0 auto;" src="../mobile/imgs/logo.png" alt=""></a>
 			<div class="loading">
 				<div class="load">
 					<a href=""><img src="../mobile/imgs/bao1.png" alt=""></a>

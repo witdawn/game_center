@@ -9,7 +9,7 @@
 <body>
 	<div class="actIndex">
 		<div class="indexMobile1" style="margin:10px 0;">
-			<a href=""><img style="width:60%;" src="../mobile/imgs/logo.png" alt=""></a>
+			<a href=""><img style="width:60%;margin:0 auto;" src="../mobile/imgs/logo.png" alt=""></a>
 			<a style="margin-top:30px;" href=""><img src="../mobile/imgs/open.png" alt=""></a>
 		</div>
 	</div>
