@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../mobile/css/indexMobile.css">
 </head>
 <body>
-<div class="actIndex1">
+<div class="actIndex">
     <div class="indexMobile1">
         <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
         <!-- 加载动画 -->
