@@ -50,6 +50,7 @@ ul,li{
 }
 .indexMobile1 a img{
 	width:60%;
+	margin:0 auto;
 }
 .acStart{
 	text-align: center;
