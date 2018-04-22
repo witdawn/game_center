@@ -5,12 +5,12 @@
     <title>答题赢大奖</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="../mobile/css/indexMobile.css">
+    <link rel="stylesheet" href="../mobile/css/indexMobile.css?201804222345">
 </head>
 <body>
 <div class="actIndex">
     <div class="indexMobile1">
-        <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
+        <a href=""><img style="width:60%;" src="../mobile/imgs/logo.png" alt=""></a>
         <!-- 加载动画 -->
         <div id="loading" class="loading1">
             <span>正在接入,请稍候…</span>
