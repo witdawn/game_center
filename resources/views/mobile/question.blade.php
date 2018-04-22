@@ -75,6 +75,7 @@
     var user_id = "{{$user->id}}";
     var active_id = "{{$active->id}}";
     var question_id = 0;
+    var game_status = 0;
 
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
@@ -146,6 +147,7 @@
                 } else if (returnData.type === 666) {
                     //闯关成功
                     clearInterval(left_timer);
+                    game_status = 1;
                     alert("恭喜你，闯关成功");
                 }
 
@@ -176,13 +178,16 @@
     };
     //关闭页面时 退出登录
     $(window).unload(function () {
-        websocket.send(JSON.stringify({
-            action: 'user_logout',
-            content: {
-                'active_id': active_id,
-                'user_id': user_id,
-            },
-        }));
+        if (game_status === 0) {
+            websocket.send(JSON.stringify({
+                action: 'user_logout',
+                content: {
+                    'active_id': active_id,
+                    'user_id': user_id,
+                },
+            }));
+        }
+
     });
 </script>
 </body>
