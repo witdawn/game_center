@@ -8,19 +8,15 @@
     <link rel="stylesheet" href="../mobile/css/indexMobile.css">
 </head>
 <body>
-<div class="actIndex1">
+<div class="actIndex">
     <div class="indexMobile1">
         <a href=""><img src="../mobile/imgs/logo.png" alt=""></a>
-        <!-- 加载动画 -->
-        <div id="loading" class="loading1" style="display:none;">
-            <span>正在接入,请稍候…</span>
-        </div>
-        <!-- 答题倒计时 -->
-        <div id="timer" style="display:none;"></div>
-        <!-- 答题详情 -->
-        <div class="quesMain" style="display:none;">
+        <div class="quesMain">
             <div class="quesCir">
-                <div class="quesCir1">1</div>
+                <div id="loading">
+                    <span>正在接入,请稍候…</span>
+                </div>
+                <div class="quesCir1">10</div>
             </div>
             <div class="quesCont">
                 <p id="question"></p>
@@ -28,29 +24,9 @@
             <div class="quesItems" id="options">
             </div>
         </div>
-        <!-- 等待下一题开放 -->
-        <div class="waitLoad1" style="display:none;">
-            <div class="loading">
-                <div class="load">
-                    <a href=""><img src="../mobile/imgs/bao.png" alt=""></a>
-                    <p>请耐心等待下一题开放，勿刷新此页面哦~</p>
-                </div>
-            </div>
-        </div>
-        <!-- 耐心等待题目开放 -->
-        <div class="waitLoad2" style="display:none;">
-            <div class="loading">
-                <div class="load">
-                    <a href=""><img src="../mobile/imgs/bao1.png" alt=""></a>
-                    <p>请耐心等待题目开放……</p>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="../mobile/js/jquery.js"></script>
-<script src="../mobile/js/mobile.js"></script>
 
 <!-- 答题正确弹框 -->
 <div class="boxShadow boxShadow1" style="display: none">
@@ -89,7 +65,6 @@
     var question_id = 0;
 
     var websocket = new WebSocket(wsServer);
-    $("#loading").show();
     window.onload = function () {
         websocket.onopen = function (evt) {
             websocket.send(JSON.stringify({
@@ -101,8 +76,6 @@
             }));
             //socket连接成功，“正在接入,请稍候…”的连接提示 关闭
             $("#loading").hide();
-            $('.waitLoad2').show();
-
             //显示等待发题通知
         };
 
@@ -136,7 +109,6 @@
                         $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
                     });
                     //开启倒计时
-                    $('#timer').show();
                     function checkTime(i){ //将0-9的数字前面加上0，例1变为01 
                       if(i<10) 
                       { 
@@ -168,7 +140,6 @@
                       },1000);
                       if(times<=0){
                         clearInterval(timer);
-                        $('#timer').hide();
                       }
                     }
                     countDown(10)
@@ -176,10 +147,8 @@
                     //倒计时结束之后如果未答题，则调用如下函数
                     //sendAnswer(0);
                 } else if (returnData.type === 88) {
-                    $('#timer').hide();
                     alert('本轮游戏已经开始，下一轮请抓好机会');
                 } else if (returnData.type === 666) {
-                    $('#timer').hide();
                     //闯关成功
                     alert("恭喜你，闯关成功");
                 }

@@ -13,7 +13,5 @@
 			<a style="margin-top:30px;" href=""><img src="../mobile/imgs/open.png" alt=""></a>
 		</div>
 	</div>
-	<script src="../mobile/js/jquery.js"></script>
-	<script src="../mobile/js/mobile.js"></script>
 </body>
 </html>
