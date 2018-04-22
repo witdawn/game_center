@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>开始答题</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-	<link rel="stylesheet" href="../mobile/css/indexmobile.css">
+	<link rel="stylesheet" href="../mobile/css/indexMobile.css">
 </head>
 <body>
 	<div class="actIndex">
@@ -28,7 +28,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="../mobile/js/jquery.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="../mobile/js/mobile.js"></script>
 	<script>
 	    $(function(){

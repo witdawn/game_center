@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>一起来答题</title>
-    <link rel="stylesheet" href="css/indexPC.css">
+    <link rel="stylesheet" href="../screen/css/indexPC.css">
 </head>
 <body>
 <div class="actIndex">
@@ -43,8 +43,8 @@
         </div>
     </div>
 </div>
-<script src="js/jquery.js"></script>
-<script src="js/screen.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../screen/js/screen.js"></script>
 <script>
     $(function () {
         var h = document.documentElement.clientHeight || document.body.clientHeight;
