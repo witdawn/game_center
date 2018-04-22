@@ -11,7 +11,7 @@ class GameController extends Controller
 
     public function index()
     {
-        return view('mobile.open');
+        return view('mobile.index');
     }
 
     public function question(Request $request)
