@@ -29,6 +29,7 @@
 		</div>
 	</div>
 	<script src="../mobile/js/jquery.js"></script>
+	<script src="../mobile/js/mobile.js"></script>
 	<script>
 	    $(function(){
 	    	// $('.boxShadow3').hide();
