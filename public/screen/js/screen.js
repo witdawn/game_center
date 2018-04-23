@@ -1,11 +1,9 @@
 $(function(){
-	var h = document.documentElement.clientHeight || document.body.clientHeight;
+	var h = $(window).height();
 	var h2 = $('.actIndex').height();
 	if(h2<h){
-		$('.actIndex').height(h-40);
-		// $('.actIndex').css({overflowY:hidden})
+		$('.actIndex').css({position:'fixed',width:'100%',height:'100%'});
 	}else{
-		$('.actIndex').height()
+		$('.actIndex').css({position:'relative',height:'auto'})
 	}
-    var h1 = $('.indexPC1').height();
 })
