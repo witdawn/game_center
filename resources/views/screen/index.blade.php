@@ -42,6 +42,9 @@
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
             </div>
+            <span>
+                这里是游戏规则
+            </span>
         </div>
     </div>
 </div>

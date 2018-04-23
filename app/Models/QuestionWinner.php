@@ -17,16 +17,22 @@ class QuestionWinner extends BaseModel
 
     public function getHeadimgAttribute()
     {
+        if(!$this->user)
+            return '';
         return $this->user->headimg;
     }
 
     public function getNicknameAttribute()
     {
+        if(!$this->user)
+            return '';
         return $this->user->nickname;
     }
 
     public function getOpenidAttribute()
     {
+        if(!$this->user)
+            return '';
         return $this->user->openid;
     }
 
