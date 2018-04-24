@@ -129,7 +129,7 @@
                     $("#question").text(title);
                     $("#options").html('');
                     $.each(options, function (i) {
-                        $("#options").append("<div class='options' data-title='" + i + "'>" + options[i] + "</div>");
+                        $("#options").append("<div class='options' style='cursor: pointer' data-title='" + i + "'>" + options[i] + "</div>");
                     });
 
                     $("#questions").show();

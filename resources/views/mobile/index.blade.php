@@ -11,7 +11,7 @@
 		<div class="indexMobile1">
 			<a href=""><img style="width:60%;margin:0 auto;" src="../mobile/imgs/logo.png" alt=""></a>
 			<a style="margin-top:40px;" href=""><img style="width:100%;" src="../mobile/imgs/letou1.png" alt=""></a>
-			<a class="acStart rules" style="margin-top:80px;margin-bottom:20px;">游戏规则</a>
+			<a class="acStart rules" style="margin-top:80px;margin-bottom:20px; cursor: pointer">游戏规则</a>
 			<a class="acStart" href="{{route('mobile_question')}}">开始游戏</a>
 		</div>
 	</div>
