@@ -40,7 +40,6 @@ class WxCompanyAuth
         $args['user_ticket'] = $user_ticket;
         $res = $this->postMessage($user_ticket_url, $args);
         $res = json_decode($res, true);
-        dd($res);
         $result['nickname'] = $res['name'];
         $result['headimgurl'] = $res['avatar'];
         $result['name'] = $res['name'];
