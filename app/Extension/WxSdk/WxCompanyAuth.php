@@ -12,16 +12,18 @@ class WxCompanyAuth
 {
     private $corpid;
     private $corpsecret;
+    private $agent_id;
 
-    public function __construct($corpid, $corpsecret)
+    public function __construct($corpid, $corpsecret,$agent_id)
     {
         $this->corpid = $corpid;
         $this->corpsecret = $corpsecret;
+        $this->agent_id = $agent_id;
     }
 
     public function getCode($redirect_url)
     {
-        $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->corpid . "&redirect_uri=" . urlencode($redirect_url) . "&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect";
+        $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->corpid . "&redirect_uri=" . urlencode($redirect_url) . "&response_type=code&scope=snsapi_privateinfo&agentid=".$this->agent_id."&state=0#wechat_redirect";
         return redirect($oauth2_code);
     }
 
@@ -38,9 +40,9 @@ class WxCompanyAuth
         //获取用户基本信息的接口url
         $get_user_info_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=" . $access_token . "&code=" . $code;
         $userinfo_json = $this->getCach($get_user_info_url);
-        dd($userinfo_json);
-//        $userinfo_arr = json_decode($userinfo_json, true);
-        $user_ticket = $userinfo_json['user_ticket'];
+        $userinfo_arr = json_decode($userinfo_json, true);
+        dd($userinfo_arr);
+        $user_ticket = $userinfo_arr['user_ticket'];
         $user_ticket_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=" . $access_token;
         $res = $this->postMessage($user_ticket_url, ['user_ticket' => $user_ticket]);
         dd($res);

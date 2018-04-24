@@ -26,7 +26,7 @@ class WxAuth
             if ($account->wx_type == 0) {
                 $wxAuth = new GetAuth($account->appid, $account->appsecret);
             } else {
-                $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret);
+                $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret,$account->agent_id);
             }
             return $wxAuth->getCode($url);
         }

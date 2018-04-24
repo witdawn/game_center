@@ -37,7 +37,7 @@ class GameController extends Controller
         if ($account->wx_type == 0) {
             $wxAuth = new GetAuth($account->appid, $account->appsecret);
         } else {
-            $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret);
+            $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret,$account->agent_id);
         }
         if (isset($_GET['code'])) {
             $user_info = $wxAuth->getUserInfo($_GET['code']);
