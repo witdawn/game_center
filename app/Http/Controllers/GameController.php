@@ -32,9 +32,13 @@ class GameController extends Controller
 //        $account['appid'] = 'wxf50ad054693ef907';
 //        $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
 //        $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
-        $account['appid'] = 'wx0c1d6ee302dc4a70';
-        $account['appsecret'] = 'UMc15F5HbcPIe9BxnD84PwNA5wXRp6ua5kXbjVglpBk';
-        $wxAuth = new WxCompanyAuth($account['appid'], $account['appsecret']);
+        $active = $request->active;
+        $account = $active->account;
+        if ($account->wx_type == 0) {
+            $wxAuth = new GetAuth($account->appid, $account->appsecret);
+        } else {
+            $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret);
+        }
         if (isset($_GET['code'])) {
             $user_info = $wxAuth->getUserInfo($request->code);
             $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();

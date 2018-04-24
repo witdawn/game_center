@@ -41,20 +41,32 @@ class WxCompanyAuth
         $userinfo_json = $this->getCach($get_user_info_url);
         dd($userinfo_json);
 //        $userinfo_arr = json_decode($userinfo_json, true);
-        $user_ticket=$userinfo_json['user_ticket'];
-        $user_ticket_url="https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=".$access_token;
-        $res=$this->postMessage($user_ticket_url, ['user_ticket'=>$user_ticket]);
+        $user_ticket = $userinfo_json['user_ticket'];
+        $user_ticket_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=" . $access_token;
+        $res = $this->postMessage($user_ticket_url, ['user_ticket' => $user_ticket]);
         dd($res);
-        return $res;
+        $result['nickname']=$res['name'];
+        $result['headimgurl']=$res['avatar'];
+        $result['name']=$res['name'];
+        $result['openid']=$res['name'];
+        $result['phone']=$res['mobile'];
+        $result['sex']=$res['gender'];
+        return $result;
 
     }
 
     public function getAccessToken()
     {
-        $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" . $this->corpid . "&corpsecret=" . $this->corpsecret;
-        $json_result = $this->getCach($url);
-        dd($json_result);
-        return $json_result;
+        $key = 'company_access_token' . $this->corpid;
+        $token = cache($key);
+        if (!$token) {
+            $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" . $this->corpid . "&corpsecret=" . $this->corpsecret;
+            $json_result = $this->getCach($url);
+            dd($json_result);
+            $token = $json_result;
+            cache([$key => $token], 60);
+        }
+        return $token;
     }
 
 
