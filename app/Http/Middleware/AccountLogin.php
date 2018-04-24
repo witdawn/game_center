@@ -18,7 +18,6 @@ class AccountLogin
         $account=session('an_account');
         if(!$account['id'])
             return redirect('login');
-        unset($account);
         return $next($request);
     }
 }

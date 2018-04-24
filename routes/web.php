@@ -11,18 +11,29 @@
 |
 */
 
-Route::get('/', function () {
-    return error_page('coding');
-});
-Route::get('/tt', 'IndexController@test');
+// 验证码
+Route::get('captcha', function () {
+    $qrcode = new \App\Extension\QrCode();
+    $qrcode->generate();
+    return response('', 200, ['Content-Type' => 'image/gif']);
+})->name('captcha');
 
 Route::get('error/', 'CommonController@error_page')->name('error_page');
 
-Route::get('/index', 'IndexController@index');
-Route::get('/socket', 'IndexController@socket');
+Route::get('/tt', 'IndexController@test');
+//登录
+Route::get('/login', 'IndexController@login');
+
+//需要登录权限
+Route::group(['middleware' => 'login_auth'], function () {
+    Route::get('/', 'IndexController@index')->name('index');
+    Route::get('/index', 'IndexController@index');
+});
 
 //需要活动认证
 Route::group(['middleware' => 'game.active'], function () {
+
+
 
     //手机端
     Route::group(['prefix' => '/game'], function () {
@@ -43,7 +54,6 @@ Route::group(['middleware' => 'game.active'], function () {
         Route::get('/q_index', 'ScreenController@questionIndex')->name('q_index');
         Route::get('/question', 'ScreenController@questions')->name('screen_question');
         Route::get('/winner_rank', 'ScreenController@winnerRank')->name('winners');
-        Route::post('/question_change_round', 'Api\QuestionController@change_round')->name('change_round');
     });
 
 });
