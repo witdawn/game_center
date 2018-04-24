@@ -16,7 +16,9 @@
         </div>
     </div>
     <div class="quesMain1 clearfix">
-        <img src="./imgs/codePC.png" alt="">
+        {{--<img src="./imgs/codePC.png" alt="">--}}
+        <div id="ew_code">
+        </div>
         <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer" id="begin_game">开始答题</a>
     </div>
     <div class="quesMain clearfix" style="display: none">
@@ -33,11 +35,20 @@
 </div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../screen/js/screen.js"></script>
+<script type="text/javascript" src="../screen/js/jquery.qrcode.min.js"></script>
 <script>
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
     var question_round = "{{$active->question_round}}";
     var answer = 0;
+    var game_href='{{route("mobile_index",['a'=>$active->id,'m'=>'index'])}}';
+    jQuery('#ew_code').qrcode(
+        {
+            width : 368,
+            height : 368,
+            text : game_href
+        });
+
     $("#round_number").html("第" + question_round + "轮");
 
     var wsServer = 'ws://my.witdawn.com:9501/';
