@@ -35,8 +35,6 @@ Route::group(['middleware' => 'login_auth'], function () {
 //需要活动认证
 Route::group(['middleware' => 'game.active'], function () {
 
-
-
     //手机端
     Route::group(['prefix' => '/game'], function () {
         //微信授权

@@ -12,7 +12,10 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('index.index');
+        $account = account_info();
+        $activity=$account->activities()->first();
+        return redirect(route('q_index',['a'=>$activity->id]));
+//        return view('index.index');
     }
 
     public function questions()

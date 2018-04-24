@@ -9,7 +9,7 @@
 <div class="actIndex">
     <div class="acHead">
         <p class="preMain">
-            目前剩余人数：<span id="left_number"></span>人
+            目前人数：<span id="left_number">0</span>人
         </p>
         <div class="finalPeople">
             <a id="round_number">第{{$active->question_round}}轮</a>
