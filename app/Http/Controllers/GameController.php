@@ -40,7 +40,7 @@ class GameController extends Controller
             $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret);
         }
         if (isset($_GET['code'])) {
-            $user_info = $wxAuth->getUserInfo($request->code);
+            $user_info = $wxAuth->getUserInfo($_GET['code']);
             $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();
             if (!$gamer) {
                 $gamer = User::add($user_info);
