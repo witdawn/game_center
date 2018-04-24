@@ -36,6 +36,10 @@ class WxCompanyAuth
         $userinfo_json = $this->getCach($get_user_info_url);
         $userinfo_arr = json_decode($userinfo_json, true);
         $user_ticket = $userinfo_arr['user_ticket'];
+        var_dump($access_token);
+        echo '</br>';
+        var_dump($user_ticket);
+        echo '</br>';
         $user_ticket_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=" . $access_token;
         $res = $this->postMessage($user_ticket_url, ['user_ticket' => $user_ticket]);
         $res=json_decode($res,true);
