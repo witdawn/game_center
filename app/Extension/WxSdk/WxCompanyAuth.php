@@ -31,25 +31,18 @@ class WxCompanyAuth
     public function getUserInfo($code)
     {
         $access_token = $this->getAccessToken();
-//        $arr_result = json_decode($json_result, true);
-//        if (!isset($arr_result['access_token'])) {
-//            throw new GeneralException('授权异常');
-//        }
-//        $access_token = $arr_result['access_token'];
-//        $open_id = $arr_result['openid'];
         //获取用户基本信息的接口url
         $get_user_info_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=" . $access_token . "&code=" . $code;
         $userinfo_json = $this->getCach($get_user_info_url);
         $userinfo_arr = json_decode($userinfo_json, true);
-        dd($userinfo_arr);
         $user_ticket = $userinfo_arr['user_ticket'];
         $user_ticket_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=" . $access_token;
         $res = $this->postMessage($user_ticket_url, ['user_ticket' => $user_ticket]);
-        dd($res);
+        $res=json_decode($res,true);
         $result['nickname']=$res['name'];
         $result['headimgurl']=$res['avatar'];
         $result['name']=$res['name'];
-        $result['openid']=$res['name'];
+        $result['openid']=$res['name'].$res['userid'];
         $result['phone']=$res['mobile'];
         $result['sex']=$res['gender'];
         return $result;
