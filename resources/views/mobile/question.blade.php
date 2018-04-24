@@ -72,14 +72,14 @@
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
 
-    var user_id = "{{$user->id}}";
-    var active_id = "{{$active->id}}";
-    var question_id = 0;
-    var game_status = 0;
-
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         var left_timer;
+        var user_id = "{{$user->id}}";
+        var active_id = "{{$active->id}}";
+        var question_id = 0;
+        var game_status = 0;
+
         websocket.onopen = function (evt) {
             websocket.send(JSON.stringify({
                 action: 'user_login',
@@ -178,6 +178,8 @@
     };
     //关闭页面时 退出登录
     $(window).unload(function () {
+        var user_id = "{{$user->id}}";
+        var active_id = "{{$active->id}}";
         if (game_status === 0) {
             websocket.send(JSON.stringify({
                 action: 'user_logout',
