@@ -62,8 +62,8 @@ class WxCompanyAuth
         if (!$token) {
             $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" . $this->corpid . "&corpsecret=" . $this->corpsecret;
             $json_result = $this->getCach($url);
-            dd($json_result);
-            $token = $json_result;
+            $arr_result = json_decode($json_result,true);
+            $token=$arr_result['access_token'];
             cache([$key => $token], 60);
         }
         return $token;
