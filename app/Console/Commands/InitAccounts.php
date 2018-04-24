@@ -68,7 +68,7 @@ class InitAccounts extends Command
             $this->info('账号、活动初始化完毕');
         }
         $account = Account::first();
-        $active = $account->activies()->first();
+        $active = $account->activities()->first();
         $active->questions()->delete();
         if ($active->questions()->count('id') == 0) {
             for ($j = 1; $j < 4; $j++) {

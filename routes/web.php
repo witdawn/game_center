@@ -28,6 +28,8 @@ Route::get('/login', 'IndexController@login');
 Route::group(['middleware' => 'login_auth'], function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/index', 'IndexController@index');
+    Route::get('/activities', 'IndexController@activities');
+    Route::get('/questions', 'IndexController@questions');
 });
 
 //需要活动认证
