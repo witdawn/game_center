@@ -71,7 +71,7 @@
 </div>
 <script>
     var wsServer = 'ws://my.witdawn.com:9501/';
-
+    var connected=false;
     var websocket = new WebSocket(wsServer);
     window.onload = function () {
         var left_timer;
@@ -89,6 +89,7 @@
                 }
             }));
             $("#loading").hide();
+            connected=true;
         };
 
         websocket.onclose = function (evt) {
@@ -175,6 +176,12 @@
                 },
             }));
         }
+
+        setTimeout(function(){
+            if(!connected){
+                window.reload();
+            }
+        },5000);
     };
     //关闭页面时 退出登录
     $(window).unload(function () {
