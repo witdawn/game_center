@@ -8,43 +8,53 @@
 
 namespace App\Extension\WxSdk;
 
-use App\Exceptions\GeneralException;
-
-class GetAuth
+class WxCompanyAuth
 {
-    private $appId;
-    private $appSecret;
+    private $corpid;
+    private $corpsecret;
 
-    public function __construct($appId, $appSecret)
+    public function __construct($corpid, $corpsecret)
     {
-        $this->appId = $appId;
-        $this->appSecret = $appSecret;
+        $this->corpid = $corpid;
+        $this->corpsecret = $corpsecret;
     }
 
-    public function getCode($redirecturl)
+    public function getCode($redirect_url)
     {
-        $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->appId . "&redirect_uri=" . urlencode($redirecturl) . "&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect";
+        $oauth2_code = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" . $this->corpid . "&redirect_uri=" . urlencode($redirect_url) . "&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect";
         return redirect($oauth2_code);
     }
 
+
     public function getUserInfo($code)
     {
-
-        $get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" . $this->appId . "&secret=" . $this->appSecret . "&code=" . $code . "&grant_type=authorization_code";
-        $json_result = $this->getCach($get_access_token_url);
-        $arr_result = json_decode($json_result, true);
-        if(!isset($arr_result['access_token']))
-        {
-            throw new GeneralException('授权异常');
-        }
-        $access_token = $arr_result['access_token'];
-        $open_id = $arr_result['openid'];
+        $access_token = $this->getAccessToken();
+//        $arr_result = json_decode($json_result, true);
+//        if (!isset($arr_result['access_token'])) {
+//            throw new GeneralException('授权异常');
+//        }
+//        $access_token = $arr_result['access_token'];
+//        $open_id = $arr_result['openid'];
 
         //获取用户基本信息的接口url
-        $get_user_info_url = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $access_token . "&openid=" . $open_id;
+        $get_user_info_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=" . $access_token . "&code=" . $code;
         $userinfo_json = $this->getCach($get_user_info_url);
-        $userinfo_arr = json_decode($userinfo_json, true);
-        return $userinfo_arr;
+        dd($userinfo_json);
+//        $userinfo_arr = json_decode($userinfo_json, true);
+        $user_ticket=$userinfo_json['user_ticket'];
+        $user_ticket_url="https://qyapi.weixin.qq.com/cgi-bin/user/getuserdetail?access_token=".$access_token;
+        $res=$this->postMessage($user_ticket_url, ['user_ticket'=>$user_ticket]);
+        dd($res);
+        return $res;
+
+    }
+
+    public function getAccessToken()
+    {
+        $url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=" . $this->corpid . "&corpsecret=" . $this->corpsecret;
+        $json_result = $this->getCach($url);
+        dd($json_result);
+        return $json_result;
     }
 
 
@@ -116,12 +126,4 @@ class GetAuth
         return $result;
     }
 
-    /**
-     * 格式输出调试信息
-     *
-     */
-    function p($arr)
-    {
-        var_dump($arr);
-    }
 }
