@@ -35,8 +35,8 @@ class WxCompanyAuth
 //        }
 //        $access_token = $arr_result['access_token'];
 //        $open_id = $arr_result['openid'];
-        dd($code);
         //获取用户基本信息的接口url
+        dd($access_token);
         $get_user_info_url = "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=" . $access_token . "&code=" . $code;
         $userinfo_json = $this->getCach($get_user_info_url);
         dd($userinfo_json);
