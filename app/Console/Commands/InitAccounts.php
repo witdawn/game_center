@@ -47,7 +47,7 @@ class InitAccounts extends Command
             $account->password = 'admin666';
             $account->modules = serialize(['question']);
             $account->appid = '';
-            $account->secret = '';
+            $account->appsecret = '';
             $account->wxaccount = '';
             $account->wxid = '';
             $account->machid = '';
@@ -68,7 +68,7 @@ class InitAccounts extends Command
             $this->info('账号、活动初始化完毕');
         }
         $account = Account::first();
-        $active = $account->activies()->first();
+        $active = $account->activities()->first();
         $active->questions()->delete();
         if ($active->questions()->count('id') == 0) {
             for ($j = 1; $j < 4; $j++) {
@@ -105,7 +105,5 @@ class InitAccounts extends Command
                 $this->info('初始化第' . $j . '轮所有题木目完毕');
             }
         }
-
-
     }
 }

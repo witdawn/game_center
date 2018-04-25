@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Extension\WxSdk\GetAuth;
+use App\Extension\WxSdk\WxCompanyAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class GameController extends Controller
 
     public function index()
     {
-        return view('mobile.open');
+        return view('mobile.index');
     }
 
     public function question(Request $request)
@@ -28,11 +29,18 @@ class GameController extends Controller
     #获取身份信息
     public function GameAuth(Request $request)
     {
-        $account['appid'] = 'wxf50ad054693ef907';
-        $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
-        $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
+//        $account['appid'] = 'wxf50ad054693ef907';
+//        $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
+//        $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
+        $active = $request->active;
+        $account = $active->account;
+        if ($account->wx_type == 0) {
+            $wxAuth = new GetAuth($account->appid, $account->appsecret);
+        } else {
+            $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret,$account->agent_id);
+        }
         if (isset($_GET['code'])) {
-            $user_info = $wxAuth->getUserInfo($request->code);
+            $user_info = $wxAuth->getUserInfo($_GET['code']);
             $gamer = User::where('openid', $user_info['openid'])->where('active_id', $request->active->id)->first();
             if (!$gamer) {
                 $gamer = User::add($user_info);

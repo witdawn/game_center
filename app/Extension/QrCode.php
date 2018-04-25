@@ -12,15 +12,15 @@ class QrCode
     public function generate($isApi = false)
     {
         $this->code($code);
-        Session::put('qrCode', strtolower($code));
+        Session::put('anan_game_code', strtolower($code));
     }
 
     public function check($code)
     {
-        $tmpCode = Session::get('qrCode');
+        $tmpCode = Session::get('anan_game_code');
 
         if ($tmpCode and strtolower($code) == $tmpCode) {
-            Session::forget('qrCode');
+            Session::forget('anan_game_code');
             return true;
         }
 

@@ -18,8 +18,10 @@ class CreateAccountsTable extends Migration
             $table->string('account', 32)->nullable()->index()->unique()->comment('用户名');
             $table->string('password', 64)->nullable()->comment('密码');
             $table->text('modules')->nullable()->comment('开通的模块');
+            $table->tinyInteger('wx_type')->nullable()->default(0)->comment('微信类型 0微信服务号 1微信企业号');
             $table->string('appid', 64)->nullable()->comment('appid');
-            $table->string('secret', 64)->nullable()->comment('secret');
+            $table->string('appsecret', 64)->nullable()->comment('secret');
+            $table->string('agent_id', 64)->nullable()->comment('agent_id');
             $table->string('wxaccount', 64)->nullable()->comment('微信账号');
             $table->string('wxid', 64)->nullable()->comment('微信id');
             $table->string('machid', 64)->nullable()->comment('商户id');

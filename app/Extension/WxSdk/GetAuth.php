@@ -27,11 +27,6 @@ class GetAuth
         return redirect($oauth2_code);
     }
 
-    public static function test()
-    {
-        return redirect('http://www.baidu.com');
-    }
-
     public function getUserInfo($code)
     {
 

@@ -59,7 +59,8 @@ ul,li{
 	display: block;
 }
 .indexMobile1 a img{
-	width:50%;
+	width:60%;
+	margin:0 auto;
 }
 .acStart{
 	text-align: center;

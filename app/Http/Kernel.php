@@ -59,8 +59,8 @@ class Kernel extends HttpKernel
         'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'game.active'     => \App\Http\Middleware\GameAuth::class,
+        'game.active'   => \App\Http\Middleware\GameAuth::class,
         'game.wx'       => \App\Http\Middleware\WxAuth::class,
-
+        'login_auth'    => \App\Http\Middleware\AccountLogin::class,
     ];
 }

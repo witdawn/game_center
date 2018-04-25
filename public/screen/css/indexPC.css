@@ -21,42 +21,66 @@ ul,li{
 }
 
 .actIndex{
+/*	position: fixed;
 	width:100%;
+	height:100%;*/
 	padding:20px;
 	box-sizing:border-box;
 	background: url(../imgs/back.png) 50% 50% no-repeat;
-	background-size:cover;
-	position: relative;
+	background-size:100% 100%;
+}
+.actIndex1{
+	padding:20px;
+	box-sizing:border-box;
+	background: url(../imgs/back.png) 50% 50% no-repeat;
+	background-size:100% 100%;
 }
 .indexPC2{
-	margin-top:30px;
-	margin-left:100px;
+	width: 75%;
+	margin:40px auto;
+	position: relative;
+}
+.indexPC2 .ip{
 	display: flex;
+	flex-wrap: nowrap;
+	justify-content:space-around;
+	align-items:center;
+	align-content:center;
 }
-.indexPC2 .acMain{
+.indexPC2 .ip .acMain{
 	flex-grow:1;
-	justify-content:center;
+	flex-shrink: 1;
 }
-.acl img{
+.indexPC2 .acMain img{
 	width:100%;
+	/*height:80%;*/
+}
+.acl{
+	/*margin-left: 80px;*/
 }
 .acm{
 	text-align: center;
 }
-.acm img{
-	width:80%;
-	padding:20px;
-	background: #fff;
-	border-radius: 30px;
-}
 .acr{
-	text-align: right;
+	/*text-align: right;*/
 }
-.acr img{
-	width:100%;
+.selectNum{
+    width: 100%;
+    font-size: 16px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    height: 40px;
+    background: #e21954;
+	border:2px solid #fff100;
+    outline: none;
+    /*border: 2px solid red; */
+    border-radius: 6px;
+    /*background: #fff;*/
+    color: #fff;
 }
-.acmd{
-	margin-left:100px;
+.selectNum option{
+	color:#000;
+	background: #fff;
 }
 .beginAnswer{
 	color:#fff100;
@@ -89,6 +113,8 @@ ul,li{
 	width:30%;
 }
 .acPeople {
+	width:75%;
+	margin:0 auto;
     display: grid;
     grid-gap: 10px 30px;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -109,6 +135,16 @@ ul,li{
 	text-overflow:ellipsis;
 	white-space: nowrap;
 }
+.backIndex{
+	width:75%;
+	margin:0 auto;	
+	text-align: right;
+}
+.backIndex a{
+	font-size: 20px;
+	width:140px;
+	border-radius: 10px;
+}
 /*答题详情页*/
 .preMain{
 	font-size: 36px;
@@ -117,6 +153,15 @@ ul,li{
 }
 .preMain span{
 	font-size: 45px;
+}
+.quesMain1{
+	width:75%;
+	margin:0 auto 30px auto;
+	/*height:500px;*/
+	/*background:#fff;*/
+	padding:30px 50px;
+	box-sizing:border-box;
+	text-align: center;
 }
 .quesMain{
 	width:75%;
@@ -158,6 +203,7 @@ ul,li{
 	background: #e21954;
 	color:#fff;
 	border-radius: 30px;
+	cursor: pointer;
 }
 .nextQues{
 	text-align: right;
@@ -256,4 +302,53 @@ ul,li{
 }
 .boxShadow3{
 	display: none;
+}
+
+/*登录页面*/
+#login{   
+    position: absolute;   
+    top: 50%;   
+    left:50%;   
+    margin: -150px 0 0 -150px;   
+    width: 300px;   
+    height: 300px;   
+}   
+#login h1{   
+    color: #fff;   
+    text-shadow:0 0 10px;   
+    letter-spacing: 1px;   
+    text-align: center;   
+}   
+h1{   
+    font-size: 2em;   
+    margin: 0.67em 0;   
+}   
+input{   
+    width: 278px;   
+    height: 18px;   
+    margin-bottom: 10px;   
+    outline: none;   
+    padding: 10px;   
+    font-size: 13px;   
+    color: #000;   
+    /*text-shadow:1px 1px 1px;   */
+    border-top: 1px solid #312E3D;   
+    border-left: 1px solid #312E3D;   
+    border-right: 1px solid #312E3D;   
+    border-bottom: 1px solid #56536A;   
+    border-radius: 4px;   
+    background-color: #fff;   
+}   
+.but{   
+    width: 300px;   
+    min-height: 20px;   
+    display: block;   
+    background-color: #4a77d4;   
+    border: 1px solid #3762bc;   
+    color: #fff;   
+    padding: 9px 14px;   
+    font-size: 15px;   
+    line-height: normal;   
+    border-radius: 5px;   
+    margin: 0;   
 }

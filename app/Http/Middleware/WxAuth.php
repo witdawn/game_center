@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Extension\WxSdk\GetAuth;
+use App\Extension\WxSdk\WxCompanyAuth;
 use Closure;
 
 class WxAuth
@@ -10,18 +11,23 @@ class WxAuth
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        $gamer=session('an_game');
-        if(!$gamer['openid']){
-            $account['appid'] = 'wxf50ad054693ef907';
-            $account['appsecret'] = '10932473244fcc0c4e10afbdcd391d39';
-            $wxAuth = new GetAuth($account['appid'], $account['appsecret']);
+        $active = $request->active;
+        $account = $active->account;
+        $gamer = session('an_game');
+        if (!$gamer['openid']) {
             $url = route('game_auth', ['a' => $request->active->id, 'm' => $request->module]);
+            if ($account->wx_type == 0) {
+                $wxAuth = new GetAuth($account->appid, $account->appsecret);
+            } else {
+                $wxAuth = new WxCompanyAuth($account->appid, $account->appsecret,$account->agent_id);
+            }
             return $wxAuth->getCode($url);
         }
         $request->offsetSet('gamer', $gamer);

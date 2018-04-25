@@ -9,7 +9,11 @@ class Account extends BaseModel
 
     ];
 
-    public function activies()
+    protected $hidden=[
+        'password'
+    ];
+
+    public function activities()
     {
         return $this->hasMany(Activity::class,'account_id');
     }
