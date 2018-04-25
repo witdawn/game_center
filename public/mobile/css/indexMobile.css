@@ -30,18 +30,8 @@ ul,li{
 	padding:20px;
 	box-sizing:border-box;
 	background: url(../imgs/back.png) 50% 50% no-repeat;
-	background-size:cover;
+	background-size:100% 100%;
 	position: relative;
-}
-.actIndex1{
-	width:100%;
-	/*padding:20px;*/
-	box-sizing:border-box;
-	background: url(../imgs/back1.png) 50% 50% no-repeat;
-	background-size:cover;
-	position: fixed;
-	width:100%;
-	height:100%;
 }
 .actIndex2{
 	width:100%;
@@ -52,7 +42,7 @@ ul,li{
 }
 .indexMobile1{
 	text-align: center;
-	margin:40px 0;
+	margin:20px 0;
 	position: relative;
 }
 .indexMobile1 a{
@@ -276,4 +266,45 @@ ul,li{
 .loading p{
 	font-size: 30px;
 	color:#fff100;
+}
+/*加载动画*/
+.loading1 {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.2em;
+  z-index: 999;
+}
+
+.loading1::before, .loading1::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out;
+  }
+  
+.loading1::before {
+    top: 0;
+  }
+  
+.loading1::after {
+    bottom: 0;
+  }
+
+@keyframes load {
+  0% { left: 0; height: 30px; width: 15px }
+  50% { height: 8px; width: 40px }
+  100% { left: 235px; height: 30px; width: 15px}
 }
