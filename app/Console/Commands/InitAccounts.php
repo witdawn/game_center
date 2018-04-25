@@ -105,7 +105,5 @@ class InitAccounts extends Command
                 $this->info('初始化第' . $j . '轮所有题木目完毕');
             }
         }
-
-
     }
 }
