@@ -17,9 +17,7 @@ class GameAuth
      */
     public function handle($request, Closure $next)
     {
-        if (!session('game_active') && !$request->has('a')) {
-            return error_page('无效的活动链接');
-        } else if ($request->has('a')) {
+        if($request->has('a')){
             $selects = [
                 'account_id',
                 'question_round',
@@ -33,6 +31,9 @@ class GameAuth
             if (!$active)
                 return error_page('未找到指定的活动');
             session(['game_active' => $active]);
+        }else{
+            if(!session('game_active'))
+                return error_page('无效的活动链接');
         }
         $active=session('game_active');
         if ($request->has('m')) {
