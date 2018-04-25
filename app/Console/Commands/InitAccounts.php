@@ -47,7 +47,7 @@ class InitAccounts extends Command
             $account->password = 'admin666';
             $account->modules = serialize(['question']);
             $account->appid = '';
-            $account->secret = '';
+            $account->appsecret = '';
             $account->wxaccount = '';
             $account->wxid = '';
             $account->machid = '';

@@ -46,7 +46,7 @@ class AddAccount extends Command
         $account->password = trim($this->argument('password'));
         $account->modules = serialize(['question', 'index']);
         $account->appid = 'wxf50ad054693ef907';
-        $account->secret = '10932473244fcc0c4e10afbdcd391d39';
+        $account->appsecret = '10932473244fcc0c4e10afbdcd391d39';
         $account->wx_type = 0;
         $account->wxaccount = '';
         $account->wxid = '';
