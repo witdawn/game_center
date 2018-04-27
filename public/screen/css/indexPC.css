@@ -192,7 +192,7 @@ ul,li{
 }
 .quesMain{
 	width:75%;
-	margin:50px auto;
+	margin:80px auto;
 	/*height:500px;*/
 	background:#fff;
 	padding:30px 50px;
@@ -228,7 +228,7 @@ ul,li{
 .quesItems {
     font-size: 18px;
     font-weight: bold;
-    margin: 30px 0;
+    margin: 50px 0;
     height: 36px;
     line-height: 36px;
 }
