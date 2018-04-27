@@ -271,6 +271,7 @@ ul,li{
 	position: relative;
 }
 .boxBoom h1{
+	font-size: 22px;
 	margin:10px;
 }
 .boxBomb img{

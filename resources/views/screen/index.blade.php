@@ -37,11 +37,11 @@
     <div class="boxBomb">
         <div class="boxBoom">
             <h2 style="margin:0;">游戏规则</h2>
-       <!--      <div class="invb-cha cha1" onclick="$('.accountBomb').hide();">
+            <div class="invb-cha cha1" onclick="$('.accountBomb').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
-            </div> -->
+            </div>
             <span>
                 这里是游戏规则
             </span>
@@ -57,7 +57,10 @@
         $('.indexPC2').height(h - h1);
         $('.boxShadow3').hide();
         $('.rules').click(function(){
-            $('.boxShadow3').fadeIn(300).delay(3000).fadeOut(300);
+            $('.boxShadow3').show();
+        })
+        $('.cha1').click(function(){
+            $('.boxShadow3').hide();
         })
         $("#round_num").val({{$active->question_round}})
         $("#start_game").click(function () {
