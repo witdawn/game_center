@@ -130,12 +130,12 @@ ul,li{
 .quesMain .quesCir{
 	position: absolute;
 	left:40%;
-	top:-8%;
+	top:-15%;
 	width:80px;
 	height:80px;
 	border-radius: 50%;
     background: #fff;
-    border: 5px solid #fff;
+    border: 5px solid #E41A2F;
 }
 .game_time{
 	width:40px;
@@ -151,7 +151,7 @@ ul,li{
 .pie{
 	width:80px;
 	height:80px;
-	background-color:blue;
+	background-color:##21B5F2;
 	border-radius:50%;
 	position:absolute;
 }
@@ -181,6 +181,15 @@ ul,li{
 	border-radius:50%;
 	position:absolute;
 	background-color:#d13c36;
+}
+.time{
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom: 0;
+	margin:auto;
+	z-index: 9999;
 }
 .quesMain .quesCir .quesCir1{
 	line-height: 74px;

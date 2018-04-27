@@ -174,7 +174,7 @@
             $(".pie1").css("-moz-transform","rotate(" + i + "deg)");
             $(".pie1").css("-webkit-transform","rotate(" + i + "deg)");
         }else{
-            $(".pie2").css("backgroundColor", "#d13c36");
+            $(".pie2").css("backgroundColor", "#21B5F2");
             $(".pie2").css("-o-transform","rotate(" + i + "deg)");
             $(".pie2").css("-moz-transform","rotate(" + i + "deg)");
             $(".pie2").css("-webkit-transform","rotate(" + i + "deg)");
