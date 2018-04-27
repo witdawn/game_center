@@ -132,7 +132,6 @@ ul,li{
 	left:0;
 	right:0;
 	top:-15%;
-	bottom: 0;
 	margin:auto;
 	width:80px;
 	height:80px;
@@ -191,7 +190,7 @@ ul,li{
 }
 .time{
 	position: absolute;
-	left:80%;
+	left:75%;
 	right:0;
 	top:0;
 	bottom: 0;
