@@ -177,11 +177,13 @@ ul,li{
 }
 .bg{
 	position: absolute;
+	left:25%;
+	top:25%;
+	margin:auto;
 	z-index: 9998;
-	width:80px;
-	height:80px;
+	width:60px;
+	height:60px;
 	border-radius:50%;
-	position:absolute;
 	background-color:#fff;
 }
 .time{
