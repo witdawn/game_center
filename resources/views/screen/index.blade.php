@@ -15,7 +15,7 @@
                 <div class="acMain acl">
                     <img src="./imgs/indexPC21.png" alt="">
                 </div>
-                <dvi class="actMain acm" style="flex-grow: 2;">
+                <dvi class="actMain acm" style="flex-grow: 6;">
                     <div class="acmd">
                         <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
                         {{--<select id="round_num" class="selectNum">--}}
