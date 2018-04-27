@@ -45,7 +45,7 @@
             </div>
         </div> -->
         <!-- 等待下一题开发弹出层 -->
-        <div class="waitLoad1" id="wait_question" >
+        <div class="waitLoad1" id="wait_question" style="display: none" >
             <div class="loading">
                 <div class="load">
                     <div class="loadMain">
@@ -192,10 +192,7 @@
         totle = (MM + 1) * gameTime * 10;
         d = 180 * (MM + 1);
         MM = "0" + MM;
-        // showTime();
         left_timer = setInterval("showTime()", 100);
-        // start1();
-        //start2();
         left_timer1 = setInterval("start1()", 100);
     }
 
@@ -214,6 +211,7 @@
                 }
             }));
             $("#loading").hide();
+            $("#wait_question").show();
             connected=true;
         };
 
@@ -260,7 +258,6 @@
                     $("#questions").show();
                     countDown();
                     start1();
-                    $("#questions").hide();
                     // var left_time = 10;
                     // left_timer = setInterval(function () {
                     //     console.log(left_time);
