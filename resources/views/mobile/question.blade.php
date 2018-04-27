@@ -112,6 +112,7 @@
     var connected=false;
     var game_status = 0;
     var left_timer;
+    var left_timer1;
     var user_id = "88";
     var active_id = "1";
     {{--var user_id = "{{$user->id}}";--}}
@@ -133,8 +134,8 @@
     var showTime = function(){
         totle = totle - 1;
         if (totle == 0) {
-            clearInterval(s);
-            clearInterval(t1);
+            clearInterval(left_timer);
+            clearInterval(left_timer1);
             $(".pie2").css("-o-transform", "rotate(" + d + "deg)");
             $(".pie2").css("-moz-transform", "rotate(" + d + "deg)");
             $(".pie2").css("-webkit-transform", "rotate(" + d + "deg)");
@@ -192,10 +193,10 @@
         d = 180 * (MM + 1);
         MM = "0" + MM;
         // showTime();
-        s = setInterval("showTime()", 100);
+        left_timer = setInterval("showTime()", 100);
         // start1();
         //start2();
-        t1 = setInterval("start1()", 100);
+        left_timer1 = setInterval("start1()", 100);
     }
 
 
@@ -232,14 +233,16 @@
                 if (returnData.type === 3) {
                     //回答正确
                     clearInterval(left_timer);
+                    clearInterval(left_timer1);
                     $('.boxShadow1').fadeIn(300).delay(3000).fadeOut(300);
                     $("#wait_question").show();
                     $("#questions").hide();
-                    $("#wait_title").html("请耐心等待下一题，请勿刷新或离开页面，否则自动弃权");
+                    // $("#wait_title").html("请耐心等待下一题，请勿刷新或离开页面，否则自动弃权");
                     //显示等待下一题通知 告知勿刷新
                 } else if (returnData.type === 4) {
                     //回答错误
                     clearInterval(left_timer);
+                    clearInterval(left_timer1);
                     $('.boxShadow2').fadeIn(300);
 
                 } else if (returnData.type === 2) {
@@ -275,9 +278,10 @@
                 } else if (returnData.type === 666) {
                     //闯关成功
                     clearInterval(left_timer);
+                    clearInterval(left_timer1);
                     game_status = 1;
                     // alert("恭喜你，闯关成功");
-                    $('.boxShadow2').fadeIn(300).delay(3000).fadeOut(300);
+                    $('.boxShadow4').fadeIn(300).delay(3000).fadeOut(300);
                 }
 
             }
