@@ -23,7 +23,7 @@
                         <div class="pie pie1" style="transform: rotate(156.6deg);"></div>
                     </div>
                     <div class="hold">
-                        <div class="pie pie2"></div>
+                        <div class="pie pie2" style="background-color: rgb(33, 181, 242);"></div>
                     </div>
                     <div class="bg"></div>
                     <div class="quesCir1 time" id="left_seccond"></div>
@@ -111,22 +111,19 @@
     var wsServer = 'ws://my.witdawn.com:9501/';
     var connected = false;
     var game_status = 0;
-    var user_id = "88";
-    var active_id = "1";
-            {{--var user_id = "{{$user->id}}";--}}
-            {{--var active_id = "{{$active->id}}";--}}
+    var user_id = "{{$user->id}}";
+    var active_id = "{{$active->id}}";
     var question_id = 0;
 
     var i = 0;
     var count = 0;
-    var SS = 10;  // 秒 90s
+    var SS = 15;  // 秒 90s
     var MS = 0;
     var totle = 600;
     var d = 180;
     var left_timer;
     var left_timer1;
-
-    var gameTime = 10;
+    var gameTime = 15;
 
 
     var websocket = new WebSocket(wsServer);
@@ -166,15 +163,15 @@
         };
 
         function start1() {
-            i = i + 360 / ((gameTime) * 10);  //旋转的角度  90s 为 0.4  60s为0.6
             count = count + 1;
-            if (count <= (gameTime / 2 * 10)) {  // 一半的角度  90s 为 450
+            i = i + 360 / ((gameTime) * 10);
+            if (count <= (gameTime / 2 * 10)) {
                 $(".pie1").css("backgroundColor", "#21B5F2");
                 $(".pie1").css("-o-transform", "rotate(" + i + "deg)");
                 $(".pie1").css("-moz-transform", "rotate(" + i + "deg)");
                 $(".pie1").css("-webkit-transform", "rotate(" + i + "deg)");
             } else {
-                $(".pie2").css("backgroundColor", "#21B5F2");
+                $(".pie2").css("backgroundColor", "#fff");
                 $(".pie2").css("-o-transform", "rotate(" + i + "deg)");
                 $(".pie2").css("-moz-transform", "rotate(" + i + "deg)");
                 $(".pie2").css("-webkit-transform", "rotate(" + i + "deg)");
