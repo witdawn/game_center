@@ -176,6 +176,8 @@ ul,li{
 	z-index:1;
 }
 .bg{
+	position: absolute;
+	z-index: 9998;
 	width:80px;
 	height:80px;
 	border-radius:50%;
@@ -330,24 +332,33 @@ ul,li{
 	width:75%;
 	margin:50px auto;
 	height: 400px;
-	background:#E21954;
-	border:1px solid #fff100;
+	background:#E1041B;
+	border:1px solid #fff;
+	box-shadow: 0 2px 12px 0 #fff;
 	border-radius: 30px;
 	text-align: center;
 	position: relative;
 }
 .loading .load{
-	padding:60px;
+	/*padding:60px;*/
 	box-sizing:border-box;
 }
+.loading .loadMain{
+	display: inline-block;
+	position: absolute;
+	left:0;
+	right:0;
+	top:25%;
+}
 .loading a{
-	display: block;
-	width:100%;
-	margin: 0 auto;
+	font-size: 26px;
+	margin:0;
+	color:#f5f5f5;
 }
 .loading p{
-	font-size: 30px;
-	color:#fff100;
+	font-size: 26px;
+	margin:0;
+	color:#f5f5f5;
 }
 /*加载动画*/
 .loading1 {

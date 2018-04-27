@@ -20,7 +20,7 @@
             <div class="quesCir">
                 <div class="game_time">
                     <div class="hold">
-                    <div class="pie pie1"></div>
+                    <div class="pie pie1" style="transform: rotate(156.6deg);"></div>
                     </div>
                     <div class="hold">
                     <div class="pie pie2"></div>
