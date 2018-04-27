@@ -25,8 +25,9 @@
                     <div class="hold">
                         <div class="pie pie2" style="background-color: rgb(33, 181, 242);"></div>
                     </div>
-                    <div class="bg"></div>
-                    <a class="quesCir1 time" id="left_seccond"></a>
+                    <div class="bg">
+                        <a class="quesCir1" id="left_seccond"></a>
+                    </div>
                 </div>
             </div>
             <div class="quesCont">
