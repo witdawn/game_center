@@ -37,6 +37,13 @@
 <script src="../screen/js/screen.js"></script>
 <script type="text/javascript" src="../screen/js/jquery.qrcode.min.js"></script>
 <script>
+    var h = $(window).height();
+    var h2 = $('.actIndex').height();
+    if(h2<h){
+        $('.actIndex').css({position:'fixed',width:'100%',height:'100%',overflow:'hidden'});
+    }else{
+        $('.actIndex').removeAttr('width').css({position:'relative',height:'auto',overflow:'hidden'})
+    }
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
     var question_round = "{{$active->question_round}}";
