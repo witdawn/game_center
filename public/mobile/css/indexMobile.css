@@ -200,7 +200,7 @@ ul,li{
 	line-height: 60px;
 	/*margin:0 auto;*/
 }
-.quesMain .quesCir .quesCir1{
+.time{
 	position: absolute;
 	left:25%;
 	top:25%;
@@ -214,12 +214,12 @@ ul,li{
 	line-height: 60px;
 	color:#000;
 }
-.quesMain .quesCir .quesCir1 .time1{
+.time .time1{
 	width:50px;
 	height:60px;
 	position: relative;
 }
-.quesMain .quesCir .quesCir1 .time1 a{
+.time .time1 a{
 	display: inline-block;
 	position: absolute;
 	left:0;
@@ -229,6 +229,12 @@ ul,li{
 	margin:auto;
 	z-index: 9999;
 	font-size: 18px;
+}
+.quesMain .quesCir .quesCir1{
+	/*text-align: center;*/
+	/*line-height: 54px;*/
+	/*font-size:20px;*/
+	/*font-weight: bold;*/
 }
 .quesCont{
 	font-size:16px;
