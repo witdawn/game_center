@@ -10,7 +10,7 @@
 		<div class="acHead">
 			<a href=""><img src="imgs/indexPC41.png" alt=""></a>
 			<div class="finalPeople">
-				<a>通关人数：{{count($winners)}}人</a>
+				<a style="color:#f6ce40;border:1px solid #f6ce40;">通关人数：{{count($winners)}}人</a>
 			</div>
 		</div>
 		<div class="acPeople">

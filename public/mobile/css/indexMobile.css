@@ -1,5 +1,6 @@
 body{
 	margin:0;
+	font-family: simhei;
 }
 p,h1,h2,,h3,h4,h5,h6{
 	margin:0;
@@ -303,7 +304,7 @@ ul,li{
 	position: relative;
 }
 .boxBoom h1{
-	font-size: 22px;
+	font-size: 18px;
 	margin:10px;
 }
 .boxBomb img{

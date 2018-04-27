@@ -7,9 +7,6 @@
 </head>
 <body>
 <div class="actIndex">
-        <div class="indexPC1">
-            <img src="./imgs/indexPC1.png" alt="">
-        </div>
         <div class="indexPC2">
             <div class="ip">
                 <div class="acMain acl">

@@ -1,5 +1,6 @@
 body{
 	margin:0;
+	font-family: simhei;
 }
 p,h1,h2,,h3,h4,h5,h6{
 	margin:0;
@@ -87,11 +88,11 @@ ul,li{
 .beginAnswer{
 	color:#fff;
 	font-size:28px;
-	background: linear-gradient(to right,red,#F2850E);
+    background: linear-gradient(to right,red, #920600,red);
 	box-shadow: 0 2px 20px 0 #000;
 	border:2px solid #fff;
 	padding:10px 0px;
-	width:180px;
+	width:240px;
 	border-radius: 80px;
 	margin-top:50px;
 	display: inline-block;
@@ -100,7 +101,7 @@ ul,li{
 /*光荣榜*/
 .acHead{
 	width:75%;
-	margin:20px auto;
+	margin:40px auto;
 	text-align: center;
 	position: relative;
 }
@@ -112,8 +113,8 @@ ul,li{
 }
 .acHead .finalPeople a{
 	font-size: 24px;
-	color:#f6ce40;
-	border:1px solid #f6ce40;
+	color:#fff;
+	border:1px solid #fff;
 	width:220px;
 	height:36px;
 	line-height: 36px;
@@ -169,8 +170,10 @@ ul,li{
 	color:#fff;
 	margin:0px 0 30px 0;
 }
-.preMain span{
-	font-size: 45px;
+.preMain a{
+    border: 1px solid #fff;
+    border-radius: 30px;
+    padding: 5px 30px;
 }
 .quesMain1{
 	width:75%;
@@ -183,7 +186,7 @@ ul,li{
 }
 .quesMain{
 	width:75%;
-	margin:0 auto 30px auto;
+	margin:50px auto;
 	/*height:500px;*/
 	background:#fff;
 	padding:30px 50px;
@@ -217,15 +220,15 @@ ul,li{
     box-shadow: 0 2px 12px 0 #fff;
 }
 .quesItems {
-    display: grid;
     font-size: 18px;
     font-weight: bold;
-    margin-top:30px;
-    height:36px;
+    margin: 30px 0;
+    height: 36px;
     line-height: 36px;
-    grid-gap: 10px 30px;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    /*grid-template-rows: repeat(2, 150px);*/
+}
+.quesItems .options{
+	width: 50%;
+	float: left;
 }
 .quesRight{
 	background: green;

@@ -9,7 +9,9 @@
 <div class="actIndex">
     <div class="acHead">
         <p class="preMain">
-            目前人数：<span id="left_number">0</span>人
+            <a>
+                目前人数：<span id="left_number">0</span>人
+            </a>
         </p>
         <div class="finalPeople">
             <a id="round_number" class="turn">第{{$active->question_round}}轮</a>
@@ -19,7 +21,7 @@
         {{--<img src="./imgs/codePC.png" alt="">--}}
         <div id="ew_code">
         </div>
-        <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer" id="begin_game">开始答题</a>
+        <a style="display:block;margin:50px auto;cursor:pointer;" class="beginAnswer" id="begin_game">开始答题</a>
     </div>
     <div class="quesMain clearfix" style="display: none">
         <p class='qmturn' id="process" style="display: none"></p>
