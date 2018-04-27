@@ -65,7 +65,7 @@ ul,li{
 	/*text-align: right;*/
 }
 .selectNum{
-    width: 100%;
+    width: 180px;
     font-size: 16px;
     padding: 0 10px;
     box-sizing: border-box;
@@ -212,6 +212,7 @@ ul,li{
 #ew_code{
 	width: 368px;
     height: 368px;
+    margin:0 auto;
     border: 2px solid #fff;
     box-shadow: 0 2px 12px 0 #fff;
 }

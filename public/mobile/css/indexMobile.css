@@ -180,11 +180,11 @@ ul,li{
 	height:80px;
 	border-radius:50%;
 	position:absolute;
-	background-color:#d13c36;
+	background-color:#fff;
 }
 .time{
 	position: absolute;
-	left:0;
+	left:80%;
 	right:0;
 	top:0;
 	bottom: 0;
