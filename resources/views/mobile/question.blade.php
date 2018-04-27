@@ -115,10 +115,8 @@
     var wsServer = 'ws://my.witdawn.com:9501/';
     var connected = false;
     var game_status = 0;
-    var user_id = "{{rand(100,200)}}";
-    var active_id = "2";
-    {{--var user_id = "{{$user->id}}";--}}
-    {{--var active_id = "{{$active->id}}";--}}
+    var user_id = "{{$user->id}}";
+    var active_id = "{{$active->id}}";
     var question_id = 0;
 
     var i = 0;

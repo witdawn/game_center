@@ -2,17 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
-use App\Models\User;
-
 class IndexController extends Controller
 {
 
     public function test()
     {
-        $active = Activity::orderBy('id','desc')->first();
-        $user = User::orderBy('id','desc')->first();
-        return view('mobile.question', ['user' => $user, 'active' => $active]);
+//        return view('mobile.question');
     }
 
     public function index()
