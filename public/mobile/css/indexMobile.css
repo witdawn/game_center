@@ -215,7 +215,7 @@ ul,li{
 	color:#000;
 }
 .time .time1{
-	width:56px;
+	width:50px;
 	height:60px;
 	position: relative;
 }
@@ -228,11 +228,12 @@ ul,li{
 	bottom: 0;
 	margin:auto;
 	z-index: 9999;
+	font-size: 18px;
 }
 .quesMain .quesCir .quesCir1{
 	/*text-align: center;*/
 	/*line-height: 54px;*/
-	font-size:20px;
+	/*font-size:20px;*/
 	/*font-weight: bold;*/
 }
 .quesCont{
