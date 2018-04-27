@@ -270,7 +270,8 @@
                     clearInterval(left_timer1);
                     game_status = 1;
                     // alert("恭喜你，闯关成功");
-                    $('.boxShadow4').fadeIn(300).delay(3000).fadeOut(300);
+                    $("#questions").hide();
+                    $('.boxShadow4').fadeIn(300)
                 }
 
             }
