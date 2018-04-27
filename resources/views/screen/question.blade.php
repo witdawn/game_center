@@ -32,33 +32,10 @@
             <a id="next_question" style="cursor:pointer;">下一题</a>
         </div>
     </div>
-</div> 
+</div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="../screen/js/jquery.qrcode.min.js"></script>
 <script>
-    var h = $(window).height();
-    var h2 = $('.actIndex').height();
-    function div_full(){
-      var h = $(window).height();//计算屏幕的宽度
-      $('.actIndex').height(h);//设置div的宽度等于屏幕的宽度
-    }
-   $(document).ready(function(){
-        if(h2<h){
-          div_full();//页面加载时全屏
-          $(window).bind('resize', function (){
-              div_full();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
-          });
-        }else{
-            $('.actIndex').height();
-        }
-    });
-
-    
-    // if(h2<h){
-    //     $('.actIndex').css({position:'fixed',width:'100%',height:'100%',overflow:'hidden'});
-    // }else{
-    //     $('.actIndex').removeAttr('width').css({position:'relative',height:'auto',overflow:'hidden'})
-    // }
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
     var question_round = "{{$active->question_round}}";
@@ -132,9 +109,23 @@
             }));
         }
 
+
+        var h = $(window).height();
+        var h2 = $('.actIndex').height();
+        if(h2<h){
+            div_full();//页面加载时全屏
+            $(window).bind('resize', function (){
+                div_full();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
+            });
+        }
+        function div_full(){
+            $('.actIndex').height(h);//设置div的宽度等于屏幕的宽度
+        }
+
         $('.beginAnswer').click(function () {
             $('.quesMain1').hide();
             $('.quesMain').show();
+            div_full();
             get_question();
         })
 
