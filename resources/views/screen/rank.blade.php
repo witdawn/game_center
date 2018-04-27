@@ -15,7 +15,7 @@
 		</div>
 		<div class="acPeople">
 			@foreach($winners as $winner)
-				<div class="acp" style="width: 167px;height: 196px">
+				<div class="acp">
 					<a href=""><img src="{{$winner->headimg}}" alt="" ></a>
 					<p>{{$winner->nickname}}</p>
 				</div>

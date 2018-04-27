@@ -139,10 +139,15 @@ ul,li{
 .acPeople {
 	width:75%;
 	margin:0 auto;
-    display: grid;
+    /*display: grid;
     grid-gap: 10px 30px;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));*/
     /*grid-template-rows: repeat(2, 150px);*/
+}
+.acPeople .acp{
+	float: left;
+	width: 167px;
+	height: 196px;
 }
 .acPeople .acp a{
 	width:100%;
