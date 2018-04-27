@@ -10,8 +10,8 @@ class IndexController extends Controller
 
     public function test()
     {
-        $active = Activity::first();
-        $user = User::first();
+        $active = Activity::orderBy('id','desc')->first();
+        $user = User::orderBy('id','desc')->first();
         return view('mobile.question', ['user' => $user, 'active' => $active]);
     }
 
