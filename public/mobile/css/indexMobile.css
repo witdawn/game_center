@@ -129,8 +129,11 @@ ul,li{
 }
 .quesMain .quesCir{
 	position: absolute;
-	left:40%;
+	left:0;
+	right:0;
 	top:-15%;
+	bottom: 0;
+	margin:auto;
 	width:80px;
 	height:80px;
 	border-radius: 50%;
