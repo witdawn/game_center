@@ -119,23 +119,24 @@
 
     var i = 0;
     var count = 0;
-    var SS = 15;  // 秒 90s
+    var SS = 10;  // 秒 90s
     var MS = 0;
     var totle = 600;
     var d = 180;
     var left_timer;
     var left_timer1;
 
-    var gameTime = 15;
+    var gameTime = 10;
 
 
     var websocket = new WebSocket(wsServer);
 
     window.onload = function () {
 
-        var showTime = function () {
+        function showTime() {
             totle = totle - 1;
             if (totle === 0) {
+                console.log(totle);
                 clearInterval(left_timer);
                 clearInterval(left_timer1);
                 $(".pie2").css("-o-transform", "rotate(" + d + "deg)");
@@ -154,16 +155,17 @@
                 ;
                 if (MS == 0 && SS > 0) {
                     MS = 10;
-                    SS --;
+                    SS--;
                     if (SS < 10) {
                         SS = SS
-                    };
+                    }
+                    ;
                 }
             }
-            $(".time").html(SS + "s");
+            $(".time").html(SS);
         };
 
-        var start1 = function () {
+        function start1() {
             i = i + 360 / ((gameTime) * 10);  //旋转的角度  90s 为 0.4  60s为0.6
             count = count + 1;
             if (count <= (gameTime / 2 * 10)) {  // 一半的角度  90s 为 450
@@ -179,16 +181,21 @@
             }
         };
 
-        var countDown = function () {
+        function countDown() {
             i = 0;
             count = 0;
             SS = gameTime;
             MS = 0;
             totle = gameTime * 10;
             d = 180;
-            left_timer = setInterval(showTime(), 100);
+            left_timer = setInterval(function () {
+                showTime();
+            }, 100);
+
             start1();
-            left_timer1 = setInterval(start1(), 100);
+            left_timer1 = setInterval(function () {
+                start1();
+            }, 100);
         }
 
         websocket.onopen = function (evt) {
