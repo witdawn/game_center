@@ -38,15 +38,15 @@
 <script>
     var h = $(window).height();
     var h2 = $('.actIndex').height();
-    function div-full-screen(){
+    function div_full(){
       var h = $(window).height();//计算屏幕的宽度
       $('.actIndex').height(h);//设置div的宽度等于屏幕的宽度
     }
    $(document).ready(function(){
         if(h2<h){
-          div-full-screen();//页面加载时全屏
+          div_full();//页面加载时全屏
           $(window).bind('resize', function (){
-              div-full-screen();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
+              div_full();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
           });
         }else{
             $('.actIndex').height();
