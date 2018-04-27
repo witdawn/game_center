@@ -193,8 +193,12 @@ ul,li{
 	line-height: 60px;
 }
 .bg a{
+	position: absolute;
+	z-index:9999;
 	color:#000;
 	font-size:20px;
+	line-height: 60px;
+	/*margin:0 auto;*/
 }
 .time{
 	display: inline-block;
