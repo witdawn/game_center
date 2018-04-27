@@ -201,14 +201,18 @@ ul,li{
 	/*margin:0 auto;*/
 }
 .time{
-	display: inline-block;
-	/*width:90px;
-	height:90px;*/
 	position: absolute;
-	/*left:0;
-	top:0;*/
-	margin:0 auto;
+	left:25%;
+	top:25%;
+	margin:auto;
 	z-index: 9999;
+	width:60px;
+	height:60px;
+	border-radius:50%;
+	background-color:#fff;
+	text-align: center;
+	line-height: 60px;
+	color:#000;
 }
 .quesMain .quesCir .quesCir1{
 	/*text-align: center;*/
