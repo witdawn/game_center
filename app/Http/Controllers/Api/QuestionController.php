@@ -11,7 +11,7 @@ class QuestionController extends Controller
     //切换游戏进度
     public function change_round(Request $request)
     {
-        Activity::change_round($request->active->id, $request->round_num);
+        Activity::change_round($request->active->id);
         return rJson();
     }
 }

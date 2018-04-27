@@ -18,11 +18,11 @@
                 <dvi class="actMain acm" style="flex-grow: 2;">
                     <div class="acmd">
                         <a style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer rules">游戏规则</a>
-                        <select id="round_num" class="selectNum">
-                            <option value="1">第一轮</option>
-                            <option value="2">第二轮</option>
-                            <option value="3">第三轮</option>
-                        </select>
+                        {{--<select id="round_num" class="selectNum">--}}
+                            {{--<option value="1">第一轮</option>--}}
+                            {{--<option value="2">第二轮</option>--}}
+                            {{--<option value="3">第三轮</option>--}}
+                        {{--</select>--}}
                         <a id="start_game" style="display:block;margin:30px auto;cursor:pointer;" class="beginAnswer">开始答题</a>
                     </div>
                 </dvi>
@@ -61,7 +61,8 @@
         })
         $("#round_num").val({{$active->question_round}})
         $("#start_game").click(function () {
-            var round_num = $("#round_num").val();
+            // var round_num = $("#round_num").val();
+            var round_num =0;
             var url = "{{route('change_round')}}";
             $.ajax({
                 url: url,
