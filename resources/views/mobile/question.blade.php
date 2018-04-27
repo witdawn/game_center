@@ -18,7 +18,16 @@
         <!-- 答题详情 -->
         <div class="quesMain" style="display:none;" id="questions">
             <div class="quesCir">
-                <div class="quesCir1" id="left_seccond"></div>
+                <div class="game_time">
+                    <div class="hold">
+                    <div class="pie pie1"></div>
+                    </div>
+                    <div class="hold">
+                    <div class="pie pie2"></div>
+                    </div>
+                    <div class="bg"> </div>
+                    <div class="quesCir1 time" id="left_seccond"></div>
+                </div>
             </div>
             <div class="quesCont">
                 <p id="question"></p>
@@ -27,18 +36,29 @@
             </div>
         </div>
         <!-- 耐心等待题目开放 -->
-        <div class="waitLoad2" id="wait_question">
+<!--         <div class="waitLoad2" id="wait_question">
             <div class="loading">
                 <div class="load">
                     <a><img src="../mobile/imgs/bao1.png" alt=""></a>
                     <p id="wait_title">请耐心等待题目开放……</p>
                 </div>
             </div>
+        </div> -->
+        <!-- 等待下一题开发弹出层 -->
+        <div class="waitLoad1" id="wait_question" style="display:none;">
+            <div class="loading">
+                <div class="load">
+                    <div class="loadMain">
+                        <img style="width:30%;margin-bottom:20px;" src="../mobile/imgs/waitingIcon.png" alt="">
+                        <a>请耐心等待</a>
+                        <a>题目即将开放<a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="../mobile/js/mobile.js"></script>
 
 <!-- 答题正确弹框 -->
 <div class="boxShadow boxShadow1" style="display: none">
@@ -46,11 +66,12 @@
         <div class="boxBoom">
             <img src="../mobile/imgs/right.png" alt="">
             <h1>恭喜您，答对了！</h1>
-            <div class="invb-cha cha2" onclick="$('.boxShadow1').hide();">
+            <a class="nextAnswer">等待进入下一题…</a>
+            <!-- <div class="invb-cha cha2" onclick="$('.boxShadow1').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -59,13 +80,29 @@
     <div class="boxBomb">
         <div class="boxBoom">
             <img src="../mobile/imgs/error.png" alt="">
-            <h1>很遗憾，答错了~_~</h1>
-            <a href="" class="nextAnswer">点击结束游戏</a>
-            <div class="invb-cha cha3" onclick="$('.boxShadow2').hide();">
+            <h1>很遗憾，答错了</h1>
+            <a class="nextGame">期待下一次机会</a>
+            <!-- <div class="invb-cha cha3" onclick="$('.boxShadow2').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
                 </div>
-            </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- 闯关成功弹框 -->
+<div class="boxShadow boxShadow4">
+    <div class="boxBomb">
+        <div class="boxBoom">
+            <img src="./imgs/bao.png" alt="">
+            <h1 style="margin:30px 0;">恭喜你，闯关成功</h1>
+            <!-- <a href="" class="nextAnswer">点击结束游戏</a> -->
+            <!-- <a class="nextGame" style="border:none;box-shadow:transparent;">期待下一次机会</a> -->
+            <!-- <div class="invb-cha cha3" onclick="$('.accountBomb').hide();">
+                <div class="invCha">
+                    <em class="invc1"></em><em class="invc2"></em>
+                </div>
+            </div> -->
         </div>
     </div>
 </div>
@@ -110,7 +147,7 @@
                 if (returnData.type === 3) {
                     //回答正确
                     clearInterval(left_timer);
-                    $('.boxShadow1').show();
+                    $('.boxShadow1').fadeIn(300).delay(3000).fadeOut(300);
                     $("#wait_question").show();
                     $("#questions").hide();
                     $("#wait_title").html("请耐心等待下一题，请勿刷新或离开页面，否则自动弃权");
@@ -118,7 +155,7 @@
                 } else if (returnData.type === 4) {
                     //回答错误
                     clearInterval(left_timer);
-                    $('.boxShadow2').show();
+                    $('.boxShadow2').fadeIn(300).delay(3000).fadeOut(300);
 
                 } else if (returnData.type === 2) {
                     var options = returnData.options;
@@ -133,25 +170,108 @@
                     });
 
                     $("#questions").show();
-                    var left_time = 10;
-                    left_timer = setInterval(function () {
-                        console.log(left_time);
-                        if (left_time > 0) {
-                            $("#left_seccond").html(left_time);
-                            left_time--;
+                    i = 0;
+                    j = 0;
+                    count = 0;
+                    MM = 0;
+                    SS = 10;  // 秒 90s
+                    MS = 0;
+                    totle = (MM+1)*600;
+                    d = 180*(MM+1);
+                    MM = "0" + MM;
+                    var gameTime = 10;
+                    //count down
+                    var showTime = function(){
+                        totle = totle - 1;
+                        if (totle == 0) {
+                            clearInterval(s);
+                            clearInterval(t1);
+                            clearInterval(t2);
+                            $(".pie2").css("-o-transform", "rotate(" + d + "deg)");
+                            $(".pie2").css("-moz-transform", "rotate(" + d + "deg)");
+                            $(".pie2").css("-webkit-transform", "rotate(" + d + "deg)");
                         } else {
-                            sendAnswer(0);
-                            clearInterval(left_timer);
-                            $("#questions").hide();
+                            if (totle > 0 && MS > 0) {
+                                MS = MS - 1;
+                                if (MS < 10) {
+                                    MS =MS
+                                };
+                            };
+                            if (MS == 0 && SS > 0) {
+                                MS = 10;
+                                SS = SS - 1;
+                                if (SS < 10) {
+                                    SS =  SS
+                                };
+                            };
+                            if (SS == 0 && MM > 0) {
+                                SS = 60;
+                                MM = MM - 1;
+                                if (MM < 10) {
+                                    MM =  MM
+                                };
+                            };
+                        };
+                        $(".time").html(SS + "s");
+                    };
+
+                    var start1 = function(){
+                        //i = i + 0.6;
+                        i = i + 360/((gameTime)*10);  //旋转的角度  90s 为 0.4  60s为0.6
+                        console.log(i);
+                        count = count + 1;
+                        if(count <= (gameTime/2*10)){  // 一半的角度  90s 为 450
+                            $(".pie1").css("-o-transform","rotate(" + i + "deg)");
+                            $(".pie1").css("-moz-transform","rotate(" + i + "deg)");
+                            $(".pie1").css("-webkit-transform","rotate(" + i + "deg)");
+                            }else{
+                            $(".pie2").css("backgroundColor", "#d13c36");
+                            $(".pie2").css("-o-transform","rotate(" + i + "deg)");
+                            $(".pie2").css("-moz-transform","rotate(" + i + "deg)");
+                            $(".pie2").css("-webkit-transform","rotate(" + i + "deg)");
                         }
-                    }, 1000);
+                    };
+
+                    var countDown = function() {
+                        //80*80px 时间进度条
+                        i = 0;
+                        j = 0;
+                        count = 0;
+                        MM = 0;
+                        SS = gameTime;
+                        MS = 0;
+                        totle = (MM + 1) * gameTime * 10;
+                        d = 180 * (MM + 1);
+                        MM = "0" + MM;
+                        // showTime();
+                        s = setInterval("showTime()", 100);
+                        // start1();
+                        //start2();
+                        t1 = setInterval("start1()", 100);
+                    }
+                    countDown();
+                    start1();
+                    $("#questions").hide();
+                    // var left_time = 10;
+                    // left_timer = setInterval(function () {
+                    //     console.log(left_time);
+                    //     if (left_time > 0) {
+                    //         $("#left_seccond").html(left_time);
+                    //         left_time--;
+                    //     } else {
+                    //         sendAnswer(0);
+                    //         clearInterval(left_timer);
+                    //         $("#questions").hide();
+                    //     }
+                    // }, 1000);
                 } else if (returnData.type === 88) {
                     alert('本轮游戏已经开始，下一轮请抓好机会');
                 } else if (returnData.type === 666) {
                     //闯关成功
                     clearInterval(left_timer);
                     game_status = 1;
-                    alert("恭喜你，闯关成功");
+                    // alert("恭喜你，闯关成功");
+                    $('.boxShadow2').fadeIn(300).delay(3000).fadeOut(300);
                 }
 
             }

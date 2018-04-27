@@ -8,7 +8,7 @@
 <body>
 	<div class="actIndex">
 		<div class="acHead">
-			<a href=""><img src="imgs/indexPC4.png" alt=""></a>
+			<a href=""><img src="imgs/indexPC41.png" alt=""></a>
 			<div class="finalPeople">
 				<a>通关人数：{{count($winners)}}人</a>
 			</div>

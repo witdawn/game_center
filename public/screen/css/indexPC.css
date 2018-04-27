@@ -70,8 +70,10 @@ ul,li{
     padding: 0 10px;
     box-sizing: border-box;
     height: 40px;
-    background: #e21954;
-	border:2px solid #fff100;
+    /*background: #e21954;*/
+    background: linear-gradient(to right,red,#F2850E);
+	box-shadow: 0 2px 20px 0 #000;
+	border:2px solid #fff;
     outline: none;
     /*border: 2px solid red; */
     border-radius: 6px;
@@ -83,31 +85,46 @@ ul,li{
 	background: #fff;
 }
 .beginAnswer{
-	color:#fff100;
-	font-size:30px;
-	background: #e21954;
-	border:2px solid #fff100;
+	color:#fff;
+	font-size:28px;
+	background: linear-gradient(to right,red,#F2850E);
+	box-shadow: 0 2px 20px 0 #000;
+	border:2px solid #fff;
 	padding:10px 0px;
-	width:220px;
-	border-radius: 50px;
+	width:180px;
+	border-radius: 80px;
 	margin-top:50px;
 	display: inline-block;
 }
 
 /*光荣榜*/
 .acHead{
+	width:75%;
+	margin:20px auto;
 	text-align: center;
 	position: relative;
 }
 .acHead .finalPeople{
 	position: absolute;
-	right:15%;
+	right:0;
 	top:50%;
 	margin:auto;
 }
 .acHead .finalPeople a{
-	font-size: 26px;
-	color:#fff;
+	font-size: 24px;
+	color:#f6ce40;
+	border:1px solid #f6ce40;
+	width:220px;
+	height:36px;
+	line-height: 36px;
+	border-radius: 30px;
+	display: inline-block;
+	text-align: center;
+}
+.acHead .finalPeople a.turn{
+	width:100px;
+	height:36px;
+	line-height: 36px;
 }
 .acHead img{
 	width:30%;
@@ -124,6 +141,7 @@ ul,li{
 	width:100%;
 	display: block;
 }
+
 .acPeople .acp a img{
 	width:100%;
 }
@@ -142,8 +160,8 @@ ul,li{
 }
 .backIndex a{
 	font-size: 20px;
-	width:140px;
-	border-radius: 10px;
+	/*width:140px;*/
+	/*border-radius: 10px;*/
 }
 /*答题详情页*/
 .preMain{
@@ -171,6 +189,9 @@ ul,li{
 	padding:30px 50px;
 	box-sizing:border-box;
 	text-align: center;
+	border:1px solid #F8BD14;
+    box-shadow: 0 2px 12px 0 #F8BD14;
+    border-radius: 10px;
 }
 .quesMain .qmturn{
 	float: right;
@@ -188,6 +209,12 @@ ul,li{
 	margin:15px 0;
 	/*letter-spacing: 0.3em;*/
 }
+#ew_code{
+	width: 368px;
+    height: 368px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 12px 0 #fff;
+}
 .quesItems {
     display: grid;
     font-size: 18px;
@@ -200,7 +227,7 @@ ul,li{
     /*grid-template-rows: repeat(2, 150px);*/
 }
 .quesRight{
-	background: #e21954;
+	background: green;
 	color:#fff;
 	border-radius: 30px;
 	cursor: pointer;
@@ -217,7 +244,7 @@ ul,li{
 	line-height: 36px;
 	width:160px;
 	height:36px;
-	background: #F8BD14;
+	background: red;
 	color:#fff;
 	font-size:16px;
 }
@@ -244,6 +271,9 @@ ul,li{
 	padding:30px 0;
 	box-sizing:border-box;
 	text-align: center;
+	border:1px solid #F8BD14;
+    box-shadow: 0 2px 12px 0 #F8BD14;
+    border-radius: 10px;
 }
 .boxBoom{
 	position: relative;

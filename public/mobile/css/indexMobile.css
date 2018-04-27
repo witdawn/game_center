@@ -29,16 +29,14 @@ ul,li{
 	width:100%;
 	padding:20px;
 	box-sizing:border-box;
-	background: url(../imgs/back.png) 50% 50% no-repeat;
+	background: url(../imgs/back2.png) 50% 50% no-repeat;
 	background-size:100% 100%;
 	position: relative;
 }
-.actIndex2{
+.actIndex1{
+	position: fixed;
 	width:100%;
-	/*padding:20px;*/
-	box-sizing:border-box;
-	background: url(../imgs/back1.png) no-repeat;
-	background-size:cover;
+	height:100%;
 }
 .indexMobile1{
 	text-align: center;
@@ -52,6 +50,12 @@ ul,li{
 	width:60%;
 	margin:0 auto;
 }
+.acBtn{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+}
 .acStart{
 	text-align: center;
 	font-size: 20px;
@@ -60,13 +64,32 @@ ul,li{
 	width:160px;
 	height:36px;
 	line-height: 36px;
-	background: #E21954;
-	border:1px solid #F8BD14;
+	background: linear-gradient(to right,red,#F2850E);
+	box-shadow: 0 2px 20px 0 #000;
+	border:2px solid #fff;
+	/*background: #E21954;*/
+	/*border:1px solid #F8BD14;*/
 	border-radius: 30px;
-	color:#F8BD14;
+	color:#fff;
 	cursor: pointer;
 }
-
+.nextGame{
+	text-align: center;
+	font-size: 16px;
+	display: block;
+	margin:40px auto 10px auto;
+	width:160px;
+	height:36px;
+	line-height: 36px;
+	background: linear-gradient(to right,red,#F2850E);
+	/*box-shadow: 0 2px 20px 0 #000;*/
+	/*border:2px solid #fff;*/
+	/*background: #E21954;*/
+	/*border:1px solid #F8BD14;*/
+	border-radius: 30px;
+	color:#fff;
+	cursor: pointer;
+}
 /*光荣榜*/
 .finalPeople a{
 	font-size: 18px;
@@ -110,8 +133,54 @@ ul,li{
 	top:-8%;
 	width:80px;
 	height:80px;
-	background: url(../imgs/cir.png) no-repeat;
-	background-size:100%;
+	border-radius: 50%;
+    background: #fff;
+    border: 5px solid #fff;
+}
+.game_time{
+	width:40px;
+	height:40px;
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	text-align:center;
+}
+/* time scroll*/
+.pie{
+	width:80px;
+	height:80px;
+	background-color:blue;
+	border-radius:50%;
+	position:absolute;
+}
+.pie1{
+	clip:rect(0px,80px,80px,40px);
+	-o-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-webkit-transform:rotate(0deg);
+	background-color:#fff;
+}
+.pie2{
+	clip:rect(0px,40px,80px,0px);
+	-o-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-webkit-transform:rotate(0deg);
+	background-color:#fff;
+}
+.hold{
+	width:80px;
+	height:80px;
+	position:absolute;
+	z-index:1;
+}
+.bg{
+	width:80px;
+	height:80px;
+	border-radius:50%;
+	position:absolute;
+	background-color:#d13c36;
 }
 .quesMain .quesCir .quesCir1{
 	line-height: 74px;
@@ -134,7 +203,7 @@ ul,li{
     /*grid-template-rows: repeat(2, 150px);*/
 }
 .quesRight{
-	background: #e21954;
+	background: green;
 	color:#fff;
 	border-radius: 30px;
 }
@@ -177,6 +246,9 @@ ul,li{
 	padding:30px 0;
 	box-sizing:border-box;
 	text-align: center;
+	border:1px solid #F8BD14;
+    box-shadow: 0 2px 12px 0 #F8BD14;
+    border-radius: 10px;
 }
 .boxBoom{
 	position: relative;

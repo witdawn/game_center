@@ -12,7 +12,7 @@
             目前人数：<span id="left_number">0</span>人
         </p>
         <div class="finalPeople">
-            <a id="round_number">第{{$active->question_round}}轮</a>
+            <a id="round_number" class="turn">第{{$active->question_round}}轮</a>
         </div>
     </div>
     <div class="quesMain1 clearfix">
