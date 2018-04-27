@@ -170,6 +170,7 @@
         console.log(i);
         count = count + 1;
         if(count <= (gameTime/2*10)){  // 一半的角度  90s 为 450
+            $(".pie1").css("backgroundColor", "#21B5F2");
             $(".pie1").css("-o-transform","rotate(" + i + "deg)");
             $(".pie1").css("-moz-transform","rotate(" + i + "deg)");
             $(".pie1").css("-webkit-transform","rotate(" + i + "deg)");
