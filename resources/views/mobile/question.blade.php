@@ -26,9 +26,9 @@
                         <div class="pie pie2" style="background-color: rgb(33, 181, 242);"></div>
                     </div>
                     <div class="bg"></div>
-                    <div class="quesCir1 time">
+                    <div class="quesCir1">
                         <div class="time1">
-                            <a id="left_seccond" style="font-size:16px;font-weight:normal;"></a>
+                            <a class="time" id="left_seccond" style="font-size:18px;font-weight:normal;"></a>
                         </div>
                     </div>
                 </div>
