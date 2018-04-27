@@ -215,6 +215,8 @@ ul,li{
 	color:#000;
 }
 .time .time1{
+	width:60px;
+	height:60px;
 	position: relative;
 }
 .time .time1 a{
@@ -326,7 +328,7 @@ ul,li{
 .invb-cha {
     position: absolute;
     right: -6%;
-    top: -6%;
+    top: -2%;
     width: 40px;
     height: 40px;
     background: #e21954;
