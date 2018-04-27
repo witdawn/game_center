@@ -27,7 +27,9 @@
                     </div>
                     <div class="bg"></div>
                     <div class="quesCir1 time">
-                        <a id="left_seccond"></a>
+                        <div class="time1">
+                            <a id="left_seccond"></a>
+                        </div>
                     </div>
                 </div>
             </div>

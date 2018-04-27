@@ -214,6 +214,19 @@ ul,li{
 	line-height: 60px;
 	color:#000;
 }
+.time .time1{
+	position: relative;
+}
+.time .time1 a{
+	display: inline-block;
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom: 0;
+	margin:auto;
+	z-index: 9999;
+}
 .quesMain .quesCir .quesCir1{
 	/*text-align: center;*/
 	/*line-height: 54px;*/
@@ -313,7 +326,7 @@ ul,li{
 .invb-cha {
     position: absolute;
     right: -6%;
-    top: -10%;
+    top: -6%;
     width: 40px;
     height: 40px;
     background: #e21954;
