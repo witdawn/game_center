@@ -51,7 +51,7 @@
                     <div class="loadMain">
                         <img style="width:50%;margin-bottom:20px;" src="../mobile/imgs/gif.gif" alt="">
                         <a>请耐心等待</a>
-                        <a>题目即将开放<a>
+                        <a>题目即将开放</a>
                     </div>
                 </div>
             </div>
