@@ -28,11 +28,11 @@
         <div class="quesItems" id="options">
         </div>
         <div class="nextQues">
-            <a id="show_answer">公布答案</a>
-            <a id="next_question">下一题</a>
+            <a id="show_answer" style="cursor:pointer;">公布答案</a>
+            <a id="next_question" style="cursor:pointer;">下一题</a>
         </div>
     </div>
-</div>
+</div> 
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="../screen/js/screen.js"></script>
 <script type="text/javascript" src="../screen/js/jquery.qrcode.min.js"></script>
