@@ -121,11 +121,13 @@ ul,li{
 /*答题详情*/
 .quesMain{
 	width:80%;
+	text-align: center;
 	padding:30px 20px;
 	box-sizing:border-box;
 	margin:50px auto;
 	background: #fff;
 	position: relative;
+	text-align: center;
 }
 .quesMain .quesCir{
 	position: absolute;
@@ -190,8 +192,8 @@ ul,li{
 }
 .time{
 	display: inline-block;
-	width:60px;
-	height:60px;
+	/*width:90px;
+	height:90px;*/
 	position: absolute;
 	/*left:0;
 	top:0;*/
@@ -201,8 +203,8 @@ ul,li{
 .quesMain .quesCir .quesCir1{
 	text-align: center;
 	line-height: 54px;
-	font-size:24px;
-	font-weight: bold;
+	font-size:20px;
+	/*font-weight: bold;*/
 }
 .quesCont{
 	font-size:16px;
