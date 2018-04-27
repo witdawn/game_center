@@ -10,7 +10,7 @@
 <body>
 <div class="actIndex">
     <div class="indexMobile1">
-        <a href=""><img style="width:60%;margin:0 auto;" src="../mobile/imgs/logo.png" alt=""></a>
+        <a href=""><img style="width:60%;margin:0 auto;" src="../mobile/imgs/logo1.png" alt=""></a>
         <!-- 加载动画 -->
         <div id="loading" class="loading1">
             <span>正在接入,请稍候…</span>
@@ -91,10 +91,10 @@
     </div>
 </div>
 <!-- 闯关成功弹框 -->
-<div class="boxShadow boxShadow4">
+<div class="boxShadow boxShadow4" style="display: none">
     <div class="boxBomb">
         <div class="boxBoom">
-            <img src="./imgs/bao.png" alt="">
+            <img src="../mobile/imgs/bao.png" alt="">
             <h1 style="margin:30px 0;">恭喜你，闯关成功</h1>
             <!-- <a href="" class="nextAnswer">点击结束游戏</a> -->
             <!-- <a class="nextGame" style="border:none;box-shadow:transparent;">期待下一次机会</a> -->
@@ -155,7 +155,7 @@
                 } else if (returnData.type === 4) {
                     //回答错误
                     clearInterval(left_timer);
-                    $('.boxShadow2').fadeIn(300).delay(3000).fadeOut(300);
+                    $('.boxShadow2').fadeIn(300);
 
                 } else if (returnData.type === 2) {
                     var options = returnData.options;
