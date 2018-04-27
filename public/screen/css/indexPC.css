@@ -38,7 +38,7 @@ ul,li{
 }
 .indexPC2{
 	width: 75%;
-	margin:40px auto;
+	margin:0 auto;
 	position: relative;
 }
 .indexPC2 .ip{
@@ -47,6 +47,12 @@ ul,li{
 	justify-content:space-around;
 	align-items:center;
 	align-content:center;
+	    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 .indexPC2 .ip .acMain{
 	flex-grow:1;
