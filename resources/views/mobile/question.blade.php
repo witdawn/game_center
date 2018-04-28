@@ -69,9 +69,11 @@
 <div class="boxShadow boxShadow1" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
-            <img src="../mobile/imgs/right.png" alt="">
-            <h1>恭喜您，答对了！</h1>
-            <a class="nextAnswer">等待进入下一题…</a>
+            <div class="boxBm">
+                <img style="margin-bottom: 20px;" src="../mobile/imgs/right.png" alt="">
+                <h1 style="margin-bottom:20px;">恭喜您，答对了！</h1>
+                <a class="nextAnswer" style="width:220px;">等待进入下一题…</a>
+            </div>
             <!-- <div class="invb-cha cha2" onclick="$('.boxShadow1').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
@@ -84,9 +86,11 @@
 <div class="boxShadow boxShadow2" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
-            <img src="../mobile/imgs/error.png" alt="">
-            <h1>很遗憾，答错了</h1>
-            <a class="nextGame">期待下一次机会</a>
+            <div class="boxBm">
+                <img style="margin-bottom: 20px;" src="../mobile/imgs/error.png" alt="">
+                <h1 style="margin-bottom: 20px;">很遗憾，答错了</h1>
+                <a class="nextGame">期待下一次机会</a>
+            </div>
             <!-- <div class="invb-cha cha3" onclick="$('.boxShadow2').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>
@@ -99,8 +103,10 @@
 <div class="boxShadow boxShadow4" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
-            <img src="../mobile/imgs/bao.png" alt="">
-            <h1 style="margin:30px 0;">恭喜你，闯关成功</h1>
+            <div class="boxBm">
+                <img style="margin-bottom: 20px;" src="../mobile/imgs/bao.png" alt="">
+                <h1 style="margin:30px 0;">恭喜你，闯关成功</h1>
+            </div>
             <!-- <a href="" class="nextAnswer">点击结束游戏</a> -->
             <!-- <a class="nextGame" style="border:none;box-shadow:transparent;">期待下一次机会</a> -->
             <!-- <div class="invb-cha cha3" onclick="$('.accountBomb').hide();">
