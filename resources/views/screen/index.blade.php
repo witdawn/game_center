@@ -33,7 +33,7 @@
 <div class="boxShadow boxShadow3">
     <div class="boxBomb">
         <div class="boxBoom">
-            <h2 style="margin:0;">游戏规则</h2>
+            <h2 style="margin:0;color:#E10A21;">游戏规则</h2>
             <div class="invb-cha cha1" onclick="$('.accountBomb').hide();">
                 <div class="invCha">
                     <em class="invc1"></em><em class="invc2"></em>

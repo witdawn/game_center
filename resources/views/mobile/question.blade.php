@@ -66,7 +66,7 @@
 <script src="../mobile/js/mobile.js"></script>
 
 <!-- 答题正确弹框 -->
-<div class="boxShadow boxShadow1" style="display: none">
+<div class="boxShadow boxShadow1" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
             <img src="../mobile/imgs/right.png" alt="">
@@ -81,7 +81,7 @@
     </div>
 </div>
 <!-- 答题错误弹框 -->
-<div class="boxShadow boxShadow2" style="display: none">
+<div class="boxShadow boxShadow2" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
             <img src="../mobile/imgs/error.png" alt="">
@@ -96,7 +96,7 @@
     </div>
 </div>
 <!-- 闯关成功弹框 -->
-<div class="boxShadow boxShadow4" style="display: none">
+<div class="boxShadow boxShadow4" style="display: none;border:2px solid #E94E5E;box-shadow: 0 2px 20px 0 #000;">
     <div class="boxBomb">
         <div class="boxBoom">
             <img src="../mobile/imgs/bao.png" alt="">

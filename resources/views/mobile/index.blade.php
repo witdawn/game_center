@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<!-- 游戏规则弹框 -->
-	<div class="boxShadow boxShadow3" style="border:1px solid #EF420C;">
+	<div class="boxShadow boxShadow3" style="border:2px solid #EF420C;">
 		<div class="boxBomb">
 			<div class="boxBoom">
 				<h2 style="margin:0;color:#E1041B;">游戏规则</h2>

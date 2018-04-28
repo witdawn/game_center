@@ -82,7 +82,7 @@ ul,li{
 	width:160px;
 	height:36px;
 	line-height: 36px;
-	background: linear-gradient(to right,red,#F2850E);
+	background: linear-gradient(to right,red, #920600,red);
 	/*box-shadow: 0 2px 20px 0 #000;*/
 	/*border:2px solid #fff;*/
 	/*background: #E21954;*/
@@ -306,6 +306,7 @@ ul,li{
 }
 .boxBoom h1{
 	font-size: 18px;
+	font-weight: bold;
 	margin:10px;
 }
 .boxBomb img{
