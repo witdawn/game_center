@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../screen/css/indexPC.css">
 </head>
 <body>
-<div class="actIndex">
+<div class="actIndex" style="overflow: hidden">
     <div class="acHead">
         <p class="preMain">
             <a>
