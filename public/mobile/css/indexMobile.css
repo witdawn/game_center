@@ -309,7 +309,7 @@ ul,li{
 	position: absolute;
 	left:0;
 	right:0;
-	top:20%;
+	top:50%;
 }
 .boxBoom .boxBm h1{
 	font-size: 18px;
@@ -338,8 +338,8 @@ ul,li{
 }
 .invb-cha {
     position: absolute;
-    right: -6%;
-    top: -2%;
+   /* right: -6%;
+    top: -2%;*/
     width: 40px;
     height: 40px;
     background: #e21954;
@@ -349,7 +349,7 @@ ul,li{
 }
 .cha1{
 	right: -7%;
-    top: -100%;
+    top: -50%;
 }
 .invCha {
     position: relative;
