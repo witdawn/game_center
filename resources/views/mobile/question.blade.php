@@ -70,7 +70,7 @@
     <div class="boxBomb">
         <div class="boxBoom">
             <div class="boxBm">
-                <img style="margin-bottom: 20px;" src="../mobile/imgs/right.png" alt="">
+                <img style="margin-bottom: 20px;margin-top:40px;" src="../mobile/imgs/right.png" alt="">
                 <h1 style="margin-bottom:20px;">恭喜您，答对了！</h1>
                 <a class="nextAnswer" style="width:220px;">等待进入下一题…</a>
             </div>
@@ -87,7 +87,7 @@
     <div class="boxBomb">
         <div class="boxBoom">
             <div class="boxBm">
-                <img style="margin-bottom: 20px;" src="../mobile/imgs/error.png" alt="">
+                <img style="margin-bottom: 20px;margin-top:40px;" src="../mobile/imgs/error.png" alt="">
                 <h1 style="margin-bottom: 20px;">很遗憾，答错了</h1>
                 <a class="nextGame">期待下一次机会</a>
             </div>
@@ -104,7 +104,7 @@
     <div class="boxBomb">
         <div class="boxBoom">
             <div class="boxBm">
-                <img style="margin-bottom: 20px;" src="../mobile/imgs/bao.png" alt="">
+                <img style="margin-bottom: 20px;margin-top:40px;" src="../mobile/imgs/bao.png" alt="">
                 <h1 style="margin:30px 0;">恭喜你，闯关成功</h1>
             </div>
             <!-- <a href="" class="nextAnswer">点击结束游戏</a> -->
