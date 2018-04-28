@@ -22,7 +22,7 @@
 		<div class="boxBomb">
 			<div class="boxBoom">
 				<h2 style="margin:0;color:#E1041B;">游戏规则</h2>
-				<div class="invb-cha cha1" style="right:-7%;top:-60%;">
+				<div class="invb-cha cha1" style="right:-7%;top:-100%;">
 	                <div class="invCha">
 	                    <em class="invc1">
 						</em><em class="invc2">
