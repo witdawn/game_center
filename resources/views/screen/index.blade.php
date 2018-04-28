@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>一起来答题</title>
-    <link rel="stylesheet" href="../screen/css/indexPC.css?201804222309">
+    <link rel="stylesheet" href="../screen/css/indexPC.css?201804281156">
 </head>
 <body>
 <div class="actIndex">
         <div class="indexPC2">
             <div class="ip">
-                <div class="acMain acl">
+                <div class="acMain acl" style="margin-left:">
                     <img src="./imgs/indexPC21.png" alt="">
                 </div>
                 <dvi class="actMain acm" style="flex-grow: 6;">
