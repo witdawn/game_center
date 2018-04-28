@@ -53,7 +53,7 @@
             <div class="loading">
                 <div class="load">
                     <div class="loadMain">
-                        <img style="width:50%;margin-bottom:20px;" src="../mobile/imgs/gif.gif" alt="">
+                        <img style="width:50%;margin-bottom:20px;" src="../mobile/imgs/gif2.gif" alt="">
                         <a>请耐心等待</a>
                         <a>题目即将开放</a>
                     </div>
