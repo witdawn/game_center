@@ -120,6 +120,9 @@
                 div_full();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
             });
         }
+        setTimeout(function () {
+            div_full();
+        },100);
         function div_full(){
             $('.actIndex').height(h);//设置div的宽度等于屏幕的宽度
         }
