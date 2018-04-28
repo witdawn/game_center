@@ -71,8 +71,8 @@
         <div class="boxBoom">
             <div class="boxBm">
                 <img style="margin-bottom: 20px;margin-top:40px;" src="../mobile/imgs/right.png" alt="">
-                <h1 style="margin-bottom:20px;">恭喜您，答对了！</h1>
-                <a class="nextAnswer" style="width:220px;">等待进入下一题…</a>
+                <h1 style="margin-bottom:20px;color:#E4283B;">恭喜您，答对了！</h1>
+                <a class="nextAnswer1" style="width:220px;color:#E4283B;">等待进入下一题…</a>
             </div>
             <!-- <div class="invb-cha cha2" onclick="$('.boxShadow1').hide();">
                 <div class="invCha">

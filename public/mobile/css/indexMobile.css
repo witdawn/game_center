@@ -333,6 +333,20 @@ ul,li{
 	border:1px solid #e21954;
 	margin-top:60px;
 }
+.boxBomb .boxBm .nextAnswer1{
+	color:#E4283B;
+	font-size: 18px;
+	/*font-weight: bold;*/
+	display: inline-block;
+	width: 220px;
+	height: 36px;
+	line-height: 36px;
+	/*border-radius: 30px;*/
+	/*background: #e21954;*/
+	/*color:#fff;*/
+	/*border:1px solid #e21954;*/
+	margin-top:60px;
+}
 .boxShadow3{
 	display: none;
 }
