@@ -41,6 +41,7 @@
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
     var question_round = "{{$active->question_round}}";
+    var max_num=parseInt("{{$active->max_question_count}}");
     var answer = 0;
     var game_href='{{route("mobile_index",['a'=>$active->id,'m'=>'index'])}}';
     jQuery('#ew_code').qrcode(
@@ -84,12 +85,12 @@
                     answer = returnData.answer;
                     $("#question").text(title);
                     $("#options").html('');
-                    $("#process").text(question_num + "/12");
+                    $("#process").text(question_num + "/"+max_num);
                     $.each(options, function (i) {
                         $("#options").append("<div class='options'>" + options[i] + "</div>");
                     });
                     question_num = parseInt(returnData.display_order) + 1;
-                    if (question_num > 12) {
+                    if (question_num > max_num) {
                         $("#next_question").html('查看光荣榜');
                     }
                 }
@@ -135,7 +136,7 @@
         })
 
         $("#next_question").click(function () {
-            if (question_num > 12) {
+            if (question_num > max_num) {
                 window.location.href = "{{route('winners')}}";
             } else {
                 get_question();
