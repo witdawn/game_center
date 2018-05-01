@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <!-- import CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../css/element_ui_2.3.7_index.css">
 </head>
 <body>
+<h1 style="margin-left: 45%">
+    <span>第{{$round}}轮题目列表</span>
+</h1>
 <div id="app">
     <el-dialog
             title="提示"
@@ -46,104 +49,107 @@
     </el-dialog>
     <div style="width:80%;margin:10px auto;">
         <el-button @click="dialogVisible = true" type="primary">添加</el-button>
+        <el-button type="primary" onclick="clearall()" >清空</el-button>
+        <el-button type="primary"><a href="{{route('winner_list',['r'=>$round])}}">查看获胜名单</a></el-button>
     </div>
+
     <el-table
             :data="tableData"
             border
             style="width:80%;margin:0 auto;">
         <el-table-column
-                prop="id"
+                prop="display_order"
                 label="题号">
         </el-table-column>
         <el-table-column
-                prop="content"
+                prop="title"
                 label="题目内容">
         </el-table-column>
         <el-table-column
-                prop="right_key"
+                prop="answer"
                 label="正确答案">
-        </el-table-column>
-        <el-table-column
-                label="操作">
-            <template scope="scope">
-                <el-button type="primary">删除</el-button>
-            </template>
         </el-table-column>
     </el-table>
 </div>
 </body>
-<!-- import Vue before Element -->
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<!-- import JavaScript -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/element_ui_2.3.7_index.js"></script>
+<script src="../js/axios.min.js"></script>
 <script>
-    new Vue({
-        el: '#app',
-        data: function() {
-            return {
-                dialogVisible: false,
-                form: {
-                    name:'',
-                    item:'',
-                    ite:'',
-                    score:''
+    var url = '{{route("get_questions")}}';
+    var clear_all='{{route("delete_questions")}}';
+    var add_url='{{route("add_questions")}}';
+    var round = '{{$round}}'
 
-                },
-                tableData: [{
-                    id: '1',
-                    content: '1+1=？',
-                    right_key: '2'
-                }, {
-                    id: '2',
-                    content: '1+1=？',
-                    right_key: '2'
-                }, {
-                    id: '3',
-                    content: '1+1=？',
-                    right_key: '2'
-                }, {
-                    id: '4',
-                    content: '1+1=？',
-                    right_key: '2'
-                }]
-            }
-        },
-        methods:{
-            submitForm(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        axios({
-                            methods:'',
-                            url:'',
-                            params:this.form
-                        }).then(function(res){
-                            if(res.code == 200){
+    getQuestions();
 
+    function getQuestions() {
+        axios({
+            methods: 'get',
+            url: url,
+            params: {
+                qr: round
+            }
+        }).then(function (res) {
+            showData(res.data.data)
+        })
+    }
 
-                            }else{
-                                alert(res.msg)
-                            }
-                        })
-                    } else {
-                        console.log('error submit!!');
-                return false;
+    function clearall() {
+        axios({
+            methods: 'get',
+            url: clear_all,
+            params: {
+                qr: round
             }
-            });
+        }).then(function (res) {
+            alert('操作成功');
+            getQuestions();
+        })
+    }
+
+    function showData(data) {
+        new Vue({
+            el: '#app',
+            data: function () {
+                return {
+                    dialogVisible: false,
+                    form: {
+                        title: '',
+                        answer: '',
+                        display_order: ''
+                    },
+                    tableData: data
+                }
+            },
+        });
+    }
+
+    function addQuestion() {
+        axios({
+            methods: 'post',
+            url: add_url,
+            params: {
+                qr: round
             }
-        }
-    })
+        }).then(function (res) {
+            showData(res.data.data)
+        })
+    }
+
 </script>
 <style>
-    body{
-        margin:0;
-        padding:0;
+    body {
+        margin: 0;
+        padding: 0;
     }
-    .radio-group label{
-        width:100%;
-        margin:10px 0;
+
+    .radio-group label {
+        width: 100%;
+        margin: 10px 0;
     }
-    .el-radio+.el-radio {
+
+    .el-radio + .el-radio {
         margin-left: 0px;
     }
 </style>

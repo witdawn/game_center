@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\InitAccounts::class,
-        Commands\AddAccount::class
+        Commands\AddAccount::class,
+        Commands\AddQuestions::class
     ];
 
     /**

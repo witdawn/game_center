@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Http\Request;
+
 class IndexController extends Controller
 {
 
@@ -10,6 +13,7 @@ class IndexController extends Controller
 //        return view('mobile.question');
     }
 
+    //账户首页
     public function index()
     {
         $account = account_info();
@@ -18,19 +22,23 @@ class IndexController extends Controller
 //        return view('index.index');
     }
 
-    public function questions()
+    //问题管理
+    public function question_manager(Request $request)
     {
-        $account = account_info();
-        return view('index.ques', ['account' => $account]);
+        if (!$request->has('r'))
+            return error_page('无效的连接');
+        return view('index.questions', ['round' => $request->get('r')]);
+    }
+
+    //获奖名单
+    public function question_winners(Request $request)
+    {
+        if (!$request->has('r'))
+            return error_page('无效的连接');
+        return view('index.winners', ['round' => $request->get('r')]);
     }
 
 
-    public function activities()
-    {
-        $account = account_info();
-        $activities = $account->activities;
-        return view('index.activities', ['activities' => $activities]);
-    }
 
     public function login()
     {
