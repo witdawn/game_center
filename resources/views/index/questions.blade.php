@@ -129,9 +129,7 @@
         axios({
             methods: 'post',
             url: add_url,
-            params: {
-                qr: round
-            }
+            params: this.form
         }).then(function (res) {
             showData(res.data.data)
         })
