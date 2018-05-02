@@ -11,7 +11,7 @@ class Activity extends BaseModel
     public static function change_round($acitve_id)
     {
         $active = self::find($acitve_id);
-        if ($active->question_index == 12 && $active->question_round < 3) {
+        if ($active->question_index == $active->max_question_count && $active->question_round < $active->max_question_round) {
             $active->question_round++;
         } else {
             $active->question_round = 1;
