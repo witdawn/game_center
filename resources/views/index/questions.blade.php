@@ -57,7 +57,6 @@
     <div style="width:80%;margin:10px auto;">
         <el-button @click="showDialog" type="primary">添加</el-button>
         <el-button type="primary" @click="clearall">清空</el-button>
-        <el-button type="primary"><a href="{{route('winner_list',['r'=>$round])}}">查看获胜名单</a></el-button>
     </div>
 
     <el-table
