@@ -42,7 +42,7 @@
             methods: 'get',
             url: url,
             params: {
-                qr: round
+                round_number: round
             }
         }).then(function (res) {
             showData(res.data.data)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Question;
@@ -17,33 +18,55 @@ class QuestionController extends Controller
         return rJson();
     }
 
+    #添加/编辑问题
     public function addQuestion(Request $request)
     {
-        $account = account_info();
-        $activity = $account->activities()->first();
-        $round = $request->get('qr');
-        $question=new Question();
-        $question->active_id=$activity->id;
-        $question->round_number=$round;
-        $question->answer=$request->answer;
+        if ($request->has('id')) {
+            $question = Question::find($request->id);
+        } else {
+            $account = account_info();
+            $activity = $account->activities()->first();
+            $question = new Question();
+            $question->active_id = $activity->id;
+            $question->round_number = $request->round_number;
+        }
+        $question->title = '第' . $request->display_order . "题：" . $request->title;
+        $question->options = $request->options;
+        $question->answer = $request->answer;
+        $question->display_order = $request->display_order;
+        $question->score = $request->score;
         $question->save();
-        return rJson();
+        $questions = Question::where('active_id', $question->active_id)->where('round_number', $question->round_number)->get();
+        return rJson($questions);
+
     }
 
-    #获取问题
+
+    #获取问题列表
     public function getQuestions(Request $request)
     {
-        $round = $request->get('qr');
+        $round = $request->get('round_number');
         $account = account_info();
         $activity = $account->activities()->first();
         $questions = Question::where('active_id', $activity->id)->where('round_number', $round)->get();
         return rJson($questions);
     }
 
-    #清空问题
-    public function deleteQuestions(Request $request)
+    #删除问题并返回新列表
+    public function deleteQuestion(Request $request)
     {
-        $round = $request->get('qr');
+        $question = Question::find($request->id);
+        if (!$question)
+            throw new GeneralException('该条信息不存在');
+        $question->delete();
+        $questions = Question::where('active_id', $question->active_id)->where('round_number', $question->round_number)->get();
+        return rJson($questions);
+    }
+
+    #清空问题
+    public function cleanUpQuestions(Request $request)
+    {
+        $round = $request->get('round_number');
         $account = account_info();
         $activity = $account->activities()->first();
         Question::where('active_id', $activity->id)->where('round_number', $round)->delete();
@@ -53,7 +76,7 @@ class QuestionController extends Controller
     #获奖名单
     public function getWinners(Request $request)
     {
-        $round = $request->get('qr');
+        $round = $request->get('round_number');
         $account = account_info();
         $activity = $account->activities()->first();
         $active_id = $activity->id;

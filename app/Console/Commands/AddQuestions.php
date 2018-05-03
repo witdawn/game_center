@@ -322,26 +322,16 @@ class AddQuestions extends Command
                 'answer'  => '1'
             ],
         ];
-        $orders = [
-            0 => 'A',
-            1 => 'B',
-            2 => 'C',
-            3 => 'D',
-        ];
         for ($j = 1; $j < 4; $j++) {
             $display_order = 1;
             $questions = $questions_list[$j];
             foreach ($questions as $item) {
-                $options = [];
-                foreach ($item['options'] as $key => $option) {
-                    $options[] = $orders[$key] . ":" . $option;
-                }
                 $question = new Question();
                 $question->active_id = $active->id;
                 $question->round_number = $j;
                 $question->status = 1;
                 $question->title = '第' . $display_order . "题：" . $item['title'];
-                $question->options = serialize($options);
+                $question->options = $item['options'];
                 $question->answer = $item['answer'];
                 $question->score = 0;
                 $question->display_order = $display_order;

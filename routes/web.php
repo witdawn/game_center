@@ -29,7 +29,7 @@ Route::group(['middleware' => 'login_auth'], function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::get('/index', 'IndexController@index');
     Route::get('/activities', 'IndexController@activities');
-    Route::get('/questions', 'IndexController@question_manager');
+    Route::get('/questions', 'IndexController@question_manager')->name('questions_manager');
     Route::get('/winnners', 'IndexController@question_winners')->name('winner_list');
 });
 

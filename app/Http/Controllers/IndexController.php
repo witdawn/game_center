@@ -25,8 +25,11 @@ class IndexController extends Controller
     //问题管理
     public function question_manager(Request $request)
     {
-        if (!$request->has('r'))
-            return error_page('无效的连接');
+        if (!$request->has('r')) {
+            $account = account_info();
+            $activity = $account->activities()->first();
+            return view('index.questions_list', ['max_round' => $activity->max_question_round]);
+        }
         return view('index.questions', ['round' => $request->get('r')]);
     }
 
@@ -37,7 +40,6 @@ class IndexController extends Controller
             return error_page('无效的连接');
         return view('index.winners', ['round' => $request->get('r')]);
     }
-
 
 
     public function login()
