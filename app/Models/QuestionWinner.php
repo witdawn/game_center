@@ -8,6 +8,7 @@ class QuestionWinner extends BaseModel
         'headimg',
         'nickname',
         'openid',
+        'phone',
     ];
 
     public static function getWinners($active_id, $round_number)
@@ -27,6 +28,13 @@ class QuestionWinner extends BaseModel
         if(!$this->user)
             return '';
         return $this->user->nickname;
+    }
+
+    public function getPhoneAttribute()
+    {
+        if(!$this->user)
+            return '';
+        return $this->user->phone;
     }
 
     public function getOpenidAttribute()
