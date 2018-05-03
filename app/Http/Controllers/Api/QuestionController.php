@@ -83,4 +83,15 @@ class QuestionController extends Controller
         $winners = QuestionWinner::getWinners($active_id, $round);
         return rJson($winners);
     }
+
+    #清空获奖名单
+    public function cleanUpWinners(Request $request)
+    {
+        $round = $request->get('round_number');
+        $account = account_info();
+        $activity = $account->activities()->first();
+        $active_id = $activity->id;
+        QuestionWinner::where('active_id', $active_id)->where('round_number', $round)->delete();
+        return rJson();
+    }
 }

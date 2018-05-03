@@ -12,6 +12,7 @@
     </h1>
     <div style="width:80%;margin:10px auto;">
         <el-button type="primary" onclick="javascript :history.back(-1)">返回</el-button>
+        <el-button type="primary" onclick="cleanup({{$round}})">清空</el-button>
     </div>
     <el-table
             :data="tableData"
@@ -46,6 +47,18 @@
             }
         }).then(function (res) {
             showData(res.data.data)
+        })
+    }
+
+    function cleanup(round) {
+        axios({
+            methods: 'get',
+            url: "{{route('cleanup_winners')}}",
+            params: {
+                round_number: round
+            }
+        }).then(function (res) {
+            window.location.reload();
         })
     }
 

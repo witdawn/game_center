@@ -16,6 +16,7 @@ Route::group(['middleware' => 'login_auth'], function () {
     Route::get('/get_questions', 'Api\QuestionController@getQuestions')->name('get_questions');
     Route::get('/cleanup_questions', 'Api\QuestionController@cleanUpQuestions')->name('cleanup_questions');
     Route::get('/get_winners', 'Api\QuestionController@getWinners')->name('get_winners');
+    Route::get('/cleanup_winners', 'Api\QuestionController@cleanUpWinners')->name('cleanup_winners');
 });
 
 
