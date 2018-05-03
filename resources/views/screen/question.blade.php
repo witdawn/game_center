@@ -41,14 +41,14 @@
     var active_id = "{{$active->id}}";
     var question_num = "{{$active->question_index}}";
     var question_round = "{{$active->question_round}}";
-    var max_num=parseInt("{{$active->max_question_count}}");
+    var max_num = parseInt("{{$active->max_question_count}}");
     var answer = 0;
-    var game_href='{{route("mobile_index",['a'=>$active->id,'m'=>'index'])}}';
+    var game_href = '{{route("mobile_index",['a'=>$active->id,'m'=>'index'])}}';
     jQuery('#ew_code').qrcode(
         {
-            width : 368,
-            height : 368,
-            text : game_href
+            width: 368,
+            height: 368,
+            text: game_href
         });
 
     $("#round_number").html("第" + question_round + "轮");
@@ -85,7 +85,7 @@
                     answer = returnData.answer;
                     $("#question").text(title);
                     $("#options").html('');
-                    $("#process").text(question_num + "/"+max_num);
+                    $("#process").text(question_num + "/" + max_num);
                     $.each(options, function (i) {
                         $("#options").append("<div class='options'>" + options[i] + "</div>");
                     });
@@ -115,25 +115,28 @@
 
         var h = $(window).height();
         var h2 = $('.actIndex').height();
-        if(h2<h){
+        if (h2 < h) {
             div_full();//页面加载时全屏
-            $(window).bind('resize', function (){
+            $(window).bind('resize', function () {
                 div_full();//最大化，还原窗口大小时DIV尺寸跟着变化，不过最好在CSS里给这个DIV加个min-width等于html,body的最小宽度。
             });
         }
         setTimeout(function () {
             div_full();
-        },100);
-        function div_full(){
+        }, 100);
+
+        function div_full() {
             $('.actIndex').height(h);//设置div的宽度等于屏幕的宽度
         }
 
+        var first = true;
         $('.beginAnswer').click(function () {
-            if(question_num===1){
+            if (first) {
                 $('.quesMain1').hide();
                 $('.quesMain').show();
                 div_full();
                 get_question();
+                first = false;
             }
         })
 
@@ -174,6 +177,7 @@
                 }
             }
         }
+
         document.onkeydown = keydown;
     };
 </script>
