@@ -147,7 +147,32 @@
             if (answer > 0) {
                 $(".options").eq(answer - 1).addClass('quesRight');
             }
-        })
+        });
+
+        function keydown(e) {
+            var e = e || event;
+            var currKey = e.keyCode || e.which || e.charCode;
+            if ((currKey > 7 && currKey < 14) || (currKey > 31 && currKey < 47)) {
+                switch (currKey) {
+                    case 37:        //左 公布答案
+                        $("#show_answer").click();
+                        break;
+                    case 38:        //上 开始答题
+                        $('.beginAnswer').click();
+                        break;
+                    case 39:        //右 下一题
+                        $("#next_question").click();
+                        break;
+                    case 40:        //下  开始答题
+                        $('.beginAnswer').click();
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+        }
+        document.onkeydown = keydown;
     };
 </script>
 </body>
