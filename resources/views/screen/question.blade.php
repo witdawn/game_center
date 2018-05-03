@@ -129,10 +129,12 @@
         }
 
         $('.beginAnswer').click(function () {
-            $('.quesMain1').hide();
-            $('.quesMain').show();
-            div_full();
-            get_question();
+            if(question_num===1){
+                $('.quesMain1').hide();
+                $('.quesMain').show();
+                div_full();
+                get_question();
+            }
         })
 
         $("#next_question").click(function () {
