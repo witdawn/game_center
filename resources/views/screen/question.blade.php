@@ -141,10 +141,12 @@
         })
 
         $("#next_question").click(function () {
-            if (question_num > max_num) {
-                window.location.href = "{{route('winners')}}";
-            } else {
-                get_question();
+            if(!first){
+                if (question_num > max_num) {
+                    window.location.href = "{{route('winners')}}";
+                } else {
+                    get_question();
+                }
             }
         });
 
