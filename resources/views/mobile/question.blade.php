@@ -5,7 +5,7 @@
     <title>答题赢大奖</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <link rel="stylesheet" href="../mobile/css/indexMobile.css?201804281103">
+    <link rel="stylesheet" href="../mobile/css/indexMobile.css?201805040958">
 </head>
 <body>
 <div class="actIndex">
