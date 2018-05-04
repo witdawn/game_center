@@ -348,6 +348,14 @@ ul,li{
 	/*border:1px solid #e21954;*/
 	margin-top:60px;
 }
+.boxBomb .gameRules{
+    padding: 0px 30px;
+    box-sizing: border-box;
+    text-align: left;
+}
+.boxBomb .gameRules p{
+	font-size: 14px;
+}
 .boxShadow3{
 	display: none;
 }

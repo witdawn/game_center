@@ -21,15 +21,15 @@
 	<div class="boxShadow boxShadow3">
 		<div class="boxBomb">
 			<div class="boxBoom">
-				<h2 style="margin:0;color:#E1041B;">游戏规则</h2>
-				<div class="invb-cha cha1" style="right:-6%;top:-85%;">
+				<h2 style="margin:0;color:#E1041B;font-size:22px;">游戏规则</h2>
+				<div class="invb-cha cha1" style="top:-15%;">
 	                <div class="invCha">
 	                    <em class="invc1">
 						</em><em class="invc2">
 						</em>
 	                </div>
 	            </div>
-				<div style="padding:20px 40px;box-sizing: border-box;text-align: left;">
+				<div class="gameRules">
 	                <p>参与须知</p>
 	                <p>1.郑太大乐透为现场实时网络直播答题。</p>
 	                <p>2.每轮10题，每题限时15秒。</p>
