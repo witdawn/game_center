@@ -10,7 +10,7 @@ class IndexController extends Controller
 
     public function test()
     {
-//        return view('mobile.question');
+        return view('mobile.index');
     }
 
     //账户首页
