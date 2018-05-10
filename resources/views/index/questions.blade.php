@@ -57,6 +57,10 @@
     <div style="width:80%;margin:10px auto;">
         <el-button @click="showDialog" type="primary">添加</el-button>
         <el-button type="primary" @click="clearall">清空</el-button>
+        <span style="margin-left: 70%">
+            <el-button type="primary" onclick="javascript :history.back(-1)">返回</el-button>
+        </span>
+
     </div>
 
     <el-table
