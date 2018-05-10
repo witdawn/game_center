@@ -41,6 +41,7 @@ class CopyQusetions extends Command
         $from = trim($this->argument('from'));
         $to = trim($this->argument('to'));
         $questions = Question::where('active_id', $from)->get();
+        Question::where('active_id',$to)->delete();
         foreach ($questions as $question) {
             $newq = new Question();
             $newq->active_id = $to;
