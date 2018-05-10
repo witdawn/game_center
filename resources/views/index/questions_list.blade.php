@@ -18,6 +18,7 @@
         <el-table-column
                 label="操作">
             <template scope="scope">
+                <el-button type="primary" onclick="javascript :history.back(-1)">返回</el-button>
                 <el-button @click="setting(scope.row)" type="primary">设置</el-button>
                 <el-button type="primary" @click="winners(scope.row)">查看获奖名单</el-button>
             </template>
