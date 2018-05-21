@@ -12,6 +12,7 @@
     </h1>
     <div style="width:80%;margin:10px auto;">
         <el-button type="primary" onclick="javascript :history.back(-1)">返回</el-button>
+        <el-button type="primary" onclick="download_winners({{$round}})">导出名单</el-button>
         <el-button type="primary" onclick="cleanup({{$round}})">清空</el-button>
     </div>
     <el-table
@@ -60,6 +61,10 @@
         }).then(function (res) {
             window.location.reload();
         })
+    }
+
+    function download_winners(round) {
+        window.location.href="{{route('download_winnners')}}"+"?round_number="+round;
     }
 
     function showData(data) {

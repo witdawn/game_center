@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\QuestionWinner;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IndexController extends Controller
 {
@@ -39,6 +41,25 @@ class IndexController extends Controller
         if (!$request->has('r'))
             return error_page('无效的连接');
         return view('index.winners', ['round' => $request->get('r')]);
+    }
+
+    //下载获奖名单
+    public function downloadWinners(Request $request)
+    {
+        $round = $request->get('round_number');
+        $account = account_info();
+        $activity = $account->activities()->first();
+        $active_id = $activity->id;
+        $winners = QuestionWinner::getWinners($active_id, $round);
+        $file_name = "第" . $round . "轮获奖名单";
+        Excel::create($file_name, function ($excel) use ($winners) {
+            $excel->sheet('名单', function ($sheet) use ($winners) {
+                $sheet->appendRow(['姓名', '电话']);
+                foreach ($winners as $winner) {
+                    $sheet->appendRow([$winner->nickname, $winner->phoned]);
+                }
+            });
+        })->download('xls');
     }
 
 
