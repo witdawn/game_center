@@ -56,7 +56,7 @@ class IndexController extends Controller
             $excel->sheet('名单', function ($sheet) use ($winners) {
                 $sheet->appendRow(['姓名', '电话']);
                 foreach ($winners as $winner) {
-                    $sheet->appendRow([$winner->nickname, $winner->phoned]);
+                    $sheet->appendRow([$winner->nickname, $winner->phone]);
                 }
             });
         })->download('xls');
