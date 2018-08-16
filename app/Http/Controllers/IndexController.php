@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Exports\WinnerExport;
+use App\Jobs\TakeTest;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
