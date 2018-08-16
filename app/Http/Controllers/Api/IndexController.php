@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Exceptions\GeneralException;
-use App\Extension\QrCode;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Index\LoginRequest;
 use App\Models\Account;
@@ -27,6 +26,13 @@ class IndexController extends Controller
     {
         $request->session()->flush();
         return rJson();
+    }
+
+    public function getActivities()
+    {
+        $account = account_info();
+        $activities = $account->activities;
+        return rJson($activities);
     }
 
 }

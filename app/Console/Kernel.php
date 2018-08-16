@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\InitAccounts::class,
         Commands\AddAccount::class,
-        Commands\ExportPhones::class
+        Commands\ExportPhones::class,
+        Commands\CopyQusetions::class
     ];
 
     /**
@@ -28,6 +29,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('export_phones')->weekly();
+        $schedule->call(function () {
+            \Log::channel('test')->info('测试定时任务');
+        })->everyMinute();
     }
 
     /**
