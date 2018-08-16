@@ -42,5 +42,6 @@ class ExportPhones extends Command
         $date = date('Y-m-d');
         $path = '/phone_excel/' . $date . '.xlsx';
         Excel::store(new PhoneExport, $path, 'local');
+        \Log::channel('test')->info($date.'：volte活动数据导出完毕');
     }
 }
