@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\QuestionWinner;
+use App\Exports\WinnerExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -12,7 +12,7 @@ class IndexController extends Controller
 
     public function test()
     {
-        return view('mobile.index');
+//        return view('mobile.index');
     }
 
     //账户首页
@@ -50,16 +50,8 @@ class IndexController extends Controller
         $account = account_info();
         $activity = $account->activities()->first();
         $active_id = $activity->id;
-        $winners = QuestionWinner::getWinners($active_id, $round);
         $file_name = "第" . $round . "轮获奖名单";
-        Excel::create($file_name, function ($excel) use ($winners) {
-            $excel->sheet('名单', function ($sheet) use ($winners) {
-                $sheet->appendRow(['姓名', '电话']);
-                foreach ($winners as $winner) {
-                    $sheet->appendRow([$winner->nickname, $winner->phone]);
-                }
-            });
-        })->download('xls');
+        Excel::download(new WinnerExport($active_id, $round), $file_name);
     }
 
 
@@ -67,4 +59,5 @@ class IndexController extends Controller
     {
         return view('index.login');
     }
+
 }

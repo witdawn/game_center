@@ -11,6 +11,7 @@
 |
 */
 
+
 // 验证码
 Route::get('captcha', function () {
     $qrcode = new \App\Extension\QrCode();
