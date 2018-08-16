@@ -11,6 +11,11 @@
 |
 */
 
+use Carbon\Carbon;
+
+Route::get('/t', function () {
+});
+
 // 验证码
 Route::get('captcha', function () {
     $qrcode = new \App\Extension\QrCode();

@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\InitAccounts::class,
-        Commands\AddAccount::class
+        Commands\AddAccount::class,
+        Commands\ExportPhones::class
     ];
 
     /**
@@ -26,8 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('export_phones')->weekly();
     }
 
     /**

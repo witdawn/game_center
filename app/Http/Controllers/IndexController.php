@@ -13,8 +13,8 @@ class IndexController extends Controller
     public function index()
     {
         $account = account_info();
-        $activity=$account->activities()->first();
-        return redirect(route('q_index',['a'=>$activity->id]));
+        $activity = $account->activities()->first();
+        return redirect(route('q_index', ['a' => $activity->id]));
 //        return view('index.index');
     }
 
@@ -28,12 +28,13 @@ class IndexController extends Controller
     public function activities()
     {
         $account = account_info();
-        $activities=$account->activities;
-        return view('index.activities',['activities'=>$activities]);
+        $activities = $account->activities;
+        return view('index.activities', ['activities' => $activities]);
     }
 
     public function login()
     {
         return view('index.login');
     }
+
 }
